@@ -18,8 +18,8 @@ if (isset($_GET['page'])) {
 		$action = 'index';
 	}
 } else {
-	$page = 'main';
-	$controller = 'layouts';
+	$page = 'admin';
+	$controller = 'login';
 	$action = 'index';
 }
 require_once('routes.php');

@@ -1,7 +1,6 @@
 <?php
 $pages = array(
   'error' => ['errors'],
-  'main' => ['layouts', 'about', 'services', 'blog', 'archive', 'contact', 'login', 'register'],
   'admin' => ['layouts', 'members', 'products', 'news', 'comments']
 );
 $controllers = array(
@@ -16,16 +15,6 @@ $controllers = array(
   'user' => ['index', 'add', 'editInfo', 'editPass', 'delete'],
   'company' => ['index', 'add', 'edit', 'delete'],
   'login' => ['index', 'check', 'logout'],
-
-  //Main controller
-  'about' => ['index'],
-  'blog' => ['index'],
-  'archive' => ['index'],
-  'contact' => ['index'],
-  'blog' => ['index', 'comment', 'reply'],
-  'services' => ['index'],
-  'register' => ['index', 'submit', 'editInfo']
-  //'login' => ['index']
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi
