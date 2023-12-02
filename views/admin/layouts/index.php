@@ -21,7 +21,8 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-8">
-					<h1>Chào mừng đến với khu vực của quản trị viên</h1>
+					<i class="nav-icon fa fa-signal d-inline"></i>
+					<h1 class="d-inline">Thống kê nhà phòng</h1>
 				</div>
 				<div class="col-sm-4">
 					<ol class="breadcrumb float-sm-right">
@@ -38,28 +39,8 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="invoice p-3 mb-3">
 				<div class="row invoice-info">
-					<div class="col-sm-6 invoice-col">
+					<div class="col-sm-2 invoice-col">
 						<ul style="list-style: none;">
-							<?php
-								if($_SESSION['init'] == 1){
-									echo '
-									<li>
-										<a href="index.php?page=admin&controller=admin&action=index">
-											<i class="fas fa-user-graduate"></i>
-											Danh sách Admin
-										</a>
-									</li>
-									
-									';
-								}
-							?>
-							
-							<li>
-								<a href="index.php?page=admin&controller=comments&action=index">
-									<i class="fas fa-comments"></i>
-									Bình luận - Đánh giá
-								</a>
-							</li>
 							<li>
 								<a href="index.php?page=admin&controller=user&action=index" > 
 									<i class="fas fa-users-cog"></i>
@@ -96,7 +77,6 @@ require_once('views/admin/content_layouts.php'); ?>
 				</div>
 				<!-- /.row -->
 			</div>
-			
 		</div><!-- /.container-fluid -->
 	</section>
 	<!-- /.content -->

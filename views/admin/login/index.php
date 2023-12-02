@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>KMS Technoloy | Log in</title>
+	<title>Đăng nhập - Quản lý Ký túc xá ĐHQG-HCM</title>
 
-	<link href="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" rel="icon">
+	<link href="/assets/img/logo.png" rel="icon">
 
 	<!-- Google Font: Source Sans Pro-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -17,11 +17,21 @@
 	<!-- Theme style-->
 	<link rel="stylesheet" href="public/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
-	<div class="login-box">
-		<div class="login-logo"><a href="#"><b>Website</b>Managing-System</a></div>
-		<!-- /.login-logo-->
-		<div class="card">
+<body>
+<div class="container-flex">
+	<div class="navbar bg-primary p-4 "></div>
+	<div class="header row p-3 h-auto">
+		<div class="col-sm-2 logo d-flex justify-content-center">
+		<img src="http://svktx.vnuhcm.edu.vn:8010/assets/img/logo.png" alt="LOGO">
+		</div>
+		<div class="col-sm-8 d-flex justify-content-center">
+			<h1>HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h1>
+		</div>
+	</div>
+	<div class="login-page">
+		<div class="login-box">
+			<!-- /.login-logo-->
+			<div class="card">
 			<div class="card-body login-card-body">
 				<p class="login-box-msg"> Đăng nhập vào hệ thống </p>
 				<?php
@@ -35,7 +45,7 @@
 					<div class="input-group mb-3">
 						<input class="form-control" type="text" placeholder="Tài khoản" name="username">
 						<div class="input-group-append">
-							<div class="input-group-text"><span class="fas fa-envelope"></span></div>
+							<div class="input-group-text"><span class="fas fa-user"></span></div>
 						</div>
 					</div>
 					<div class="input-group mb-3">
@@ -63,6 +73,7 @@
 			<!-- AdminLTE App-->
 			<script src="public/dist/js/adminlte.min.js"></script>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -4,10 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>KMS Technology</title>
+	<title>DashBoard - Quản lý Ký túc xá ĐHQG-HCM</title>
 
-	<link href="https://kms-technology.com/wp-content/uploads/2018/10/favicon.png" rel="icon">
-	
+	<link href="public/assets/img/logo.png" rel="icon">
 	<!-- Google Font: Source Sans Pro-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700&display=fallback">
 	<!-- Font Awesome-->
