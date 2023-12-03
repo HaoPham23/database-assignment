@@ -25,7 +25,7 @@
 		<img src="http://svktx.vnuhcm.edu.vn:8010/assets/img/logo.png" alt="LOGO">
 		</div>
 		<div class="col-sm-8 d-flex justify-content-center">
-			<h1>HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h1>
+			<h2 class="text-primary" style="font-family: 'Times New Roman', serif;">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h2>
 		</div>
 	</div>
 	<div class="login-page">

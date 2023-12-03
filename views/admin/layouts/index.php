@@ -39,7 +39,7 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="invoice p-3 mb-3">
 				<div class="row invoice-info">
-					<div class="col-sm-2 invoice-col">
+					<div class="col-sm-6 invoice-col">
 						<ul style="list-style: none;">
 							<li>
 								<a href="index.php?page=admin&controller=user&action=index" > 

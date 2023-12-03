@@ -15,7 +15,7 @@
 					<a class="nav-link" href="index.php?page=admin&controller=layouts&action=index">Home</a>
 				</li>
 			</ul>
-			<h2 class="m-auto text-center text-primary">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h2>
+			<h4 class="m-auto text-center text-primary" style="font-family: 'Times New Roman', serif">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h4>
 			<!-- Right navbar links-->
 			<ul class="navbar-nav ml-auto">
 				<!-- Navbar Search-->
@@ -77,34 +77,41 @@
 							}
 						
 						?>
+						<!-- Ky tuc xa -->
+						<li class="nav-item">
+							<a class="nav-link" href="index.php">
+								<i class="nav-icon fas fa-tachometer-alt"></i>
+								<p>Dashboard</p>
+							</a>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
-								<i class="nav-icon fas fa-comments"></i>
-								<p>Bình luận đánh giá</p>
+								<i class="nav-icon fas fa-users"></i>
+								<p>Sinh viên</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=user&action=index">
-								<i class="nav-icon fas fa-users-cog"></i>
-								<p>Liên hệ khách hàng</p>
+							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+								<i class="nav-icon fas fa-home"></i>
+								<p>Khu/Nhà/Phòng</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=products&action=index">
-								<i class="nav-icon fas fa-cube"></i>
-								<p>Quản lý Sản phẩm</p>
+							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+								<i class="nav-icon fa fa-calendar"></i>
+								<p>Thuê phòng</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=news&action=index">
-								<i class="nav-icon fa fa-file" aria-hidden="true"></i>
-								<p>Quản lý tin tức</p>
+							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+								<i class="nav-icon fa fa-book"></i>
+								<p>Hóa đơn</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=company&action=index">
-								<i class="nav-icon fa fa-newspaper" aria-hidden="true"></i>
-								<p>Danh sách chi nhánh</p>
+							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+								<i class="nav-icon fas fa-bar-chart"></i>
+								<p>Báo cáo - Thống kê</p>
 							</a>
 						</li>
 					</ul>
