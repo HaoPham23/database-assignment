@@ -35,9 +35,10 @@ admin - 123456
    - Có tham số đầu vào và kiểm tra tham số đầu vào
    - Chuẩn bị các câu lệnh và dữ liệu để minh họa việc gọi hàm khi báo cáo.
 5. (3 điểm) Viết Web minh họa việc kết nối ứng dụng với CSDL. Trong đó:
-   - [ ] (1 điểm) Hiện thực 1 màn hình để thể hiện chức năng thêm/xóa/sửa dữ liệu vào bảng dữ liệu trong câu 1.2.1: Chức năng "Thêm Sinh viên"
-   - [ ] (1 điểm) 1 giao diện hiển thị danh sách dữ liệu từ việc gọi thủ tục trong câu số 1.2.3. Cho phép cập nhật, xóa dữ liệu từ danh sách. Ngoài ra còn có: các chức năng như tìm kiếm, sắp xếp, validate dữ liệu nhập vào, xử lý lỗi logic khi cập nhật và xóa dữ liệu, thông báo lỗi phù hợp và cụ thể, control sử dụng hợp lý, giao diện dễ nhìn: Chức năng "Tìm hồ sơ sinh viên"
-   Ví dụ: 1 giao diện hiển thị danh sách các sản phẩm, trong đó có search, filter, sắp xếp, có chức năng tạo mới sản phẩm (gọi lại giao diện phần a), có chức năng chọn 1 hàng dữ liệu để xóa sản phẩm hoặc cập nhật thông tin sản phẩm.
+   - [ ] (1 điểm) Hiện thực 1 màn hình để thể hiện chức năng thêm/xóa/sửa dữ liệu vào bảng dữ liệu trong câu 1.2.1: Chức năng "**Thêm Sinh viên**"
+   - [ ] (1 điểm) 1 giao diện hiển thị danh sách dữ liệu từ việc gọi thủ tục trong câu số 1.2.3. Cho phép cập nhật, xóa dữ liệu từ danh sách. Ngoài ra còn có: các chức năng như tìm kiếm, sắp xếp, validate dữ liệu nhập vào, xử lý lỗi logic khi cập nhật và xóa dữ liệu, thông báo lỗi phù hợp và cụ thể, control sử dụng hợp lý, giao diện dễ nhìn: Chức năng "**Tìm hồ sơ sinh viên**"
+   
+   *Ví dụ*: 1 giao diện hiển thị danh sách các sản phẩm, trong đó có search, filter, sắp xếp, có chức năng tạo mới sản phẩm (gọi lại giao diện phần a), có chức năng chọn 1 hàng dữ liệu để xóa sản phẩm hoặc cập nhật thông tin sản phẩm.
    - [ ] (1 điểm) 1 Giao diện minh họa cho ít nhất 1 thủ tục khác trong câu 1.2.3 hoặc hàm trong câu 1.2.4. (có thể dùng chung giao diện phần b nếu cùng bảng dữ liệu): Chức năng "Báo cáo - thống kê"
 ### Lưu ý
 - Các hàm và thủ tục phải có ý nghĩa và phù hợp với nghiệp vụ của ứng dụng.
