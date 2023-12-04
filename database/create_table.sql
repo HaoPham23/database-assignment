@@ -288,8 +288,7 @@ CREATE TABLE WARNING (
   PRIMARY KEY (ID)
 );
 
--- --------------------------------------------------------
-
+----------------------------------------------------------
 --
 -- Table structure for table WORK_IN
 --
@@ -303,6 +302,8 @@ CREATE TABLE WORK_IN (
   CHECK (Date_in < Date_out)
 );
 
+-- ALTER TABLE --
+-- ADD CONSTRAINT--
 
 ALTER TABLE ACCOUNT 
   ADD CONSTRAINT fk_account_Stu_CCCD FOREIGN KEY (Student_ID) REFERENCES STUDENT(CCCD_number)
