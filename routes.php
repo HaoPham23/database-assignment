@@ -13,7 +13,7 @@ $controllers = array(
   'comments' => ['index','hide','add','edit','delete'],
   'admin' => ['index', 'add', 'edit', 'delete'],
   'user' => ['index', 'add', 'editInfo', 'editPass', 'delete'],
-  'company' => ['index', 'add', 'edit', 'delete'],
+  'student' => ['index', 'add', 'edit', 'delete'],
   'login' => ['index', 'check', 'logout'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 

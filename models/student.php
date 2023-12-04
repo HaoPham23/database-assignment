@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-class Company
+class Student
 {
     public $id;
     public $name;
@@ -22,13 +22,13 @@ class Company
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM company");
         $companies = [];
-        foreach ($req->fetch_all(MYSQLI_ASSOC) as $company) {
-            $companies[] = new Company(
-                $company['id'],
-                $company['name'],
-                $company['address'],
-                $company['createAt'],
-                $company['updateAt']
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $student) {
+            $companies[] = new Student(
+                $student['id'],
+                $student['name'],
+                $student['address'],
+                $student['createAt'],
+                $student['updateAt']
             );
         }
         return $companies;
@@ -39,14 +39,14 @@ class Company
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM company WHERE id = $id");
         $result = $req->fetch_assoc();
-        $company = new Company(
+        $student = new Student(
             $result['id'],
             $result['name'],
             $result['address'],
             $result['createAt'],
             $result['updateAt']
         );
-        return $company;
+        return $student;
     }
 
     static function insert($name, $address)

@@ -22,12 +22,12 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Danh sách Chi nhánh</h1>
+					<h1>Danh sách Sinh viên</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="page=admin&controller=layouts&action=index">Home</a></li>
-						<li class="breadcrumb-item active">Danh sách Chi nhánh</li>
+						<li class="breadcrumb-item active">Danh sách Sinh viên</li>
 					</ol>
 				</div>
 			</div>
@@ -42,24 +42,32 @@ require_once('views/admin/content_layouts.php'); ?>
 					<div class="card">
 						<div class="card-body">
 							<!-- Button trigger modal-->
-							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addCompanyModal">Thêm mới</button>
+							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addStudentModal">Thêm mới</button>
 							<!-- Modal-->
-							<div class="modal fade" id="addCompanyModal" tabindex="-1" role="dialog" aria-labelledby="addCompanyModal" aria-hidden="true">
+							<div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title">Thêm mới</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
-										<form action="index.php?page=admin&controller=company&action=add" method="post">
+										<form action="index.php?page=admin&controller=student&action=add" method="post">
 											<div class="modal-body">
 												<div class="form-group">
-													<label>Tên chi nhánh</label>
-													<input class="form-control" type="text" placeholder="Tên chi nhánh" name="name" />
+													<label>Tên sinh viên</label>
+													<input class="form-control" type="text" placeholder="Tên sinh viên" name="name" />
 												</div>
 												<div class="form-group">
-													<label>Địa chỉ chi nhánh</label>
-													<input class="form-control" type="text" placeholder="Địa chỉ chi nhánh" name="address" />
+													<label>Trường</label>
+													<input class="form-control" type="text" placeholder="Trường" name="address" />
+												</div>
+												<div class="form-group">
+													<label>Tòa</label>
+													<input class="form-control" type="text" placeholder="Tòa" name="updateAt" />
+												</div>
+												<div class="form-group">
+													<label>Phòng</label>
+													<input class="form-control" type="text" placeholder="Phòng" name="updateAt" />
 												</div>
 											</div>
 											<div class="modal-footer">
@@ -71,27 +79,29 @@ require_once('views/admin/content_layouts.php'); ?>
 								</div>
 							</div>
 
-							<table class="table table-bordered table-striped" id="tab-company">
+							<table class="table table-bordered table-striped" id="tab-student">
 								<thead>
 									<tr class="text-center">
 										<th>STT</th>
-										<th>Tên chi nhánh</th>
-										<th>Địa chỉ chi nhánh</th>
-										<th>Cập nhật lần cuối</th>
+										<th>Họ và tên</th>
+										<th>Trường</th>
+										<th>Tòa</th>
+										<th>Phòng</th>
 										<th>Thao tác</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
-									foreach ($company as $company) {
+									foreach ($student as $student) {
 										echo "<tr class='text-center'>";
-										echo "<td>" . $company->id . "</td>";
-										echo "<td>" . $company->name . "</td>";
-										echo "<td>" . $company->address . "</td>";
-										echo "<td>" . $company->updateAt . "</td>";
+										echo "<td id=\"student_id\">" . $student->id . "</td>";
+										echo "<td id=\"student_name\">" . $student->name . "</td>";
+										echo "<td id=\"student_address\">" . $student->address . "</td>";
+										echo "<td id=\"student_building\">" . $student->updateAt . "</td>";
+										echo "<td id=\"student_room\">" . $student->updateAt . "</td>";
 										echo "<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-id=$company->id data-name='$company->name' data-address='$company->address'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-id=$company->id> <i class='fas fa-trash'></i></btn>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-id=$student->id data-name='$student->name' data-address='$student->address'> <i class='fas fa-edit'></i></btn>
+											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-id=$student->id> <i class='fas fa-trash'></i></btn>
 											</td>";
 										echo "</tr>";
 									}
@@ -99,26 +109,30 @@ require_once('views/admin/content_layouts.php'); ?>
 								</tbody>
 							</table>
 
-							<div class="modal fade" id="EditCompanyModal" tabindex="-1" role="dialog" aria-labelledby="EditCompanyModal" aria-hidden="true">
+							<div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
 											<h5 class="modal-title">Chỉnh sửa</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
-										<form action="index.php?page=admin&controller=company&action=edit" method="post">
+										<form action="index.php?page=admin&controller=student&action=edit" method="post">
 											<div class="modal-body">
 												<input type="hidden" name="id" />
 												<div class="form-group">
 													<input class="form-control" type="hidden" placeholder="Id" name="id" readonly />
 												</div>
 												<div class="form-group">
-													<label>Tên chi nhánh</label>
-													<input class="form-control" type="text" placeholder="Please enter your company" name="name" />
+													<label>Trường</label>
+													<input class="form-control" type="text" placeholder="Trường" name="address" />
 												</div>
 												<div class="form-group">
-													<label>Địa chỉ</label>
-													<input class="form-control" type="text" placeholder="Please enter your address" name="address" />
+													<label>Tòa</label>
+													<input class="form-control" type="text" placeholder="Tòa" name="updateAt" />
+												</div>
+												<div class="form-group">
+													<label>Phòng</label>
+													<input class="form-control" type="text" placeholder="Phòng" name="updateAt" />
 												</div>
 											</div>
 											<div class="modal-footer">
@@ -130,14 +144,14 @@ require_once('views/admin/content_layouts.php'); ?>
 								</div>
 							</div>
 
-							<div class="modal fade" id="DeleteCompanyModal" tabindex="-1" role="dialog" aria-labelledby="DeleteCompanyModal" aria-hidden="true">
+							<div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content bg-danger">
 										<div class="modal-header">
 											<h5 class="modal-title">Xóa</h5>
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 										</div>
-										<form action="index.php?page=admin&controller=company&action=delete" method="post">
+										<form action="index.php?page=admin&controller=student&action=delete" method="post">
 											<div class="modal-body">
 												<input type="hidden" name="id" />
 												<p>Bạn chắc chưa ?</p>
@@ -165,7 +179,7 @@ require_once('views/admin/content_layouts.php'); ?>
 require_once('views/admin/footer.php'); ?>
 
 <!-- Add Javascripts -->
-<script src="public/js/company/index.js"></script>
+<script src="public/js/student/index.js"></script>
 </body>
 
 </html>

@@ -85,7 +85,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=student&action=index">
 								<i class="nav-icon fas fa-users"></i>
 								<p>Sinh viên</p>
 							</a>
