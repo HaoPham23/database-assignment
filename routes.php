@@ -1,14 +1,14 @@
 <?php
 $pages = array(
   'error' => ['errors'],
-  'admin' => ['layouts', 'members', 'products', 'news', 'comments']
+  'admin' => ['layouts', 'members', 'rooms', 'news', 'comments']
 );
 $controllers = array(
   //Admin controller
   'errors' => ['index'],
   'layouts' => ['index'], // Bổ sung thêm các hàm trong controllers
   'members' => ['index'],
-  'products' => ['index','add','edit','delete'],
+  'rooms' => ['index','add','edit','delete'],
   'news' => ['index','add','edit','delete','hide'],
   'comments' => ['index','hide','add','edit','delete'],
   'admin' => ['index', 'add', 'edit', 'delete'],

@@ -1,6 +1,6 @@
 <?php
 require_once('connection.php');
-class Product
+class Room
 {
     public $id;
     public $name;
@@ -23,19 +23,19 @@ class Product
     {
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM product");
-        $products = [];
-        foreach ($req->fetch_all(MYSQLI_ASSOC) as $product)
+        $rooms = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $room)
         {
-            $products[] = new Product(
-                $product['id'],
-                $product['name'],
-                $product['price'],
-                $product['description'],
-                $product['content'],
-                $product['img']
+            $rooms[] = new Room(
+                $room['id'],
+                $room['name'],
+                $room['price'],
+                $room['description'],
+                $room['content'],
+                $room['img']
             );
         }
-        return $products;
+        return $rooms;
     }
 
     static function get($id)
@@ -43,7 +43,7 @@ class Product
         $db = DB::getInstance();
         $req = $db->query("SELECT * FROM product WHERE id = $id");
         $result = $req->fetch_assoc();
-        $product = new Product(
+        $room = new Room(
             $result['id'],
             $result['name'],
             $result['price'],
@@ -51,7 +51,7 @@ class Product
             $result['content'],
             $result['img']
         );
-        return $product;
+        return $room;
     }
 
     static function insert($name, $price, $description, $content, $img)

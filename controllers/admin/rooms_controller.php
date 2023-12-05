@@ -1,19 +1,19 @@
 <?php
 require_once('controllers/admin/base_controller.php');
-require_once('models/product.php');
+require_once('models/room.php');
 
 
-class ProductsController extends BaseController
+class RoomsController extends BaseController
 {
 	function __construct()
 	{
-		$this->folder = 'products';
+		$this->folder = 'rooms';
 	}
 
 	public function index()
 	{
-        $products = Product::getAll();
-        $data = array('products' => $products);
+        $rooms = Room::getAll();
+        $data = array('rooms' => $rooms);
         $this->render('index', $data);
 	}
     public function add(){
@@ -42,8 +42,8 @@ class ProductsController extends BaseController
             echo "Sorry, your file is too large.";
         }
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-        Product::insert($name, 0, $description, $content, $target_file);
-        header('Location: index.php?page=admin&controller=products&action=index');
+        Room::insert($name, 0, $description, $content, $target_file);
+        header('Location: index.php?page=admin&controller=rooms&action=index');
     }
     public function edit(){
         $id = $_POST['id'];
@@ -52,12 +52,12 @@ class ProductsController extends BaseController
         $name = $_POST['name'];
         $description = $_POST['description'];
         $content = $_POST['content'];
-        $urlcurrent = Product::get((int)$id)->img;
+        $urlcurrent = Room::get((int)$id)->img;
         if (!isset($_FILES["fileToUpload"]) || $_FILES['fileToUpload']['tmp_name'][0] == "")
         {
-            Product::update($id, $name, 0, $description, $content, $urlcurrent);
+            Room::update($id, $name, 0, $description, $content, $urlcurrent);
             echo "Dữ liệu upload bị lỗi";
-            header('Location: index.php?page=admin&controller=products&action=index');
+            header('Location: index.php?page=admin&controller=rooms&action=index');
             die;
         }
         else{
@@ -83,15 +83,15 @@ class ProductsController extends BaseController
             $file_pointer = $urlcurrent;
             unlink($file_pointer);
             move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-            Product::update($id, $name, 0, $description, $content, $target_file);
-            header('Location: index.php?page=admin&controller=products&action=index');
+            Room::update($id, $name, 0, $description, $content, $target_file);
+            header('Location: index.php?page=admin&controller=rooms&action=index');
         }
     }
     public function delete(){
         $id = $_POST['id'];
-        $urlcurrent = Product::get((int)$id)->img;
+        $urlcurrent = Room::get((int)$id)->img;
         unlink($urlcurrent);
-        Product::delete($id);
-        header('Location: index.php?page=admin&controller=products&action=index');
+        Room::delete($id);
+        header('Location: index.php?page=admin&controller=rooms&action=index');
     }
 }

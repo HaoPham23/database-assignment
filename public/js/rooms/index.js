@@ -1,16 +1,39 @@
-$("#TAB-product")
-  .DataTable({
-    responsive: true,
-    lengthChange: false,
-    autoWidth: false,
-    language: {
+// $("#TAB-room")
+//   .DataTable({
+//     responsive: true,
+//     lengthChange: false,
+//     autoWidth: false,
+//     language: {
+//       url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
+//     },
+//     columnDefs: [{ orderable: false, targets: 6 }],
+//   })
+//   .buttons()
+//   .container()
+//   .appendTo("#TAB-room_wrapper .col-md-6:eq(0)");
+
+$("#TAB-room").DataTable({
+  responsive: true,
+  lengthChange: false,
+  autoWidth: false,
+  language: {
       url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
-    },
-    columnDefs: [{ orderable: false, targets: 6 }],
-  })
-  .buttons()
-  .container()
-  .appendTo("#TAB-product_wrapper .col-md-6:eq(0)");
+  },
+  initComplete: function () {
+      this.api().columns().every(function () {
+          var column = this;
+          $('<input type="text" placeholder="Tìm kiếm"/>')
+              .css({'width': '120px', 'margin-bottom': '10px', 'margin-top': '10px', 'text-align': 'center'})
+              .appendTo($(column.header()))
+              .on('keyup change click', function (e) {
+                  e.stopPropagation();
+                  column.search($(this).val(), false, false, true).draw();
+              });
+      });
+  },
+lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+  pageLength: 5
+});
 
 $("#form-add-student").submit(function (e) {
   e.preventDefault();

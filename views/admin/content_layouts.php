@@ -91,7 +91,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=rooms&action=index">
 								<i class="nav-icon fas fa-home"></i>
 								<p>Khu/Nhà/Phòng</p>
 							</a>
