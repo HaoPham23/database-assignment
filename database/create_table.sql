@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Nov 26, 2023 at 05:03 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
-
 -- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 -- START TRANSACTION;
 -- SET time_zone = "+00:00";
@@ -21,12 +12,7 @@
 -- Database: chetcom
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table ACCOUNT
---
-CREATE DATABASE CHETCOM;
+CREATE DATABASE IF NOT EXISTS CHETCOM;
 USE CHETCOM;
 
 -- --------------------------------------------------------
