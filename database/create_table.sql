@@ -29,16 +29,6 @@
 CREATE DATABASE CHETCOM;
 USE CHETCOM;
 
-CREATE TABLE ACCOUNT (
-  Acc_ID VARCHAR(10) CHECK (Acc_ID REGEXP '^[0-9]{10}$'),
-  Username VARCHAR(20),
-  Password VARCHAR(20),
-  Acc_type VARCHAR(20),
-  Student_ID VARCHAR(10) CHECK (Student_ID REGEXP '^[0-9]{10}$'),
-  Employee_ID VARCHAR(10) CHECK (Employee_ID REGEXP '^[0-9]{10}$'),
-  PRIMARY KEY (Acc_ID)
-);
-
 -- --------------------------------------------------------
 
 --
@@ -304,11 +294,6 @@ CREATE TABLE WORK_IN (
 
 -- ALTER TABLE --
 -- ADD CONSTRAINT--
-
-ALTER TABLE ACCOUNT 
-  ADD CONSTRAINT fk_account_Stu_CCCD FOREIGN KEY (Student_ID) REFERENCES STUDENT(CCCD_number)
-    ON UPDATE RESTRICT
-    ON DELETE RESTRICT;
 
 ALTER TABLE ACCOUNT 
   ADD CONSTRAINT fk_account_employee_CCCD FOREIGN KEY (Employee_ID) REFERENCES EMPLOYEE(CCCD_number)
