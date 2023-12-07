@@ -7,14 +7,15 @@ $controllers = array(
   //Admin controller
   'errors' => ['index'],
   'layouts' => ['index'], // Bổ sung thêm các hàm trong controllers
-  'members' => ['index'],
   'rooms' => ['index','add','edit','delete'],
   'news' => ['index','add','edit','delete','hide'],
-  'comments' => ['index','hide','add','edit','delete'],
   'admin' => ['index', 'add', 'edit', 'delete'],
-  'user' => ['index', 'add', 'editInfo', 'editPass', 'delete'],
   'student' => ['index', 'add', 'edit', 'delete'],
   'login' => ['index', 'check', 'logout'],
+  'dashboard' => ['index'],
+  'report' => ['index'], // Báo cáo - Thống kê
+  'bill' => ['index'], // Hóa đơn
+  'rent' => ['index'], // Thuê phòng
   'employee' => ['index','add','edit','delete'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
