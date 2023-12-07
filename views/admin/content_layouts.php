@@ -103,9 +103,9 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=news&action=index">
 								<i class="nav-icon fa fa-calendar"></i>
-								<p>Thuê phòng</p>
+								<p>Thông báo</p>
 							</a>
 						</li>
 						<li class="nav-item">
