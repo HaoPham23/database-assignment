@@ -15,7 +15,7 @@ $controllers = array(
   'dashboard' => ['index'],
   'report' => ['index'], // Báo cáo - Thống kê
   'bill' => ['index'], // Hóa đơn
-  'rent' => ['index'] // Thuê phòng
+  'rent' => ['index'], // Thuê phòng
   'employee' => ['index','add','edit','delete'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 
