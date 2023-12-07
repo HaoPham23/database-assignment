@@ -79,7 +79,7 @@
 						?>
 						<!-- Ky tuc xa -->
 						<li class="nav-item">
-							<a class="nav-link" href="index.php">
+							<a class="nav-link" href="index.php?page=admin&controller=dashboard&action=index">
 								<i class="nav-icon fas fa-tachometer-alt"></i>
 								<p>Dashboard</p>
 							</a>
@@ -97,19 +97,19 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=rent&action=index">
 								<i class="nav-icon fa fa-calendar"></i>
 								<p>Thuê phòng</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=bill&action=index">
 								<i class="nav-icon fa fa-book"></i>
 								<p>Hóa đơn</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=comments&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=report&action=index">
 								<i class="nav-icon fas fa-bar-chart"></i>
 								<p>Báo cáo - Thống kê</p>
 							</a>

@@ -17,10 +17,10 @@
 	<!-- Theme style-->
 	<link rel="stylesheet" href="public/dist/css/adminlte.min.css">
 </head>
-<body>
+<body class="bg-light">
 <div class="container-flex">
 	<div class="navbar bg-primary p-4 "></div>
-	<div class="header row p-3 h-auto">
+	<div class="header row p-3 h-auto bg-white">
 		<div class="col-sm-2 logo d-flex justify-content-center">
 		<img src="http://svktx.vnuhcm.edu.vn:8010/assets/img/logo.png" alt="LOGO">
 		</div>
@@ -28,7 +28,7 @@
 			<h2 class="text-primary" style="font-family: 'Times New Roman', serif;">HỆ THỐNG QUẢN LÝ KÝ TÚC XÁ ĐẠI HỌC QUỐC GIA</h2>
 		</div>
 	</div>
-	<div class="login-page">
+	<div class="d-flex justify-content-center p-5">
 		<div class="login-box">
 			<!-- /.login-logo-->
 			<div class="card">
