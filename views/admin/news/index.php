@@ -20,12 +20,12 @@ if (!isset($_SESSION["user"])) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Quản lý tin tức</h1>
+                    <h1>Các thông báo</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="page=admin&controller=layouts&action=index">Home</a></li>
-                        <li class="breadcrumb-item active">Quản lý tin tức</li>
+                        <li class="breadcrumb-item active">Các thông báo</li>
                     </ol>
                 </div>
             </div>
@@ -45,7 +45,7 @@ if (!isset($_SESSION["user"])) {
                                 <div class="modal-dialog modal-xl" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Thêm mới bài viết</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h5 class="modal-title">Thêm thông báo mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         </div>
                                         <form id="form-add-student" action="index.php?page=admin&controller=news&action=add" enctype="multipart/form-data" method="post">
                                             <div class="modal-body">
@@ -144,7 +144,7 @@ if (!isset($_SESSION["user"])) {
                                             </div>
                                             <form action="index.php?page=admin&controller=news&action=delete" method="post">
                                                 <div class="modal-body"><input type="hidden" name="id" />
-                                                    <p>Bạn có chắc chắn xóa bài viết này</p>
+                                                    <p>Bạn có chắc chắn xóa thông báo này</p>
                                                 </div>
                                                 <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
                                             </form>
@@ -155,7 +155,7 @@ if (!isset($_SESSION["user"])) {
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content bg-danger">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Hiện hay ẩn bài viết</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h5 class="modal-title">Hiện hay ẩn thông báo</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                             </div>
                                             <form action="index.php?page=admin&controller=news&action=hide" method="post">
                                                 <div class="modal-body"><input type="hidden" name="id" />

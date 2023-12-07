@@ -21,12 +21,12 @@ require_once('views/admin/content_layouts.php'); ?>
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Khu/Nhà/Phòng</h1>
+                    <h1>Danh sách nhân viên</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="page=admin&controller=layouts&action=index">Home</a></li>
-                        <li class="breadcrumb-item active">Khu/Nhà/Phòng</li>
+                        <li class="breadcrumb-item active">Danh sách nhân viên</li>
                     </ol>
                 </div>
             </div>
@@ -40,16 +40,16 @@ require_once('views/admin/content_layouts.php'); ?>
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                        <button class="btn btn-secondary" type="button" id="showContent1">Các tòa nhà</button>
-                        <button class="btn btn-info ml-2" type="button" id="showContent2">Các phòng</button>
-                        <button class="btn btn-primary mt-3" id="addBuildingButton" type="button" data-toggle="modal" data-target="#addBuildingModal">Thêm tòa nhà mới</button>
-                        <div class="modal fade" id="addBuildingModal"  aria-labelledby="addBuildingModal" aria-hidden="true">
+                        <button class="btn btn-secondary" type="button" id="showContent1">Các Quản lý tòa</button>
+                        <button class="btn btn-info ml-2" type="button" id="showContent2">Các Nhân viên thường</button>
+                        <button class="btn btn-primary mt-3" id="addManagerButton" type="button" data-toggle="modal" data-target="#addManagerModal">Thêm Quản lý tòa mới</button>
+                        <div class="modal fade" id="addManagerModal"  aria-labelledby="addManagerModal" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Thêm tòa nhà mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h5 class="modal-title">Thêm Quản lý tòa mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
+                                    <form id="form-add-student" action="index.php?page=admin&controller=employee&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div  class="col-6"><label>Tên tòa nhà</label><input class="form-control" type="text" placeholder="Tên tòa nhà" name="name" /></div>
@@ -67,14 +67,14 @@ require_once('views/admin/content_layouts.php'); ?>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary mt-3" id="addRoomButton" type="button" data-toggle="modal" data-target="#addRoomModal">Thêm phòng mới</button>
-                        <div class="modal fade" id="addRoomModal"  aria-labelledby="addRoomModal" aria-hidden="true">
+                        <button class="btn btn-primary mt-3" id="addStaffButton" type="button" data-toggle="modal" data-target="#addStaffModal">Thêm nhân viên mới</button>
+                        <div class="modal fade" id="addStaffModal"  aria-labelledby="addStaffModal" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Thêm phòng mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h5 class="modal-title">Thêm nhân viên mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
+                                    <form id="form-add-student" action="index.php?page=admin&controller=employee&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div  class="col-6"><label>Tên phòng</label><input class="form-control" type="text" placeholder="Tên phòng" name="name" /></div>
@@ -94,14 +94,14 @@ require_once('views/admin/content_layouts.php'); ?>
 
                         <div id="content1" class="mt-3">
                         <div class="row"></div>
-                                <table id="TAB-room" class="table table-bordered table-striped"> 
+                                <table id="TAB-employee" class="table table-bordered table-striped"> 
                                     <thead>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
-                                            <th scope="col">Tên tòa nhà</th>
-                                            <th scope="col">Mô tả</th>
-                                            <th scope="col">Số phòng</th>
-                                            <th scope="col">Hình ảnh</th>
+                                            <th scope="col">Tên quản lý</th>
+                                            <th scope="col">Tòa nhà</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
                                             <th scope="col">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -111,7 +111,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                             
                                             $index = 1;
 
-                                            foreach ($rooms as $room) {  
+                                            foreach ($employees as $employee) {  
                                                                                          
                                                 echo 
                                                 "<tr class=\"text-center\">
@@ -119,20 +119,20 @@ require_once('views/admin/content_layouts.php'); ?>
                                                         .$index. 
                                                     "</td>
                                                     <td>
-                                                        ".$room->name."
+                                                        ".$employee->name."
                                                     </td>
                                                     <td>
-                                                        ".$room->description."
+                                                        ".$employee->description."
                                                     </td>   
                                                     <td>
-                                                        ".$room->name."
+                                                        ".$employee->name."
                                                     </td> 
                                                     <td>
-                                                        ".$room->name."
+                                                        ".$employee->name."
                                                     </td>   
                                                     <td>
-                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$room->id' data-name='$room->name' data-price='$room->price' data-description='$room->description' data-content='$room->content' data-img='$room->name'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$room->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$employee->id' data-name='$employee->name' data-price='$employee->price' data-description='$employee->description' data-content='$employee->content' data-img='$employee->name'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$employee->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
                                                     </td>                                                                                                                                                                                      
                                                 </tr>";
                                                 $index++;
@@ -145,7 +145,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Chỉnh sửa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <form id="form-edit-student" action="index.php?page=admin&controller=rooms&action=edit" enctype="multipart/form-data" method="post">
+                                                <form id="form-edit-student" action="index.php?page=admin&controller=employee&action=edit" enctype="multipart/form-data" method="post">
                                                     <div class="modal-body">
                                                          <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
                                                         <div class="row">
@@ -170,7 +170,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Xóa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <form action="index.php?page=admin&controller=rooms&action=delete" method="post">
+                                                <form action="index.php?page=admin&controller=employee&action=delete" method="post">
                                                     <div class="modal-body"><input type="hidden" name="id" />
                                                         <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
                                                     </div>
@@ -201,25 +201,25 @@ require_once('views/admin/content_layouts.php'); ?>
 
 <?php
 require_once('views/admin/footer.php'); ?>
-<script src="public/js/rooms/index.js"></script>
+<script src="public/js/employee/index.js"></script>
 <script>
     document.getElementById('showContent1').addEventListener('click', function () {
         document.getElementById('content1').style.display = 'block';
         document.getElementById('content2').style.display = 'none';
-        document.getElementById('addBuildingButton').style.display = 'block';
-        document.getElementById('addRoomButton').style.display = 'none';
+        document.getElementById('addManagerButton').style.display = 'block';
+        document.getElementById('addStaffButton').style.display = 'none';
     });
 
     document.getElementById('showContent2').addEventListener('click', function () {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'block';
-        document.getElementById('addBuildingButton').style.display = 'none';
-        document.getElementById('addRoomButton').style.display = 'block';
+        document.getElementById('addManagerButton').style.display = 'none';
+        document.getElementById('addStaffButton').style.display = 'block';
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('addBuildingButton').style.display = 'none';
-        document.getElementById('addRoomButton').style.display = 'none';
+        document.getElementById('addManagerButton').style.display = 'none';
+        document.getElementById('addStaffButton').style.display = 'none';
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
     });

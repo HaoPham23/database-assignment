@@ -91,15 +91,21 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link" href="index.php?page=admin&controller=employee&action=index">
+								<i class="nav-icon fas fa-users"></i>
+								<p>Nhân viên</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a class="nav-link" href="index.php?page=admin&controller=rooms&action=index">
 								<i class="nav-icon fas fa-home"></i>
 								<p>Khu/Nhà/Phòng</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="index.php?page=admin&controller=rent&action=index">
+							<a class="nav-link" href="index.php?page=admin&controller=news&action=index">
 								<i class="nav-icon fa fa-calendar"></i>
-								<p>Thuê phòng</p>
+								<p>Thông báo</p>
 							</a>
 						</li>
 						<li class="nav-item">
