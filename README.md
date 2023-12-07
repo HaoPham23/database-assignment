@@ -22,14 +22,14 @@ admin - 123456
    - Chuẩn bị câu lệnh và dữ liệu minh họa cho việc kiểm tra trigger khi báo cáo.
 3. [ ] (1 điểm) Viết 2 PROCEDURES trong đó chỉ chứa các câu truy vấn để hiển thị dữ liệu và tham số đầu vào là các giá trị trong mệnh đề WHERE và/hoặc Having (nếu có), gồm:
     1. Procedure(X) xuất ra danh sách sinh viên (Họ tên, DOB, avatar,...) thuộc phòng X, theo thứ tự ngày nhận phòng.
-    2. **Chưa có**
+    2. Procedure(X) xuất ra danh sách bao gồm các cột tên phòng, số sinh viên hiện tại và độ tuổi trung bình của các sinh viên trong phòng của các phòng thuộc tòa X.
    - 1 câu truy vấn từ 2 bảng trở lên có mệnh đề where, order by
    - 1 câu truy vấn có aggreate function, group by, having, where và order by có liên kết từ 2 bảng trở lên
    - Có ít nhất 1 thủ tục liên quan đến việc lấy dữ liệu từ bảng trong câu 1.2.1
    - Chuẩn bị câu lệnh và dữ liệu minh họa cho việc gọi thủ tục khi báo cáo.
 4. [ ] (1 điểm) Viết 2 hàm thỏa yêu cầu sau:
     1. Hàm duyệt qua tất cả các sinh viên tìm sinh viên sinh tháng 5.
-    2. **Chưa có**
+    2. Hàm tính tổng số tiền điện nước tháng 6 của tất cả các phòng tòa Y. 
    - Chứa câu lệnh IF và/hoặc LOOP để tính toán dữ liệu được lưu trữ
    - Chứa câu lệnh truy vấn dữ liệu, lấy dữ liệu từ câu truy vấn để kiểm tra tính toán
    - Có tham số đầu vào và kiểm tra tham số đầu vào

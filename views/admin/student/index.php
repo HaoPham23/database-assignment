@@ -82,12 +82,12 @@ require_once('views/admin/content_layouts.php'); ?>
 							<table class="table table-bordered table-striped" id="tab-student">
 								<thead>
 									<tr class="text-center">
-										<th>STT</th>
-										<th>Họ và tên</th>
-										<th>Trường</th>
-										<th>Tòa</th>
-										<th>Phòng</th>
-										<th>Thao tác</th>
+										<th><div>STT</div></th>
+										<th><div>Họ và tên</div></th>
+										<th><div>Trường</div></th>
+										<th><div>Tòa</div></th>
+										<th><div>Phòng</div></th>
+										<th><div>Thao tác</div></th>
 									</tr>
 								</thead>
 								<tbody>
