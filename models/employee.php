@@ -2,82 +2,106 @@
 require_once('connection.php');
 class Employee
 {
-    public $id;
-    public $name;
-    public $price;
-    public $description;
-    public $content;
-    public $img;
+    public $CCCD_number;
+    public $CCCD_date;
+    public $Fname;
+    public $Lname;
+    public $DOB;
+    public $Sex;
+    public $Religion;
+    public $Ethnicity;
+    public $Email;
+    public $Phone;
+    public $Address;
+    public $Bname;
 
-    public function __construct($id, $name, $price, $description, $content, $img)
+    public function __construct($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->price = $price;
-        $this->description = $description;
-        $this->content = $content;
-        $this->img = $img;
+        $this->$CCCD_number = $CCCD_number;
+        $this->$CCCD_date = $CCCD_date;
+        $this->$Fname = $Fname;
+        $this->$Lname = $Lname;
+        $this->$DOB = $DOB;
+        $this->$Sex = $Sex;
+        $this->$Religion = $Religion;
+        $this->$Ethnicity = $Ethnicity;
+        $this->$Email = $Email;
+        $this->$Phone = $Phone;
+        $this->$Address = $Address;
+        $this->$Bname = $Bname;
     }
 
     static function getAll()
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM product");
+        $req = $db->query("SELECT * FROM employee");
         $employees = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $employee)
         {
             $employees[] = new Employee(
-                $employee['id'],
-                $employee['name'],
-                $employee['price'],
-                $employee['description'],
-                $employee['content'],
-                $employee['img']
+                $employee['CCCD_number'],
+                $employee['CCCD_date'],
+                $employee['Fname'],
+                $employee['Lname'],
+                $employee['DOB'],
+                $employee['Sex'],
+                $employee['Religion'],
+                $employee['Ethnicity'],
+                $employee['Email'],
+                $employee['Phone'],
+                $employee['Address'],
+                $employee['Bname']
             );
         }
         return $employees;
     }
 
-    static function get($id)
+    static function get($CCCD_number)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM product WHERE id = $id");
+        $req = $db->query("SELECT * FROM employee WHERE CCCD_number = $CCCD_number");
         $result = $req->fetch_assoc();
         $employee = new Employee(
-            $result['id'],
-            $result['name'],
-            $result['price'],
-            $result['description'],
-            $result['content'],
-            $result['img']
+            $result['CCCD_number'],
+            $result['CCCD_date'],
+            $result['Fname'],
+            $result['Lname'],
+            $result['DOB'],
+            $result['Sex'],
+            $result['Religion'],
+            $result['Ethnicity'],
+            $result['Email'],
+            $result['Phone'],
+            $result['Address'],
+            $result['Bname']
         );
         return $Employee;
     }
 
-    static function insert($name, $price, $description, $content, $img)
+    static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
         $db = DB::getInstance();
         $req = $db->query(
-            "INSERT INTO product (name, price, description, content, img)
-            VALUES ('$name', $price, '$description', '$content', '$img');");
+            "INSERT INTO employee (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Email, Phone, Address, Bname)
+            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Email', '$Phone', '$Address', '$Bname');");
         return $req;
     }
 
-    static function delete($id)
+    static function delete($CCCD_number)
     {
         $db = DB::getInstance();
-        $req = $db->query("DELETE FROM product WHERE id = $id");
+        $req = $db->query("DELETE FROM employee WHERE CCCD_number = $CCCD_number");
         return $req;
     }
 
-    static function update($id, $name, $price, $description, $content, $img)
+    static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
         $db = DB::getInstance();
         $req = $db->query(
             "
-                UPDATE product
-                SET name = '$name', price = $price, description = '$description', content = '$content', img = '$img'
-                WHERE id = $id
+                UPDATE employee
+                SET CCCD_date = '$CCCD_date', Fname = '$Fname', Lname = '$Lname', DOB = '$DOB', Sex = '$Sex', Ethnicity = '$Ethnicity', Email = '$Email', Phone = '$Phone', Address = '$Address', Bname = '$Bname'
+                WHERE CCCD_number = $CCCD_number
             ;");
     }
 }

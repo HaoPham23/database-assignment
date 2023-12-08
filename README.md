@@ -5,7 +5,7 @@
 4. Truy cập vào trình duyệt web nào đó như Microsoft Edge hoặc Google Chrome, nhập đường dẫn [http://localhost](http://localhost). Trang web sẽ được hiển thị thành công.
 
 # Login:
-admin - 123456
+root - 
 
 ## Tạo bảng và dữ liệu mẫu (3 điểm):
 1. [ ] (2 điểm) Viết các câu lệnh hiện thực các bảng dữ liệu đã thiết kế, trong đó có các ràng buộc khóa chính, khóa ngoại, các ràng buộc dữ liệu và các ràng buộc ngữ nghĩa nêu trong bài tập lớn 1 (sử dụng check hoặc trigger). **(Nhân)**
