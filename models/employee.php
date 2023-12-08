@@ -75,9 +75,9 @@ class Employee
     static function getAllStaff()
     {
         $db = DB::getInstance();
-        $req = $db->query("""
+        $req = $db->query("
             SELECT * FROM employee JOIN staff ON employee.CCCD_number = staff.CCCD_number
-            """);
+            ");
         $staffs = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $staff) {
             $s = new Employee(

@@ -12,7 +12,7 @@ class StudentController extends BaseController
 	public function index()
 	{
 		$students = Student::getAll();
-		$data = array('student' => $students);
+		$data = array('students' => $students);
 		$this->render('index', $data);
 	}
 

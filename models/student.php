@@ -40,7 +40,9 @@ class Student
     static function getAll()
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM student");
+        $req = $db->query("
+            SELECT * FROM student
+        ");
         $students = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $student) {
             $students[] = new Student(
@@ -67,7 +69,7 @@ class Student
     static function get($CCCD_number)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM company WHERE CCCD_number = $CCCD_number");
+        $req = $db->query("SELECT * FROM student WHERE CCCD_number = $CCCD_number");
         $result = $req->fetch_assoc();
         $student = new Student(
             $result['CCCD_number'],

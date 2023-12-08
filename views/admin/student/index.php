@@ -85,27 +85,79 @@ require_once('views/admin/content_layouts.php'); ?>
 								<thead>
 									<tr class="text-center">
 										<th><div>STT</div></th>
-										<th><div>Họ và tên</div></th>
-										<th><div>Trường</div></th>
-										<th><div>Tòa</div></th>
-										<th><div>Phòng</div></th>
+										<th><div>CCCD</div></th>
+										<th><div>Ngày cấp</div></th>
+										<th><div>Họ và tên lót</div></th>
+										<th><div>Tên</div></th>
+										<th><div>Ngày sinh</div></th>
+										<th><div>Giới tính</div></th>
+										<th><div>Tôn giáo</div></th>
+										<th><div>Dân tộc</div></th>
+										<th><div>Email</div></th>
+										<th><div>Số điện thoại</div></th>
+										<th><div>Quê quán</div></th>
+										<th><div>Tài khoản ngân hàng</div></th>
+										<th><div>Số tài khoản</div></th>
 										<th><div>Thao tác</div></th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
+									$index = 1;
 									foreach ($students as $student) {
-										echo "<tr class='text-center'>";
-										echo "<td id=\"student_id\">" . $student->id . "</td>";
-										echo "<td id=\"student_name\">" . $student->name . "</td>";
-										echo "<td id=\"student_address\">" . $student->address . "</td>";
-										echo "<td id=\"student_building\">" . $student->updateAt . "</td>";
-										echo "<td id=\"student_room\">" . $student->updateAt . "</td>";
-										echo "<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-id=$student->id data-name='$student->name' data-address='$student->address'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-id=$student->id> <i class='fas fa-trash'></i></btn>
-											</td>";
-										echo "</tr>";
+										echo 
+                                                "<tr class=\"text-center\">
+                                                    <td>"
+                                                        .$index. 
+                                                    "</td>
+                                                    <td>
+                                                        ".$student->CCCD_number."
+                                                    </td>
+                                                    <td>
+                                                        ".$student->CCCD_date."
+                                                    </td>   
+                                                    <td>
+                                                        ".$student->Lname."
+                                                    </td> 
+                                                    <td>
+                                                        ".$student->Fname."
+                                                    </td>
+                                                    <td>
+                                                        ".$student->DOB."
+                                                    </td>
+                                                    <td>
+                                                        ".(($student->Sex === 'M') ? 'Nam' : 'Nữ')."
+                                                    </td>   
+                                                    <td>
+                                                        ".$student->Religion."
+                                                    </td> 
+                                                    <td>
+                                                        ".$student->Ethnicity."
+                                                    </td>
+                                                    <td>
+                                                        ".$student->Email."
+                                                    </td>   
+                                                    <td>
+                                                        ".$student->Phone."
+                                                    </td> 
+                                                    <td>
+                                                        ".$student->Address."
+                                                    </td>
+                                                    <td>
+                                                        ".$student->Bank_name."
+                                                    </td>    
+													<td>
+                                                        ".$student->Bank_number."
+                                                    </td>    
+													<td>
+                                                        ".$student->Status."
+                                                    </td>    
+											<td>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-id=$student->CCCD_number> <i class='fas fa-edit'></i></btn>
+											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
+											</td>
+											</tr>";
+											$index++;
 									}
 									?>
 								</tbody>
