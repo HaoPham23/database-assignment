@@ -1,23 +1,35 @@
 import mysql.connector
-from mysql.connector import Error
 
-try:
-    connection = mysql.connector.connect(host='localhost',
-                                        database='Electronics',
-                                        user='pynative',
-                                        password='pynative@#29')
-    if connection.is_connected():
-        db_Info = connection.get_server_info()
-        print("Connected to MySQL Server version ", db_Info)
-        cursor = connection.cursor()
-        cursor.execute("select database();")
-        record = cursor.fetchone()
-        print("You're connected to database: ", record)
+config = {
+    'host': '127.0.0.1',
+    'user': 'root',
+    'password': ''
+}
 
-except Error as e:
-    print("Error while connecting to MySQL", e)
-finally:
-    if connection.is_connected():
-        cursor.close()
-        connection.close()
-        print("MySQL connection is closed")
+def run_file(file_name: str) -> bool:
+    try:
+        print(f"Trying to run {file_name}")
+        # cursor = db.cursor()
+        sqlCommands = open(file_name, 'r', encoding='utf8').read().split(';')
+        for command in sqlCommands:
+            try:
+                if command.strip() != '':
+                    cursor.execute(command)
+            except IOError as msg:
+                print("Command skipped: ", msg)
+        # cursor.close()
+        return True
+    except Exception as error:
+        print(error)
+        return False
+
+if __name__=="__main__":
+    try:
+        mydb = mysql.connector.connect(**config)
+        cursor = mydb.cursor()
+        print("Connected!")
+        run_file('create_table.sql')
+        run_file('insert_table.sql')
+        mydb.close()
+    except Exception as error:
+        print("Connect Failed!: ", error)
