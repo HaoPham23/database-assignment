@@ -22,7 +22,7 @@ USE CHETCOM;
 --
 
 CREATE TABLE BE_WARNED (
-  Warn_ID VARCHAR(12) CHECK (Warn_ID REGEXP '^[0-9]{12}$'),
+  Warn_ID VARCHAR(10) CHECK (Warn_ID REGEXP '^7[1-4][0-9]{8}$'),
   Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
   PRIMARY KEY (Warn_ID, Student_ID)
 );
@@ -34,9 +34,9 @@ CREATE TABLE BE_WARNED (
 --
 
 CREATE TABLE BILL (
-  Bill_ID VARCHAR(12) CHECK (Bill_ID REGEXP '^[0-9]{12}$'),
+  Bill_ID VARCHAR(10) CHECK (Bill_ID REGEXP '^5[1-4][0-9]{8}$'),
   Detail VARCHAR(50),
-  Amount FLOAT,
+  Amount INT,
   Date_paid DATE,
   Date_issue DATE,
   Date_expire DATE,
@@ -75,7 +75,7 @@ CREATE TABLE EMPLOYEE (
   Religion VARCHAR(50),
   Ethnicity VARCHAR(50),
   Email VARCHAR(50),
-  Phone VARCHAR(10) CHECK (Phone REGEXP '^0[0-9]{9}$'),
+  Phone VARCHAR(10) CHECK (Phone REGEXP '^03[0-9]{8}$'),
   Address VARCHAR(50),
   Bname VARCHAR(50),
   PRIMARY KEY (CCCD_number)
@@ -91,9 +91,9 @@ CREATE TABLE LIVES_IN (
   Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
   Date_in DATE,
   Date_out DATE,
-  Room_ID VARCHAR(4) CHECK (Room_ID REGEXP '^[0-9]{4}$'),
+  Room_ID VARCHAR(5) CHECK (Room_ID REGEXP '^4[1-4][0-9]{3}$'),
   PRIMARY KEY (Student_ID, Date_in),
-  CHECK (Date_in < Date_out)
+  CHECK (Date_out IS NULL OR Date_in < Date_out)
 );
 
 -- --------------------------------------------------------
@@ -116,7 +116,7 @@ CREATE TABLE MANAGER (
 --
 
 CREATE TABLE NOTIFICATION (
-  ID VARCHAR(12) CHECK (ID REGEXP '^[0-9]{12}$'),
+  ID VARCHAR(10) CHECK (ID REGEXP '^6[1-4][0-9]{8}$'),
   Title VARCHAR(50),
   Content VARCHAR(50),
   Date DATE,
@@ -135,7 +135,7 @@ CREATE TABLE RELATIVE (
   Fname VARCHAR(50),
   Lname VARCHAR(50),
   DOB DATE,
-  Phone VARCHAR(10) CHECK (Phone REGEXP '^0[0-9]{9}$'),
+  Phone VARCHAR(10) CHECK (Phone REGEXP '^02[0-9]{8}$'),
   Address VARCHAR(50),
   Relationship VARCHAR(50),
   PRIMARY KEY (Fname, Lname, Student_ID)
@@ -148,10 +148,10 @@ CREATE TABLE RELATIVE (
 --
 
 CREATE TABLE ROOM (
-  Room_ID VARCHAR(4) CHECK (Room_ID REGEXP '^[0-9]{4}$'),
+  Room_ID VARCHAR(5) CHECK (Room_ID REGEXP '^4[1-4][0-9]{3}$'),
   Status CHAR CHECK (Status = 'A' OR Status = 'F' OR Status = 'R'),
   Bname VARCHAR(50),
-  Room_type_ID VARCHAR(12) CHECK (Room_type_ID REGEXP '^[0-9]{12}$'),
+  Room_type_ID VARCHAR(3) CHECK (Room_type_ID REGEXP '^3[2-8][0-1]$'),
   Leader_ID VARCHAR(12) CHECK (Leader_ID REGEXP '^[0-9]{12}$'),
   PRIMARY KEY (Room_ID)
 );
@@ -163,10 +163,10 @@ CREATE TABLE ROOM (
 --
 
 CREATE TABLE ROOM_TYPE (
-  Room_type_ID VARCHAR(12) CHECK (Room_type_ID REGEXP '^[0-9]{12}$'),
+  Room_type_ID VARCHAR(3) CHECK (Room_type_ID REGEXP '^3[2-8][0-1]$'),
   Room_type_name VARCHAR(50),
   Max_student INT,
-  Cost VARCHAR(50),
+  Cost INT,
   PRIMARY KEY (Room_type_ID)
 );
 
@@ -198,11 +198,11 @@ CREATE TABLE STUDENT (
   Sex CHAR CHECK (Sex = 'M' OR Sex = 'F'),
   Religion VARCHAR(50),
   Ethnicity VARCHAR(50),
-  Phone VARCHAR(10) CHECK (Phone REGEXP '^0[0-9]{9}$'),
+  Phone VARCHAR(10) CHECK (Phone REGEXP '^01[0-9]{8}$'),
   Email VARCHAR(50),
   Avatar VARCHAR(100),
   Bank_name VARCHAR(50),
-  Bank_number VARCHAR(50),
+  Bank_number VARCHAR(10) CHECK (Bank_number REGEXP '^80[0-9]{8}'),
   Address VARCHAR(100),
   Status VARCHAR (100),
   PRIMARY KEY (CCCD_number)
@@ -216,8 +216,8 @@ CREATE TABLE STUDENT (
 
 CREATE TABLE STUDIES_IN (
   CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
-  Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
-  Uni_ID VARCHAR(12) CHECK (Uni_ID REGEXP '^[0-9]{12}$'),
+  Student_ID VARCHAR(10) CHECK (Student_ID REGEXP '^12[1-4][0-9]{7}$'),
+  Uni_ID VARCHAR(2) CHECK (Uni_ID REGEXP '^2[1-4]$'),
   Department VARCHAR(50),
   PRIMARY KEY (CCCD_number)
 );
@@ -229,10 +229,10 @@ CREATE TABLE STUDIES_IN (
 --
 
 CREATE TABLE UNIVERSITY (
-  Uni_ID VARCHAR(12) CHECK (Uni_ID REGEXP '^[0-9]{12}$'),
+  Uni_ID VARCHAR(2) CHECK (Uni_ID REGEXP '^2[1-5]$'),
   Name VARCHAR(50),
   Uni_Email VARCHAR(50),
-  Uni_phone VARCHAR(12) CHECK (Uni_phone REGEXP '^0[0-9]{9}$'),
+  Uni_phone VARCHAR(10) CHECK (Uni_phone REGEXP '^04[0-9]{8}$'),
   PRIMARY KEY (Uni_ID)
 );
 
@@ -243,7 +243,7 @@ CREATE TABLE UNIVERSITY (
 --
 
 CREATE TABLE UNI_ADDRESS (
-  Uni_ID VARCHAR(12) CHECK (Uni_ID REGEXP '^[0-9]{12}$'),
+  Uni_ID VARCHAR(2) CHECK (Uni_ID REGEXP '^2[1-5]$'),
   Uni_address VARCHAR(50),
   PRIMARY KEY (Uni_ID, Uni_address)
 );
@@ -255,7 +255,7 @@ CREATE TABLE UNI_ADDRESS (
 --
 
 CREATE TABLE WARNING (
-  ID VARCHAR(12) CHECK (ID REGEXP '^[0-9]{12}$'),
+  ID VARCHAR(10) CHECK (ID REGEXP '^7[1-4][0-9]{8}$'),
   Date DATE,
   Detail VARCHAR(50),
   Note VARCHAR(50),
@@ -275,7 +275,7 @@ CREATE TABLE WORK_IN (
   Date_out DATE,
   Bname VARCHAR(50),
   PRIMARY KEY (Employee_ID, Date_in),
-  --IF Date_out NOT NULL CHECK (Date_in < Date_out)
+  CHECK (Date_out IS NULL OR Date_in < Date_out)
 );
 
 -- ALTER TABLE --
@@ -335,7 +335,6 @@ ALTER TABLE RELATIVE
   ADD CONSTRAINT fk_relative_Stu_CCCD FOREIGN KEY (Student_ID) REFERENCES STUDENT(CCCD_number)
     ON UPDATE RESTRICT
     ON DELETE RESTRICT;
-
 
 ALTER TABLE ROOM
   ADD CONSTRAINT fk_room_Stu_CCCD FOREIGN KEY (Leader_ID) REFERENCES STUDENT(CCCD_number)
