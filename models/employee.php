@@ -17,18 +17,18 @@ class Employee
 
     public function __construct($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
-        $this->$CCCD_number = $CCCD_number;
-        $this->$CCCD_date = $CCCD_date;
-        $this->$Fname = $Fname;
-        $this->$Lname = $Lname;
-        $this->$DOB = $DOB;
-        $this->$Sex = $Sex;
-        $this->$Religion = $Religion;
-        $this->$Ethnicity = $Ethnicity;
-        $this->$Email = $Email;
-        $this->$Phone = $Phone;
-        $this->$Address = $Address;
-        $this->$Bname = $Bname;
+        $this->CCCD_number = $CCCD_number;
+        $this->CCCD_date = $CCCD_date;
+        $this->Fname = $Fname;
+        $this->Lname = $Lname;
+        $this->DOB = $DOB;
+        $this->Sex = $Sex;
+        $this->Religion = $Religion;
+        $this->Ethnicity = $Ethnicity;
+        $this->Email = $Email;
+        $this->Phone = $Phone;
+        $this->Address = $Address;
+        $this->Bname = $Bname;
     }
 
     static function getAll()

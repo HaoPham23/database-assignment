@@ -42,7 +42,7 @@ require_once('views/admin/content_layouts.php'); ?>
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                        <button class="btn btn-secondary" type="button" id="showContent1">Các Quản lý tòa</button>
+                        <button class="btn btn-secondary" type="button" id="showContent1">Toàn bộ nhân viên</button>
                         <button class="btn btn-info ml-2" type="button" id="showContent2">Các Nhân viên thường</button>
                         <button class="btn btn-primary mt-3" id="addManagerButton" type="button" data-toggle="modal" data-target="#addManagerModal">Thêm Quản lý tòa mới</button>
                         <div class="modal fade" id="addManagerModal"  aria-labelledby="addManagerModal" aria-hidden="true">
@@ -100,42 +100,70 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <thead>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
-                                            <th scope="col">Tên quản lý</th>
-                                            <th scope="col">Tòa nhà</th>
                                             <th scope="col">...</th>
                                             <th scope="col">...</th>
-                                            <th scope="col">Thao tác</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
+                                            <th scope="col">...</th>
                                         </tr>
                                     </thead>
-                                   
                                     <tbody> 
                                         <?php
                                             
                                             $index = 1;
-
-                                            foreach ($employees as $employee) {  
-                                                                                         
+                                            foreach ($employees as $employee) {
                                                 echo 
                                                 "<tr class=\"text-center\">
                                                     <td>"
                                                         .$index. 
                                                     "</td>
                                                     <td>
-                                                        ".$employee->name."
+                                                        ".$employee->CCCD_number."
                                                     </td>
                                                     <td>
-                                                        ".$employee->description."
+                                                        ".$employee->CCCD_date."
                                                     </td>   
                                                     <td>
-                                                        ".$employee->name."
+                                                        ".$employee->Fname."
                                                     </td> 
                                                     <td>
-                                                        ".$employee->name."
+                                                        ".$employee->Lname."
+                                                    </td>
+                                                    <td>
+                                                        ".$employee->DOB."
+                                                    </td>
+                                                    <td>
+                                                        ".$employee->Sex."
                                                     </td>   
                                                     <td>
-                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$employee->id' data-name='$employee->name' data-price='$employee->price' data-description='$employee->description' data-content='$employee->content' data-img='$employee->name'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$employee->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
-                                                    </td>                                                                                                                                                                                      
+                                                        ".$employee->Religion."
+                                                    </td> 
+                                                    <td>
+                                                        ".$employee->Ethnicity."
+                                                    </td>
+                                                    <td>
+                                                        ".$employee->Email."
+                                                    </td>   
+                                                    <td>
+                                                        ".$employee->Phone."
+                                                    </td> 
+                                                    <td>
+                                                        ".$employee->Address."
+                                                    </td>
+                                                    <td>
+                                                        ".$employee->Bname."
+                                                    </td>    
+                                                    <td>
+                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id=''> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                </td>                                                                                                                                                                    
                                                 </tr>";
                                                 $index++;
                                             }
