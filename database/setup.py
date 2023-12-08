@@ -28,9 +28,9 @@ if __name__=="__main__":
         mydb = mysql.connector.connect(**config)
         cursor = mydb.cursor()
         print("Connected!")
-        assert run_file('/Users/nhantran/code/database-assignment/database/1-drop_table.sql')
-        assert run_file('/Users/nhantran/code/database-assignment/database/create_table.sql')
-        assert run_file('/Users/nhantran/code/database-assignment/database/insert_table.sql')
+        assert run_file('database/1-drop_table.sql')
+        assert run_file('database/create_table.sql')
+        assert run_file('database/insert_table.sql')
 
         # Commit changes
         mydb.commit()
