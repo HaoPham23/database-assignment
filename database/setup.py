@@ -1,9 +1,11 @@
+import os
 import mysql.connector
 
 config = {
     'host': '127.0.0.1',
     'user': 'root',
-    'password': ''
+    'password': '',
+    'database': 'CHETCOM'
 }
 
 def run_file(file_name: str) -> bool:
@@ -26,9 +28,13 @@ if __name__=="__main__":
         mydb = mysql.connector.connect(**config)
         cursor = mydb.cursor()
         print("Connected!")
-        assert run_file('1-drop_table.sql')
-        assert run_file('create_table.sql')
-        assert run_file('insert_table.sql')
+        assert run_file('/Users/nhantran/code/database-assignment/database/1-drop_table.sql')
+        assert run_file('/Users/nhantran/code/database-assignment/database/create_table.sql')
+        assert run_file('/Users/nhantran/code/database-assignment/database/insert_table.sql')
+
+        # Commit changes
+        mydb.commit()
+
         mydb.close()
     except Exception as error:
         print("Connect Failed!: ", error)
