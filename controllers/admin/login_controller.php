@@ -16,16 +16,16 @@ class LoginController extends BaseController
 
 	public function check()
 	{
-		$username = $_POST['username'];
+		$user = $_POST['username'];
 		$password = $_POST['password'];
 		
-		$check = Admin::validation($username, $password);
+		$check = Admin::validation($user, $password);
 		if ($check == 1) {
-			session_start();
-			$_SESSION["init"] = Admin::getInit($username);
-			if (!isset($_SESSION["user"]))
-				$_SESSION["user"] = $username;
-			
+			if (session_status() === PHP_SESSION_NONE) {
+				session_start();
+			}
+			$_SESSION["user"] = $user;
+			$_SESSION["password"] = $password;
 			header("Location: index.php?page=admin&controller=layouts&action=index");
 		} else {
 			$err = "Sai tài khoản hoặc mật khẩu";
@@ -36,8 +36,11 @@ class LoginController extends BaseController
 
 	public function logout()
 	{
-		session_start();
+		if (session_status() === PHP_SESSION_NONE) {
+			session_start();
+		}
 		unset($_SESSION["user"]);
+		unset($_SESSION["password"]);
 		session_destroy();
 		header("Location: index.php?page=admin&controller=login&action=index");
 	}

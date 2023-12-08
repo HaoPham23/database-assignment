@@ -45,11 +45,12 @@ class Admin
     {
         $db = DB::getInstance($username, $password);
         if ($db === 0) return false;
-        $req = $db->query("SELECT * FROM admin WHERE username = '$username'");
-        if (@password_verify($password, $req->fetch_assoc()['password']))
-            return true;
-        else
-            return false;
+        return true;
+        // $req = $db->query("SELECT * FROM admin WHERE username = '$username'");
+        // if (@password_verify($password, $req->fetch_assoc()['password']))
+        //     return true;
+        // else
+        //     return false;
     }
 
     static function changePassword($username, $oldpassword, $newpassword)
