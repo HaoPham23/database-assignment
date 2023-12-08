@@ -13,7 +13,8 @@ class EmployeeController extends BaseController
 	public function index()
 	{
         $employees = Employee::getAll();
-        $data = array('employees' => $employees);
+        $staffs = Employee::getAllStaff();
+        $data = array('employees' => $employees, "staffs" => $staffs);
         $this->render('index', $data);
 	}
     public function add(){

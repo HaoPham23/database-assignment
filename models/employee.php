@@ -14,6 +14,12 @@ class Employee
     public $Phone;
     public $Address;
     public $Bname;
+    // Only for Staff
+    public $Job;
+    public $Super_CCCD_number;
+    // Only for Manager
+    public $Mgr_start_date;
+    public $High_Mgr;
 
     public function __construct($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
@@ -29,6 +35,16 @@ class Employee
         $this->Phone = $Phone;
         $this->Address = $Address;
         $this->Bname = $Bname;
+    }
+
+    public function set_staff_info($Job, $Super_CCCD_number) {
+        $this->Job = $Job;
+        $this->Super_CCCD_number = $Super_CCCD_number;
+    }
+
+    public function set_manager_info($Mgr_start_date, $High_Mgr) {
+        $this->Mgr_start_date = $Mgr_start_date;
+        $this->High_Mgr = $High_Mgr;
     }
 
     static function getAll()
@@ -54,6 +70,34 @@ class Employee
             );
         }
         return $employees;
+    }
+
+    static function getAllStaff()
+    {
+        $db = DB::getInstance();
+        $req = $db->query("""
+            SELECT * FROM employee JOIN staff ON employee.CCCD_number = staff.CCCD_number
+            """);
+        $staffs = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $staff) {
+            $s = new Employee(
+                $staff['CCCD_number'],
+                $staff['CCCD_date'],
+                $staff['Fname'],
+                $staff['Lname'],
+                $staff['DOB'],
+                $staff['Sex'],
+                $staff['Religion'],
+                $staff['Ethnicity'],
+                $staff['Email'],
+                $staff['Phone'],
+                $staff['Address'],
+                $staff['Bname']
+            );
+            $s->set_staff_info($staff['Job'], $staff['Super_CCCD_number']);
+            $staffs[] = $s;
+        }
+        return $staffs;
     }
 
     static function get($CCCD_number)
