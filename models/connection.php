@@ -2,14 +2,15 @@
 class DB
 {
     public static $instance = NULL;
-    public static function getInstance() 
+    public static function getInstance($username="root", $password="") 
     {
         if (!isset(self::$instance)) 
         {
-            self::$instance = mysqli_connect("localhost", "root", "", "chetcom");
-            if (mysqli_connect_errno())
-            {
-                die("Failed to connect to MySQL: " . mysqli_connect_error());
+            try {
+                self::$instance = mysqli_connect("127.0.0.1", $username, $password, "chetcom");
+            } catch (mysqli_sql_exception $e) {
+                // $e is the exception, you can use it as you wish 
+                return 0;
             }
         }
 

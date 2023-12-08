@@ -9,7 +9,6 @@ config = {
 def run_file(file_name: str) -> bool:
     try:
         print(f"Trying to run {file_name}")
-        # cursor = db.cursor()
         sqlCommands = open(file_name, 'r', encoding='utf8').read().split(';')
         for command in sqlCommands:
             try:
@@ -17,7 +16,6 @@ def run_file(file_name: str) -> bool:
                     cursor.execute(command)
             except IOError as msg:
                 print("Command skipped: ", msg)
-        # cursor.close()
         return True
     except Exception as error:
         print(error)
@@ -28,8 +26,9 @@ if __name__=="__main__":
         mydb = mysql.connector.connect(**config)
         cursor = mydb.cursor()
         print("Connected!")
-        run_file('create_table.sql')
-        run_file('insert_table.sql')
+        assert run_file('1-drop_table.sql')
+        assert run_file('create_table.sql')
+        assert run_file('insert_table.sql')
         mydb.close()
     except Exception as error:
         print("Connect Failed!: ", error)
