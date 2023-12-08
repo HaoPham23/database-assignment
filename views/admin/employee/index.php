@@ -43,7 +43,7 @@ require_once('views/admin/content_layouts.php'); ?>
                     <div class="card">
                         <div class="card-body">
                         <button class="btn btn-secondary" type="button" id="showContent1">Toàn bộ nhân viên</button>
-                        <button class="btn btn-info ml-2" type="button" id="showContent2">Các Nhân viên thường</button>
+                        <button class="btn btn-info ml-2" type="button" id="showContent2">Các nhân viên thường</button>
                         <button class="btn btn-primary mt-3" id="addManagerButton" type="button" data-toggle="modal" data-target="#addManagerModal">Thêm Quản lý tòa mới</button>
                         <div class="modal fade" id="addManagerModal"  aria-labelledby="addManagerModal" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
@@ -100,18 +100,18 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <thead>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
-                                            <th scope="col">...</th>
+                                            <th scope="col">Số CCCD</th>
+                                            <th scope="col">Ngày cấp</th>
+                                            <th scope="col">Họ và tên lót</th>
+                                            <th scope="col">Tên</th>
+                                            <th scope="col">Ngày sinh</th>
+                                            <th scope="col">Giới tính</th>
+                                            <th scope="col">Tôn giáo</th>
+                                            <th scope="col">Dân tộc</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">SĐT</th>
+                                            <th scope="col">Quê quán</th>
+                                            <th scope="col">Tòa phụ trách</th>
                                         </tr>
                                     </thead>
                                     <tbody> 
@@ -131,16 +131,16 @@ require_once('views/admin/content_layouts.php'); ?>
                                                         ".$employee->CCCD_date."
                                                     </td>   
                                                     <td>
-                                                        ".$employee->Fname."
+                                                        ".$employee->Lname."
                                                     </td> 
                                                     <td>
-                                                        ".$employee->Lname."
+                                                        ".$employee->Fname."
                                                     </td>
                                                     <td>
                                                         ".$employee->DOB."
                                                     </td>
                                                     <td>
-                                                        ".$employee->Sex."
+                                                        ".(($employee->Sex === 'M') ? 'Nam' : 'Nữ')."
                                                     </td>   
                                                     <td>
                                                         ".$employee->Religion."
@@ -177,7 +177,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                                 </div>
                                                 <form id="form-edit-student" action="index.php?page=admin&controller=employee&action=edit" enctype="multipart/form-data" method="post">
                                                     <div class="modal-body">
-                                                         <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
+                                                        <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
                                                         <div class="row">
                                                             <div  class="col-6"><label>Tên sản phẩm</label><input class="form-control" type="text" placeholder="Tên sản phẩm" name="name" /></div>
                                                             
@@ -214,7 +214,85 @@ require_once('views/admin/content_layouts.php'); ?>
                         </div>
 
                         <div id="content2" class="mt-3" style="display: none;">
-                            <p>This is content for Button 2.</p>
+                        <div class="row">
+                        <table id="TAB-staff" class="table table-bordered table-striped"> 
+                                    <thead>
+                                        <tr  class="text-center">
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Số CCCD</th>
+                                            <th scope="col">Ngày cấp</th>
+                                            <th scope="col">Họ và tên lót</th>
+                                            <th scope="col">Tên</th>
+                                            <th scope="col">Ngày sinh</th>
+                                            <th scope="col">Giới tính</th>
+                                            <th scope="col">Tôn giáo</th>
+                                            <th scope="col">Dân tộc</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">SĐT</th>
+                                            <th scope="col">Quê quán</th>
+                                            <th scope="col">Tòa phụ trách</th>
+                                            <th scope="col">Công việc</th>
+                                            <th scope="col">Quản lý trực tiếp</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody> 
+                                        <?php
+                                            $index = 1;
+                                            foreach ($staffs as $staff) {
+                                                echo 
+                                                "<tr class=\"text-center\">
+                                                    <td>"
+                                                        .$index. 
+                                                    "</td>
+                                                    <td>
+                                                        ".$staff->CCCD_number."
+                                                    </td>
+                                                    <td>
+                                                        ".$staff->CCCD_date."
+                                                    </td>   
+                                                    <td>
+                                                        ".$staff->Lname."
+                                                    </td> 
+                                                    <td>
+                                                        ".$staff->Fname."
+                                                    </td>
+                                                    <td>
+                                                        ".$staff->DOB."
+                                                    </td>
+                                                    <td>
+                                                        ".(($staff->Sex === 'M') ? 'Nam' : 'Nữ')."
+                                                    </td>   
+                                                    <td>
+                                                        ".$staff->Religion."
+                                                    </td> 
+                                                    <td>
+                                                        ".$staff->Ethnicity."
+                                                    </td>
+                                                    <td>
+                                                        ".$staff->Email."
+                                                    </td>   
+                                                    <td>
+                                                        ".$staff->Phone."
+                                                    </td> 
+                                                    <td>
+                                                        ".$staff->Address."
+                                                    </td>
+                                                    <td>
+                                                        ".$staff->Bname."
+                                                    </td>
+                                                    <td>
+                                                        ".$staff->Job."
+                                                    </td> 
+                                                    <td>
+                                                        ".$staff->Super_CCCD_number."
+                                                    </td>                                                                                                                                                                        
+                                                </tr>";
+                                                $index++;
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
+                        </div>
                         </div>
 
     <!-- Rest of your code... -->

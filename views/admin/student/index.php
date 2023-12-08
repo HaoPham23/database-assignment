@@ -94,7 +94,7 @@ require_once('views/admin/content_layouts.php'); ?>
 								</thead>
 								<tbody>
 									<?php
-									foreach ($student as $student) {
+									foreach ($students as $student) {
 										echo "<tr class='text-center'>";
 										echo "<td id=\"student_id\">" . $student->id . "</td>";
 										echo "<td id=\"student_name\">" . $student->name . "</td>";
