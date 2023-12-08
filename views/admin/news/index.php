@@ -1,7 +1,9 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if (!isset($_SESSION["user"])) {
-    header("Location: index.php?page=admin&controller=login&action=index");
+	header("Location: index.php?page=admin&controller=login&action=index");
 }
 ?>
 <?php
@@ -62,12 +64,14 @@ if (!isset($_SESSION["user"])) {
                                 <thead>
                                     <tr class="text-center">
                                         <th scope="col">STT</th>
-                                        <th scope="col">Ngày </th>
+                                        <th scope="col">ID</th>
                                         <th scope="col">Tiêu đề</th>
-                                        <th scope="col">Mô tả</th>
                                         <th scope="col">Nội dung</th>
-                                        <th style="width:150px;" scope="col">Trạng thái</th>
-                                        <th style="width:150px;" scope="col">Thao tác</th>
+                                        <th scope="col">Ngày đăng</th>
+                                        <th scope="col">Người đăng</th>
+                                        <th scope="col">Họ và tên lót người đăng</th>
+                                        <th scope="col">Tên người đăng</th>
+                                        <th scope="col">Thao tác</th>
                                     </tr>
                                 </thead>
 
@@ -76,43 +80,38 @@ if (!isset($_SESSION["user"])) {
 
                                     $index = 1;
 
-                                    foreach ($news as $new) {
-                                        $status = ($new->status) ? 'Hiện' : 'Ẩn';
-                                        $button = ($new->status) ? "<button class=\"btn-hide btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-x-lg\" viewBox=\"0 0 16 16\">
-                                                      <path fill-rule=\"evenodd\" d=\"M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z\"/>
-                                                      <path fill-rule=\"evenodd\" d=\"M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z\"/>
-                                                      </svg></button>" : "<button class=\"btn-hide btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' > <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-check-lg\" viewBox=\"0 0 16 16\">
-                                                      <path d=\"M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z\"/>
-                                                    </svg></button>";
+                                    foreach ($news as $notification) {
                                         echo
                                         "<tr >
-                                                    <td class=\"text-center\">"
-                                            . $index .
-                                            "</td>
-                                                    
-                                                    <td class=\"text-center\">
-                                                      " .  date('h:i - d/m/Y',strtotime($new->date)) . "
-                                                    </td>   
-
-                                                    <td>
-                                                       " . $new->title . "
-                                                    </td    > 
-                                                    <td>
-                                                     " .  $new->description . "
-                                                    </td> 
-                                                    <td>
-                                                       " . $new->content . "
-                                                    </td>   
-                                                    
-                                                    <td class=\"text-center\">
-                                                       " .  $status . "
-                                                    </td>      
-                                                    <td style=\"width:150px;\" class=\"text-center\"> " .
-                                            $button . "
-                                                    <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$new->id'  data-description='$new->description' data-content='$new->content' data-title='$new->title' > <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$new->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
-                                                  </td>                                                                                                                                                                                       
-                                                </tr>";
+                                            <td class=\"text-center\">"
+                                                .$index.
+                                            "</td>    
+                                            <td>
+                                            ".$notification->ID."
+                                            </td> 
+                                            <td>
+                                            ".$notification->Title."
+                                            </td> 
+                                            <td>
+                                            ".$notification->Content."
+                                            </td> 
+                                            <td class=\"text-center\">
+                                                ".date('h:i - d/m/Y',strtotime($notification->Date))."
+                                            </td>   
+                                            <td>
+                                                ".$notification->Mgr_ID."
+                                            </td>
+                                            <td>
+                                                ".$notification->Mgr_Lname."
+                                            </td>
+                                            <td>
+                                                ".$notification->Mgr_Fname."
+                                            </td>
+                                            <td>
+                                            <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$notification->ID'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                            <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$notification->ID'><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
+                                            </td>                                                                                                                                                                                       
+                                        </tr>";
                                         $index++;
                                     }
                                     ?>
@@ -172,8 +171,8 @@ if (!isset($_SESSION["user"])) {
                 </div>
             </div>
         </div>
+    </section>
 </div>
-</section>
 
 
 

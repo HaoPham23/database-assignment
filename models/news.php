@@ -2,37 +2,47 @@
 require_once('connection.php');
 class News
 {
-    public $id;
-    public $status;
-    public $date;
-    public $title;
-    public $description;
-    public $content;
+    public $ID;
+    public $Title;
+    public $Content;
+    public $Date;
+    public $Mgr_ID;
+    public $Mgr_Lname;
+    public $Mgr_Fname;
 
-    public function __construct($id, $status, $date, $title, $description, $content)
+    public function __construct($ID, $Title, $Content, $Date, $Mgr_ID, $Mgr_Lname, $Mgr_Fname)
     {
-        $this->id = $id;
-        $this->status = $status;
-        $this->date = $date;
-        $this->title = $title;
-        $this->description = $description;
-        $this->content = $content;
+        $this->ID = $ID;
+        $this->Title = $Title;
+        $this->Content = $Content;
+        $this->Date = $Date;
+        $this->Mgr_ID = $Mgr_ID;
+        $this->Mgr_Lname = $Mgr_Lname;
+        $this->Mgr_Fname = $Mgr_Fname;
     }
 
     static function getAll()
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM news ORDER BY date DESC");
+        $req = $db->query("
+            SELECT notification.*, 
+                employee.Lname as Mgr_Lname, 
+                employee.Fname as Mgr_Fname
+            FROM notification
+            LEFT JOIN employee ON notification.Mgr_ID = employee.CCCD_number
+            ORDER BY date DESC
+        ");
         $lnews = [];
         foreach ($req->fetch_all(MYSQLI_ASSOC) as $news)
         {
             $lnews[] = new News(
-                $news['id'],
-                $news['status'],
-                $news['date'],
-                $news['title'],
-                $news['description'],
-                $news['content']
+                $news['ID'],
+                $news['Title'],
+                $news['Content'],
+                $news['Date'],
+                $news['Mgr_ID'],
+                $news['Mgr_Lname'],
+                $news['Mgr_Fname'],
             );
         }
         return $lnews;

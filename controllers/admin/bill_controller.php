@@ -12,6 +12,8 @@ class BillController extends BaseController
 
 	public function index()
 	{
-		$this->render('index');
+        $bills = Bill::getAll();
+        $data = array('bills' => $bills);
+        $this->render('index', $data);
 	}
 }
