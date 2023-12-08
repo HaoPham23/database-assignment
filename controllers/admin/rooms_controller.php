@@ -1,6 +1,7 @@
 <?php
 require_once('controllers/admin/base_controller.php');
 require_once('models/room.php');
+require_once('models/building.php');
 
 
 class RoomsController extends BaseController
@@ -13,7 +14,8 @@ class RoomsController extends BaseController
 	public function index()
 	{
         $rooms = Room::getAll();
-        $data = array('rooms' => $rooms);
+        $buildings = Building::getAll();
+        $data = array('rooms' => $rooms, "buildings" => $buildings);
         $this->render('index', $data);
 	}
     public function add(){

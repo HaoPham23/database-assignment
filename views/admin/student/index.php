@@ -98,6 +98,7 @@ require_once('views/admin/content_layouts.php'); ?>
 										<th><div>Quê quán</div></th>
 										<th><div>Tài khoản ngân hàng</div></th>
 										<th><div>Số tài khoản</div></th>
+										<th><div>Trạng thái</div></th>
 										<th><div>Thao tác</div></th>
 									</tr>
 								</thead>

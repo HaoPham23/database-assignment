@@ -51,7 +51,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <div class="modal-header">
                                         <h5 class="modal-title">Thêm tòa nhà mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
+                                    <form id="form-add-building" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div  class="col-6"><label>Tên tòa nhà</label><input class="form-control" type="text" placeholder="Tên tòa nhà" name="name" /></div>
@@ -76,7 +76,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                     <div class="modal-header">
                                         <h5 class="modal-title">Thêm phòng mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
+                                    <form id="form-add-room" action="index.php?page=admin&controller=rooms&action=add" enctype="multipart/form-data" method="post">
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div  class="col-6"><label>Tên phòng</label><input class="form-control" type="text" placeholder="Tên phòng" name="name" /></div>
@@ -94,16 +94,19 @@ require_once('views/admin/content_layouts.php'); ?>
                             </div>
                         </div>
 
-                        <div id="content1" class="mt-3">
+                        <div id="content2" class="mt-3">
                         <div class="row"></div>
                                 <table id="TAB-room" class="table table-bordered table-striped"> 
                                     <thead>
                                         <tr  class="text-center">
                                             <th scope="col">STT</th>
-                                            <th scope="col">Tên tòa nhà</th>
-                                            <th scope="col">Mô tả</th>
-                                            <th scope="col">Số phòng</th>
-                                            <th scope="col">Hình ảnh</th>
+                                            <th scope="col">Tên phòng</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Tòa nhà</th>
+                                            <th scope="col">Loại phòng</th>
+                                            <th scope="col">Trưởng phòng</th>
+                                            <th scope="col">Họ và tên lót trưởng phòng</th>
+                                            <th scope="col">Tên trưởng phòng</th>
                                             <th scope="col">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -121,33 +124,42 @@ require_once('views/admin/content_layouts.php'); ?>
                                                         .$index. 
                                                     "</td>
                                                     <td>
-                                                        ".$room->name."
+                                                        ".$room->Room_ID."
                                                     </td>
                                                     <td>
-                                                        ".$room->description."
+                                                        ".$room->Status."
                                                     </td>   
                                                     <td>
-                                                        ".$room->name."
+                                                        ".$room->Bname."
                                                     </td> 
                                                     <td>
-                                                        ".$room->name."
-                                                    </td>   
+                                                        ".$room->Room_type_ID."
+                                                    </td>
                                                     <td>
-                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$room->id' data-name='$room->name' data-price='$room->price' data-description='$room->description' data-content='$room->content' data-img='$room->name'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$room->id' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                        ".$room->Leader_ID."
+                                                    </td>
+                                                    <td>
+                                                        ".$room->Leader_Lname."
+                                                    </td>
+                                                    <td>
+                                                        ".$room->Leader_Fname."
+                                                    </td>
+                                                    <td>
+                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$room->Room_ID'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$room->Room_ID'> <i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
                                                     </td>                                                                                                                                                                                      
                                                 </tr>";
                                                 $index++;
                                             }
                                         ?>
                                     </tbody>
-                                    <div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
+                                    <div class="modal fade" id="EditRoomModal" tabindex="-1" role="dialog" aria-labelledby="EditRoomModal" aria-hidden="true">
                                         <div class="modal-dialog modal-xl" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Chỉnh sửa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
-                                                <form id="form-edit-student" action="index.php?page=admin&controller=rooms&action=edit" enctype="multipart/form-data" method="post">
+                                                <form id="form-edit-oom" action="index.php?page=admin&controller=rooms&action=edit" enctype="multipart/form-data" method="post">
                                                     <div class="modal-body">
                                                          <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
                                                         <div class="row">
@@ -166,7 +178,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
+                                    <div class="modal fade" id="DeleteRoomModal" tabindex="-1" role="dialog" aria-labelledby="DeleteRoomModal" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content bg-danger">
                                                 <div class="modal-header">
@@ -185,8 +197,99 @@ require_once('views/admin/content_layouts.php'); ?>
                             </div>
                         </div>
 
-                        <div id="content2" class="mt-3" style="display: none;">
-                            <p>This is content for Button 2.</p>
+                        <div id="content1" class="mt-3">
+                        <div class="row"></div>
+                                <table id="TAB-building" class="table table-bordered table-striped"> 
+                                    <thead>
+                                        <tr  class="text-center">
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Tên tòa nhà</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Quản lý tòa</th>
+                                            <th scope="col">Họ và tên lót quản lý tòa</th>
+                                            <th scope="col">Tên quản lý tòa</th>
+                                            <th scope="col">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody> 
+                                        <?php
+                                            
+                                            $index = 1;
+
+                                            foreach ($buildings as $building) {  
+                                                                                         
+                                                echo 
+                                                "<tr class=\"text-center\">
+                                                    <td>"
+                                                        .$index. 
+                                                    "</td>
+                                                    <td>
+                                                        ".$building->Name."
+                                                    </td>
+                                                    <td>
+                                                        ".$building->Status."
+                                                    </td>   
+                                                    <td>
+                                                        ".$building->Mgr_ID."
+                                                    </td>
+                                                    <td>
+                                                        ".$building->Mgr_Lname."
+                                                    </td>
+                                                    <td>
+                                                        ".$building->Mgr_Fname."
+                                                    </td>
+                                                    <td>
+                                                        <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$building->Name'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                                        <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$building->Name'> <i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                    </td>                                                                                                                                                                                      
+                                                </tr>";
+                                                $index++;
+                                            }
+                                        ?>
+                                    </tbody>
+                                    <div class="modal fade" id="EditBuildingModal" tabindex="-1" role="dialog" aria-labelledby="EditBuildingModal" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Chỉnh sửa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <form id="form-edit-building" action="index.php?page=admin&controller=rooms&action=edit" enctype="multipart/form-data" method="post">
+                                                    <div class="modal-body">
+                                                         <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
+                                                        <div class="row">
+                                                            <div  class="col-6"><label>Tên sản phẩm</label><input class="form-control" type="text" placeholder="Tên sản phẩm" name="name" /></div>
+                                                            
+                                                        </div>
+                                                        
+                                                        <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
+                                                        <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" name="content" rows="10"></textarea></div>
+                                                        
+                                                        <div class="form-group"> <label> Hình ảnh </label>&nbsp <input type="file" name="fileToUpload" id="fileToUpload" /></div>
+
+                                                    </div>
+                                                    <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary formedit" type="submit">Cập nhật</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="DeleteBuildingModal" tabindex="-1" role="dialog" aria-labelledby="DeleteBuildingModal" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content bg-danger">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Xóa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <form action="index.php?page=admin&controller=rooms&action=delete" method="post">
+                                                    <div class="modal-body"><input type="hidden" name="id" />
+                                                        <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+                                                    </div>
+                                                    <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </table>
+                            </div>
                         </div>
 
     <!-- Rest of your code... -->
