@@ -63,20 +63,6 @@
 				<!-- Sidebar Menu-->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-						<!--Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-						<?php
-							if(isset($_SESSION["init"]) && $_SESSION['init']==1){
-								echo '
-									<li class="nav-item">
-										<a class="nav-link" href="index.php?page=admin&controller=admin&action=index">
-											<i class="nav-icon fas fa-user-graduate"> </i>
-											<p>Danh sách Admin</p>
-										</a>
-									</li>
-								';
-							}
-						
-						?>
 						<!-- Ky tuc xa -->
 						<li class="nav-item">
 							<a class="nav-link" href="index.php?page=admin&controller=dashboard&action=index">
