@@ -11,7 +11,12 @@ config = {
 sql_files = ['1-drop_table.sql',
              'create_table.sql',
              'insert_table.sql',
-             'create_users.sql']
+             'create_users.sql',
+            #  'procedure_function/1.2.1.sql',
+            #  'procedure_function/1.2.2.sql',
+            #  'procedure_function/1.2.3.sql',
+            #  'procedure_function/1.2.4.sql',
+             ]
 
 
 def run_file(file_name: str) -> bool:

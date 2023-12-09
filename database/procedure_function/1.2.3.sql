@@ -1,6 +1,6 @@
 -- Procedure(X) xuất ra danh sách sinh viên (Họ tên, DOB, avatar,...) thuộc phòng X, theo thứ tự ngày nhận phòng.
+USE chetcom;
 DELIMITER //
-USE chetcom //
 CREATE PROCEDURE PrintStudentListByDatein(IN p_Room_ID VARCHAR(5))
 BEGIN
     IF p_Room_ID IS NULL THEN
