@@ -89,12 +89,13 @@ if (!isset($_SESSION["user"])) {
             </div>
             <div class="col">
                 <div class="card">
-                    <h5 class="card-header"><i class="fa fa-cube" style="padding-top: 5px; text-align: center; font-size: 30px;height: 42px; width: 42px; color: white; background-color:#6fb3e0; border-radius:100%; box-shadow: 1px 1px 0 rgba(0,0,0,.2)"></i></h5>
+                    <h5 class="card-header">Sinh viên trả phòng <i class="fa fa-calendar-times-o" style="padding-top: 5px; text-align: center; font-size: 30px;height: 42px; width: 42px; color: white; background-color:#6fb3e0; border-radius:100%; box-shadow: 1px 1px 0 rgba(0,0,0,.2)"></i></h5>
                     <div class="card-body">
-                        <h5></h5>
+                        <h5><?php echo get_total_student_outs()?></h5>
                     </div>
                 </div>
             </div>
+
             <div class="col">
                 <div class="card">
                     <h5 class="card-header"><i class="fa fa-cube" style="padding-top: 5px; text-align: center; font-size: 30px;height: 42px; width: 42px; color: white; background-color:#6fb3e0; border-radius:100%; box-shadow: 1px 1px 0 rgba(0,0,0,.2)"></i></h5>

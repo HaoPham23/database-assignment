@@ -6,6 +6,7 @@
 
 # Login:
 root - 
+admin_ktx - admin_ktx
 
 ## Tạo bảng và dữ liệu mẫu (3 điểm):
 1. [x] (2 điểm) Viết các câu lệnh hiện thực các bảng dữ liệu đã thiết kế, trong đó có các ràng buộc khóa chính, khóa ngoại, các ràng buộc dữ liệu và các ràng buộc ngữ nghĩa nêu trong bài tập lớn 1 (sử dụng check hoặc trigger). **(Nhân)**
