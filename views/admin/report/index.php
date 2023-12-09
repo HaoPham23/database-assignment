@@ -178,6 +178,80 @@ if (!isset($_SESSION["user"])) {
 						</div>
 					</div>
 				</div>
+				<div class="modal fade" id="PrintGeneralInfo"  aria-labelledby="PrintGeneralInfo" aria-hidden="true">
+					<div class="modal-dialog modal-xl">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Thông tin chung về tòa nhà</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
+								<div class="modal-body">
+									<div class="row">
+										<div  class="col-6"><label>Tên tòa nhà</label><select class="form-control" type="text" name="BnameGeneral" <?php if(isset($_POST['BnameGeneral'])) echo "placeholder='".$_POST['BnameGeneral']."'" ?>>
+											<?php
+												foreach ($buildings as $building) {
+													echo "<option value=\"$building->Name\">$building->Name</option>";
+												}
+											?>
+										</select></div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<label>Kết quả</label>
+											<?php
+												if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['BnameGeneral'])) {
+													$BnameGeneral = $_POST['BnameGeneral'];
+													$result = ReportController::PrintGeneralInfo($BnameGeneral);
+													echo '
+													<table class="table table-bordered table-striped" id="tab-student">
+													<thead>
+														<tr class="text-center">
+															<th><div>STT</div></th>
+															<th><div>Phòng</div></th>
+															<th><div>Tòa</div></th>
+															<th><div>Số sinh viên đang ở</div></th>
+															<th><div>Tuổi trung bình</div></th>
+														</tr>
+													</thead>
+													<tbody>
+													';
+													$index = 1;
+													foreach ($result as $member) {
+														echo 
+															"<tr class=\"text-center\">
+																<td>"
+																	.$index. 
+																"</td>
+																<td>
+																	".$member["Room_ID"]."
+																</td>
+																<td>
+																	".$member["Bname"]."
+																</td>
+																<td>
+																	".$member["StudentCount"]."
+																</td> 
+																<td>
+																	".$member["AvgAge"]."
+																</td>
+														</tr>";
+														$index++;
+													}
+													echo '</tbody>
+													</table>';
+												}
+												?>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+									<button class="btn btn-primary" type="submit">Tính</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 				<table class="table table-bordered table-striped" id="tab-user">
 					<thead>
 						<tr class="text-center">
@@ -201,6 +275,11 @@ if (!isset($_SESSION["user"])) {
 							<td>3</td>
 							<td>Danh sách sinh viên cùng phòng (theo thứ tự ngày nhận phòng)</td>
 							<td><button class="ml-3 btn btn-primary" id="PrintStudentListByDatein" type="button" data-toggle="modal" data-target="#PrintStudentListByDatein">Xuất</button></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Thông tin chung về tòa nhà</td>
+							<td><button class="ml-3 btn btn-primary" id="PrintGeneralInfo" type="button" data-toggle="modal" data-target="#PrintGeneralInfo">Xuất</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -230,6 +309,9 @@ require_once('views/admin/footer.php'); ?>
             }
 			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Room_ID'])) {
                 echo '$("#PrintStudentListByDatein").modal("show");';
+            }
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['BnameGeneral'])) {
+                echo '$("#PrintGeneralInfo").modal("show");';
             }
             ?>
         });

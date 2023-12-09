@@ -57,9 +57,18 @@ class Report
     static function PrintGeneralInfo($Bname) {
         $db = DB::getInstance();
         $req = $db->query("
-            CALL `PrintStudentListByDatein`('$Bname');
+            CALL `PrintGeneralInfo`('$Bname');
         ");
-        // Chưa xử lý $req
-        return 0;
+        $buildings = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $building) {
+            $buildingInfo = [
+                'Room_ID' => $building['Room_ID'],
+                'Bname' => $building['Bname'],
+                'StudentCount' => $building["StudentCount"],
+                'AvgAge' => $building["AvgAge"]
+            ];
+            $buildings[] = $buildingInfo;
+        }
+        return $buildings;
     }
 }
