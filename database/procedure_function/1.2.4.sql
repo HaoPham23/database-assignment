@@ -1,3 +1,4 @@
+DROP FUNCTION IF EXISTS FindStudentsInMonth
 DELIMITER //
 CREATE FUNCTION FindStudentsInMonth(p_Month INT)
 RETURNS VARCHAR(255)
@@ -40,7 +41,10 @@ BEGIN
 
     RETURN v_result;
 END//
+DELIMITER ;
 
+DROP FUNCTION IF EXISTS CalculateExpensesForBuildingMonth
+DELIMITER //
 CREATE FUNCTION CalculateExpensesForBuildingMonth(p_Bname VARCHAR(50), p_Month INT)
 RETURNS DECIMAL(10, 2)
 BEGIN
