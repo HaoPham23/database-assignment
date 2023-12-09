@@ -103,6 +103,80 @@ if (!isset($_SESSION["user"])) {
 						</div>
 					</div>
 				</div>
+				<div class="modal fade" id="PrintStudentListByDatein"  aria-labelledby="PrintStudentListByDatein" aria-hidden="true">
+					<div class="modal-dialog modal-xl">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Danh sách sinh viên cùng phòng (theo thứ tự ngày nhận phòng)</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
+								<div class="modal-body">
+									<div class="row">
+										<div  class="col-6"><label>Mã số phòng</label><select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?>>
+											<?php
+												foreach ($rooms as $room) {
+													echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
+												}
+											?>
+										</select></div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<label>Kết quả</label>
+											<?php
+												if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Room_ID'])) {
+													$Room_ID = $_POST['Room_ID'];
+													$result = ReportController::PrintStudentListByDatein($Room_ID);
+													echo '
+													<table class="table table-bordered table-striped" id="tab-student">
+													<thead>
+														<tr class="text-center">
+															<th><div>STT</div></th>
+															<th><div>CCCD</div></th>
+															<th><div>Ảnh</div></th>
+															<th><div>Họ và tên lót</div></th>
+															<th><div>Tên</div></th>
+														</tr>
+													</thead>
+													<tbody>
+													';
+													$index = 1;
+													foreach ($result as $member) {
+														echo 
+															"<tr class=\"text-center\">
+																<td>"
+																	.$index. 
+																"</td>
+																<td>
+																	".$member["CCCD_number"]."
+																</td>
+																<td>
+																<img class=\"profile-picture\" src=\"".$member["Avatar"]."\" width=\"57\" height=\"72\">
+																</td>  
+																<td>
+																	".$member["Lname"]."
+																</td> 
+																<td>
+																	".$member["Fname"]."
+																</td>
+														</tr>";
+														$index++;
+													}
+													echo '    </tbody>
+													</table>';
+												}
+												?>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+									<button class="btn btn-primary" type="submit">Tính</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 				<table class="table table-bordered table-striped" id="tab-user">
 					<thead>
 						<tr class="text-center">
@@ -121,6 +195,11 @@ if (!isset($_SESSION["user"])) {
 							<td>2</td>
 							<td>Danh sách sinh viên sinh cùng tháng</td>
 							<td><button class="ml-3 btn btn-primary" id="FindStudentsInMonth" type="button" data-toggle="modal" data-target="#FindStudentsInMonth">Xuất</button></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Danh sách sinh viên cùng phòng (theo thứ tự ngày nhận phòng)</td>
+							<td><button class="ml-3 btn btn-primary" id="PrintStudentListByDatein" type="button" data-toggle="modal" data-target="#PrintStudentListByDatein">Xuất</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -147,6 +226,9 @@ require_once('views/admin/footer.php'); ?>
             }
 			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['monthStudent'])) {
                 echo '$("#FindStudentsInMonth").modal("show");';
+            }
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Room_ID'])) {
+                echo '$("#PrintStudentListByDatein").modal("show");';
             }
             ?>
         });
