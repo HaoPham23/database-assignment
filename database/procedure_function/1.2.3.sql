@@ -7,7 +7,10 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống vùng mã phòng!';
     END IF;
-
+    IF NOT EXISTS (SELECT 1 FROM ROOM WHERE ROOM_ID = p_Room_ID) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lỗi: Không tồn tại mã phòng!';
+    END IF;
     -- DECLARE studentIDList VARCHAR(12);
 
     SELECT * 
@@ -35,6 +38,11 @@ BEGIN
     IF p_Building_name IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống vùng tên tòa!';
+    END IF;
+
+    IF NOT EXISTS (SELECT 1 FROM BUILDING WHERE Name = p_Building_name) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lỗi: Không tồn tại tên tòa!';
     END IF;
 
     SELECT
