@@ -2,6 +2,7 @@
 require_once('controllers/admin/base_controller.php');
 require_once('models/report.php');
 require_once('models/building.php');
+require_once('models/room.php');
 
 class ReportController extends BaseController
 {
@@ -13,7 +14,8 @@ class ReportController extends BaseController
 	public function index()
 	{
 		$buildings = Building::getAll();
-		$data = array("buildings" => $buildings);
+		$rooms = Room::getAll();
+		$data = array("buildings" => $buildings, "rooms" => $rooms);
         $this->render('index', $data);
 	}
 
@@ -24,6 +26,16 @@ class ReportController extends BaseController
 
 	public function CalculateExpensesForBuildingMonth($month, $Bname) {
 		$result = Report::CalculateExpensesForBuildingMonth($Bname, $month);
+		return $result;
+	}
+
+	static function PrintStudentListByDatein($room_id) {
+		$result = Report::PrintStudentListByDatein($room_id);
+		return $result;
+	}
+
+	static function PrintGeneralInfo($Bname) {
+		$result = Report::PrintGeneralInfo($Bname);
 		return $result;
 	}
 }
