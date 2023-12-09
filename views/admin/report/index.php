@@ -128,6 +128,7 @@ if (!isset($_SESSION["user"])) {
 													$Room_ID = $_POST['Room_ID'];
 													$result = ReportController::PrintStudentListByDatein($Room_ID);
 													echo '
+													<h5>Phòng '.$Room_ID.'</h5>
 													<table class="table table-bordered table-striped" id="tab-student">
 													<thead>
 														<tr class="text-center">
