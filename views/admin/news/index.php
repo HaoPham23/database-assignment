@@ -55,7 +55,10 @@ if (!isset($_SESSION["user"])) {
                                                 <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" placeholder="Nội dung" name="content" rows="10"></textarea></div>
                                                 <div class="form-group"><label>Tiêu đề</label><input class="form-control" type="text" placeholder="Tiêu đề" name="title" /></div>
                                             </div>
-                                            <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary" type="submit">Thêm mới</button></div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+                                                <button class="btn btn-primary" type="submit">Thêm mới</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -150,7 +153,7 @@ if (!isset($_SESSION["user"])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="HideStudentModal" tabindex="-1" role="dialog" aria-labelledby="HideStudentModal" aria-hidden="true">
+                                <!-- <div class="modal fade" id="HideStudentModal" tabindex="-1" role="dialog" aria-labelledby="HideStudentModal" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content bg-danger">
                                             <div class="modal-header">
@@ -164,7 +167,7 @@ if (!isset($_SESSION["user"])) {
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </table>
                         </div>
                     </div>

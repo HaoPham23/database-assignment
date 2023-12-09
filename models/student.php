@@ -91,23 +91,34 @@ class Student
         return $student;
     }
 
-    static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status)
+    static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, 
+    $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
     {
         $db = DB::getInstance();
-        $req = $db->query(
-            "
+        $query1 = "
             INSERT INTO student (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
-            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status');
-            "
-        );
-        return $req;
+            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status')
+        ";
+    
+        $query2 = "
+            INSERT INTO lives_in (Student_ID, Date_in, Date_out, Room_ID)
+            VALUES ('$CCCD_number', '2023-12-09', '2023-12-10', '$Room_ID')
+        ";
+        $result1 = $db->query($query1);
+        $result2 = $db->query($query2);
+        return $result2;
     }
 
-    static function delete($CCCD_number)
+    static function delete($id)
     {
         $db = DB::getInstance();
-        $req = $db->query("DELETE FROM student WHERE CCCD_number = '$CCCD_number';");
-        return $req;
+        $result1 = $db->query("
+            DELETE FROM lives_in WHERE Student_ID = '$id';
+        ");
+        $result2 = $db->query("
+            DELETE FROM student WHERE CCCD_number = '$id';
+        ");
+        return $result2;
     }
 
     static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status)

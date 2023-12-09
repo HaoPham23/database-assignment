@@ -60,8 +60,8 @@ $(".btn-delete").click(function (e) {
     $("#DeleteStudentModal input[name='id']").val(id);
     $('#DeleteStudentModal').modal('show');
 });
-$(".btn-hide").click(function (e) {
-    var id = $(this).data("id");
-    $("#HideStudentModal input[name='id']").val(id);
-    $('#HideStudentModal').modal('show');
-});
+// $(".btn-hide").click(function (e) {
+//     var id = $(this).data("id");
+//     $("#HideStudentModal input[name='id']").val(id);
+//     $('#HideStudentModal').modal('show');
+// });

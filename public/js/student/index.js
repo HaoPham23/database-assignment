@@ -1,4 +1,4 @@
-$("#tab-student").DataTable({
+$("#TAB-student").DataTable({
     responsive: true,
     lengthChange: false,
     autoWidth: false,
@@ -22,18 +22,21 @@ $("#tab-student").DataTable({
 });
 
 $(".btn-edit").click(function (e) {
-	var id = $(this).data("id");
-	var name = $(this).data("name");
-	var address = $(this).data("address");
-	// console.log(id, name, address);
-	$("#EditStudentModal input[name='id']").val(id);
-	$("#EditStudentModal input[name='name']").val(name);
-	$("#EditStudentModal input[name='address']").val(address);
-	$('#EditStudentModal').modal('show');
-})
+    var id = $(this).data("id");
+
+    var description = $(this).data("description");
+    var content = $(this).data("content");
+    var title = $(this).data("title");
+    // console.log(title);
+    $("#EditStudentModal input[name='id']").val(id);
+    $("#EditStudentModal textarea[name='description']").val(description);
+    $("#EditStudentModal textarea[name='content']").val(content);
+    $("#EditStudentModal input[name='title']").val(title);
+    $('#EditStudentModal').modal('show');
+});
 
 $(".btn-delete").click(function (e) {
 	var id = $(this).data("id");
-	$("#DeleteStudentModal input[name='id']").val(id);
+	$("#DeleteStudentModal input[name='CCCD_number']").val(id);
 	$('#DeleteStudentModal').modal('show');
 })
