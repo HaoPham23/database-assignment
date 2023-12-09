@@ -223,23 +223,23 @@ SET FOREIGN_KEY_CHECKS = 1;
 SET FOREIGN_KEY_CHECKS = 0;
 INSERT INTO STUDENT(CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
 VALUES
-('083203001513', '2021-04-10', 'Nhân', 'Trần Thiện', '2003-10-30', 'M', 'Không', 'Kinh', '0120031030', 'NhanBK@gmail.com', NULL, 'OCB', '8020031030', 'Bến Tre', NULL),
-('083203001514', '2021-04-10', 'Tân', 'Nguyễn Thái', '2003-11-07', 'M', 'Không', 'Kinh', '0120031107', 'TanBK@gmail.com', NULL, 'OCB', '8020031107', 'Bến Tre', NULL),
-('025303001515', '2021-04-10', 'Yến', 'Lìu Ngọc', '2003-01-01', 'F', 'Không', 'Hoa', '0120030101', 'YenBK@gmail.com', NULL, 'OCB', '8020030101', 'Đồng Nai', NULL),
-('025303001516', '2021-04-10', 'My', 'Lê Phạm Hoàng', '2003-12-14', 'F', 'Không', 'Kinh', '0120031214', 'MyNV@gmail.com', NULL, 'OCB', '8020031214', 'Đồng Nai', NULL),
-('095201002925', '2021-08-14', 'Linh', 'Phạm Nhật', '2001-02-04', 'M', 'Không', 'Kinh', '0911997515', 'Phamnhatlinh0911997515@gmail.com', NULL, 'OCB', '8000731000', 'Bạc Liêu', NULL),
-('052201010829', '2022-09-22', 'Hùng', 'Phan Văn', '2001-01-03', 'M', 'Không', 'Kinh', '0911997515', 'hung.phanpvh0301@hcmut.edu.vn', NULL, 'Agribank', '8061002055', 'Khánh Hòa', NULL),
-('083201008742', '2017-05-04', 'Phú', 'Nguyễn Thanh', '2002-02-02', 'M', 'Không', 'Kinh', '0868854632', 'phu.nguyen02022001@hcmut.edu.vn', NULL, 'MB', '8012225667', 'Bến Tre', NULL),
-('025303001517', '2021-04-10', 'Anh', 'Võ Hữu', '2003-05-20', 'M', 'Không', 'Kinh', '0120030520', 'AnhVH@gmail.com', NULL, 'ACB', '8020030520', 'Vĩnh Long', NULL),
-('083203001518', '2021-04-10', 'Hương', 'Lê Thị', '2003-09-15', 'F', 'Không', 'Kinh', '0120030915', 'HuongLe@gmail.com', NULL, 'Vietcombank', '8020030915', 'Hồ Chí Minh', NULL),
-('095201002519', '2021-08-14', 'Đức', 'Nguyễn Thành', '2001-07-12', 'M', 'Không', 'Kinh', '0912998822', 'DucNguyen@gmail.com', NULL, 'Techcombank', '8001234567', 'Quảng Nam', NULL),
-('052201010620', '2022-09-22', 'Thảo', 'Trần Thị', '2002-04-08', 'F', 'Không', 'Kinh', '0912003040', 'ThaoTran@gmail.com', NULL, 'BIDV', '8062003040', 'Hải Phòng', NULL),
-('083201008721', '2017-05-04', 'Điệp', 'Nguyễn Phương', '2002-11-18', 'F', 'Không', 'Kinh', '0868888888', 'DiepNP@gmail.com', NULL, 'Sacombank', '8019999999', 'Hà Nội', NULL),
-('025303001622', '2021-04-10', 'Nam', 'Lê Văn', '2003-06-25', 'M', 'Không', 'Kinh', '0120030625', 'NamLV@gmail.com', NULL, 'Vietinbank', '8020030625', 'Tiền Giang', NULL),
-('083203001723', '2021-04-10', 'Loan', 'Phạm Thị', '2003-03-14', 'F', 'Không', 'Kinh', '0120030314', 'LoanPT@gmail.com', NULL, 'HSBC', '8020030314', 'Cần Thơ', NULL),
-('095201002824', '2021-08-14', 'Minh', 'Nguyễn Thế', '2001-10-09', 'M', 'Không', 'Kinh', '0912997654', 'MinhNT@gmail.com', NULL, 'Standard Chartered', '8009876543', 'Long An', NULL),
-('052201010925', '2022-09-22', 'Hà', 'Lê Thị', '2001-09-01', 'F', 'Không', 'Kinh', '0912001122', 'HaLe@gmail.com', NULL, 'ANZ', '8062001122', 'Vũng Tàu', NULL),
-('083201008826', '2017-05-04', 'Tùng', 'Nguyễn Minh', '2002-08-27', 'M', 'Không', 'Kinh', '0868777666', 'TungNM@gmail.com', NULL, 'Shinhan Bank', '8012333444', 'Bà Rịa - Vũng Tàu', NULL);
+('083203001513', '2021-04-10', 'Nhân', 'Trần Thiện', '2003-10-30', 'M', 'Không', 'Kinh', '0120031030', 'NhanBK@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/656451.jpg', 'OCB', '8020031030', 'Bến Tre', 'Đang ở'),
+('083203001514', '2021-04-10', 'Tân', 'Nguyễn Thái', '2003-11-07', 'M', 'Không', 'Kinh', '0120031107', 'TanBK@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/658020.jpg', 'OCB', '8020031107', 'Bến Tre', 'Đang ở'),
+('025303001515', '2021-04-10', 'Yến', 'Lìu Ngọc', '2003-01-01', 'F', 'Không', 'Hoa', '0120030101', 'YenBK@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/644698.jpg', 'OCB', '8020030101', 'Đồng Nai', 'Đang ở'),
+('025303001516', '2021-04-10', 'My', 'Lê Phạm Hoàng', '2003-12-14', 'F', 'Không', 'Kinh', '0120031214', 'MyNV@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/659111.jpg', 'OCB', '8020031214', 'Đồng Nai', 'Đang ở'),
+('095201002925', '2021-08-14', 'Linh', 'Phạm Nhật', '2001-02-04', 'M', 'Không', 'Kinh', '0911997515', 'Phamnhatlinh0911997515@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/170835.jpg', 'OCB', '8000731000', 'Bạc Liêu', 'Đang ở'),
+('052201010829', '2022-09-22', 'Hùng', 'Phan Văn', '2001-01-03', 'M', 'Không', 'Kinh', '0911997515', 'hung.phanpvh0301@hcmut.edu.vn', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/660616.jpg', 'Agribank', '8061002055', 'Khánh Hòa', 'Đang ở'),
+('083201008742', '2017-05-04', 'Phú', 'Nguyễn Thanh', '2002-02-02', 'M', 'Không', 'Kinh', '0868854632', 'phu.nguyen02022001@hcmut.edu.vn', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/034205011193.jpg', 'MB', '8012225667', 'Bến Tre', 'Đang ở'),
+('025303001517', '2021-04-10', 'Anh', 'Võ Hữu', '2003-05-20', 'M', 'Không', 'Kinh', '0120030520', 'AnhVH@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/54203002733.jpg', 'ACB', '8020030520', 'Vĩnh Long', 'Đang ở'),
+('083203001518', '2021-04-10', 'Hương', 'Lê Thị', '2003-09-15', 'F', 'Không', 'Kinh', '0120030915', 'HuongLe@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/038305025344.jpg', 'Vietcombank', '8020030915', 'Hồ Chí Minh', 'Đang ở'),
+('095201002519', '2021-08-14', 'Đức', 'Nguyễn Thành', '2001-07-12', 'M', 'Không', 'Kinh', '0912998822', 'DucNguyen@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/064205000507.jpg', 'Techcombank', '8001234567', 'Quảng Nam', 'Đang ở'),
+('052201010620', '2022-09-22', 'Thảo', 'Trần Thị', '2002-04-08', 'F', 'Không', 'Kinh', '0912003040', 'ThaoTran@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/630069.jpg', 'BIDV', '8062003040', 'Hải Phòng', 'Đang ở'),
+('083201008721', '2017-05-04', 'Điệp', 'Nguyễn Phương', '2002-11-18', 'F', 'Không', 'Kinh', '0868888888', 'DiepNP@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/074305001855.jpg', 'Sacombank', '8019999999', 'Hà Nội', 'Đang ở'),
+('025303001622', '2021-04-10', 'Nam', 'Lê Văn', '2003-06-25', 'M', 'Không', 'Kinh', '0120030625', 'NamLV@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/077204003301.jpg', 'Vietinbank', '8020030625', 'Tiền Giang', 'Đang ở'),
+('083203001723', '2021-04-10', 'Loan', 'Phạm Thị', '2003-03-14', 'F', 'Không', 'Kinh', '0120030314', 'LoanPT@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/53.jpg', 'HSBC', '8020030314', 'Cần Thơ', 'Đang ở'),
+('095201002824', '2021-08-14', 'Minh', 'Nguyễn Thế', '2001-10-09', 'M', 'Không', 'Kinh', '0912997654', 'MinhNT@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/648637.jpg', 'Standard Chartered', '8009876543', 'Long An', 'Đang ở'),
+('052201010925', '2022-09-22', 'Hà', 'Lê Thị', '2001-09-01', 'F', 'Không', 'Kinh', '0912001122', 'HaLe@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/038302016745.jpg', 'ANZ', '8062001122', 'Vũng Tàu', 'Đang ở'),
+('083201008826', '2017-05-04', 'Tùng', 'Nguyễn Minh', '2002-08-27', 'M', 'Không', 'Kinh', '0868777666', 'TungNM@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/630544.jpg', 'Shinhan Bank', '8012333444', 'Bà Rịa - Vũng Tàu', 'Đang ở');
 SET FOREIGN_KEY_CHECKS = 1;
 
 --

@@ -87,6 +87,7 @@ require_once('views/admin/content_layouts.php'); ?>
 										<th><div>STT</div></th>
 										<th><div>CCCD</div></th>
 										<th><div>Ngày cấp</div></th>
+										<th><div>Ảnh</div></th>
 										<th><div>Họ và tên lót</div></th>
 										<th><div>Tên</div></th>
 										<th><div>Ngày sinh</div></th>
@@ -116,7 +117,10 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     </td>
                                                     <td>
                                                         ".$student->CCCD_date."
-                                                    </td>   
+                                                    </td> 
+													<td>
+													<img class=\"profile-picture\" src=\"".$student->Avatar."\" width=\"57\" height=\"72\">
+													</td>  
                                                     <td>
                                                         ".$student->Lname."
                                                     </td> 
