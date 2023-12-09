@@ -96,7 +96,7 @@ require_once('views/admin/content_layouts.php'); ?>
 
                         <div id="content1" class="mt-3">
                         <div class="row">
-                            <table id="TAB-employee" class="table table-bordered table-striped"> 
+                            <table id="tab-employee" class="table table-bordered table-striped"> 
                                 <thead>
                                     <tr  class="text-center">
                                         <th scope="col">STT</th>

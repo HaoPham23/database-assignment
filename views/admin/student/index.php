@@ -130,7 +130,34 @@ require_once('views/admin/content_layouts.php'); ?>
 								</div>
 							</div>
 
-							<table id="TAB-student" class="table table-bordered table-striped">
+							<div class="container mt-3 mb-3">
+								<form action="index.php?page=admin&controller=student&action=search" method="post">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Tìm kiếm theo họ và tên lót" name="lname">
+										</div>
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="Tìm kiếm theo tên" name="fname">
+										</div>
+										<div class="input-group">
+											<select class="form-control" name="sex">
+												<option value="">Tìm kiếm theo giới tính</option>
+												<option value="M">Nam</option>
+												<option value="F">Nữ</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-md-6">
+										<button class="btn btn-primary" type="submit">Tìm</button>
+									</div>
+								</div>
+								</form>
+							</div>
+
+							<table id="tab-student" class="table table-bordered table-striped">
 								<thead>
 									<tr class="text-center">
 										<th><div>STT</div></th>

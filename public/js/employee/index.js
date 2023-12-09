@@ -1,16 +1,16 @@
-$("#TAB-employee")
-  .DataTable({
-    responsive: true,
-    lengthChange: false,
-    autoWidth: false,
-    language: {
-      url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
-    },
-    columnDefs: [{ orderable: false, targets: 6 }],
-  })
-  .buttons()
-  .container()
-  .appendTo("#TAB-employee_wrapper .col-md-6:eq(0)");
+// $("#tab-employee")
+//   .DataTable({
+//     responsive: true,
+//     lengthChange: false,
+//     autoWidth: false,
+//     language: {
+//       url: "//cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json",
+//     },
+//     columnDefs: [{ orderable: false, targets: 6 }],
+//   })
+//   .buttons()
+//   .container()
+//   .appendTo("#TAB-employee_wrapper .col-md-6:eq(0)");
 
 // $("#TAB-employee").DataTable({
 //   responsive: true,

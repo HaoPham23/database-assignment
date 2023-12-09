@@ -69,4 +69,16 @@ class StudentController extends BaseController
 		$delete_user = Student::delete($id);
 		header('Location: index.php?page=admin&controller=student&action=index');
 	}
+
+	public function search()
+	{
+		$Fname = $_POST['fname'];
+		$Lname = $_POST['lname'];
+		$Sex = $_POST['sex'];
+		$students = Student::get($Fname, $Lname, $Sex);
+		$rooms = Room::getAll();
+		$data = array('students' => $students, "rooms" => $rooms);
+		$this->render('index', $data);
+		// header('Location: index.php?page=admin&controller=student&action=index');
+	}
 }

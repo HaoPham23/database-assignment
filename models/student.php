@@ -66,29 +66,34 @@ class Student
         return $students;
     }
 
-    static function get($CCCD_number)
+    static function get($Fname, $Lname, $Sex)
     {
         $db = DB::getInstance();
-        $req = $db->query("SELECT * FROM student WHERE CCCD_number = $CCCD_number");
-        $result = $req->fetch_assoc();
-        $student = new Student(
-            $result['CCCD_number'],
-            $result['CCCD_date'],
-            $result['Fname'],
-            $result['Lname'],
-            $result['DOB'],
-            $result['Sex'],
-            $result['Religion'],
-            $result['Ethnicity'],
-            $result['Phone'],
-            $result['Email'],
-            $result['Avatar'],
-            $result['Bank_name'],
-            $result['Bank_number'],
-            $result['Address'],
-            $result['Status']
-        );
-        return $student;
+        $req = $db->query("
+            SELECT * FROM student 
+            WHERE Fname LIKE '%$Fname%' AND Lname LIKE '%$Lname%' AND Sex LIKE '%$Sex%'
+        ");
+        $students = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $student) {
+            $students[] = new Student(
+                $student['CCCD_number'],
+                $student['CCCD_date'],
+                $student['Fname'],
+                $student['Lname'],
+                $student['DOB'],
+                $student['Sex'],
+                $student['Religion'],
+                $student['Ethnicity'],
+                $student['Phone'],
+                $student['Email'],
+                $student['Avatar'],
+                $student['Bank_name'],
+                $student['Bank_number'],
+                $student['Address'],
+                $student['Status']
+            );
+        }
+        return $students;
     }
 
     static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, 
