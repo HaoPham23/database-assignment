@@ -68,7 +68,7 @@ BEGIN
     VALUES (p_CCCD_number, p_CCCD_date, p_Fname, p_Lname, p_DOB, p_Sex, p_Religion, p_Ethnicity, p_Phone, p_Email, p_Avatar, p_Bank_name, p_Bank_number, p_Address, p_Status);
 
     INSERT INTO LIVES_IN(Student_ID, Date_in, Date_out, Room_ID)
-    VALUES (CCCD_number, CURDATE(), NULL, p_Room_ID);
+    VALUES (p_CCCD_number, CURDATE(), NULL, p_Room_ID);
 END //
 
 CREATE PROCEDURE DeleteStudent(IN p_CCCD_number VARCHAR(12))
@@ -136,7 +136,7 @@ BEGIN
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống vùng cccd!';
     END IF;
 
-    IF p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL p_Room_ID IS NULL THEN
+    IF p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL OR p_Room_ID IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống bất kỳ trường nào trừ avatar và status!';
     END IF;

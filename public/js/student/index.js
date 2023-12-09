@@ -28,6 +28,6 @@ $(".btn-edit").click(function (e) {
 
 $(".btn-delete").click(function (e) {
 	var id = $(this).data("id");
-	$("#DeleteStudentModal input[name='CCCD_number']").val(id);
+	$("#DeleteStudentModal input[name='id']").val(id);
 	$('#DeleteStudentModal').modal('show');
 })
