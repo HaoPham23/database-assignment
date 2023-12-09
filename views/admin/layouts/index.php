@@ -23,8 +23,8 @@ require_once('views/admin/content_layouts.php'); ?>
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-8">
-					<i class="nav-icon fa fa-signal d-inline"></i>
-					<h1 class="d-inline">Thống kê nhà phòng</h1>
+					<i class="nav-icon fa fa-home d-inline"></i>
+					<h1 class="d-inline">Trang chủ</h1>
 				</div>
 				<div class="col-sm-4">
 					<ol class="breadcrumb float-sm-right">
@@ -45,8 +45,20 @@ require_once('views/admin/content_layouts.php'); ?>
 						<ul style="list-style: none;">
 							<li>
 								<a href="index.php?page=admin&controller=user&action=index" > 
-									<i class="fas fa-users-cog"></i>
-									Liên hệ khách hàng
+									<i class="fas fa-tachometer-alt"></i>
+									Dashboard
+								</a>
+							</li>
+							<li>
+								<a href="index.php?page=admin&controller=employee&action=index" > 
+									<i class="fas fa-users"></i>
+									Nhân viên
+								</a>
+							</li>
+							<li>
+								<a href="index.php?page=admin&controller=rooms&action=index" > 
+									<i class="fas fa-home"></i>
+									Khu/Nhà/Phòng
 								</a>
 							</li>
 						</ul>
@@ -55,22 +67,22 @@ require_once('views/admin/content_layouts.php'); ?>
 					<div class="col-sm-6 invoice-col">
 						<ul style="list-style: none;">
 							<li>
-								<a href="index.php?page=admin&controller=admin&action=index">
-									<i class="fas fa-cube"></i>
-									Quản lý Sản phẩm
+								<a href="index.php?page=admin&controller=news&action=index">
+									<i class="fa fa-calendar"></i>
+									Thông báo
 								</a>
 							</li>
 							
 							<li>
-								<a href="index.php?page=admin&controller=admin&action=index">
-									<i class="fas fa-file"></i>
-									Quản lý tin tức
+								<a href="index.php?page=admin&controller=bill&action=index">
+									<i class="fa fa-book"></i>
+									Hóa đơn
 								</a>
 							</li>
 							<li>
-								<a href="index.php?page=admin&controller=user&action=index" > 
-									<i class="fas fa-newspaper"></i>
-									Danh sách chi nhánh
+								<a href="index.php?page=admin&controller=report&action=index" > 
+									<i class="fas fa-bar-chart"></i>
+									Báo cáo - Thống kê
 								</a>
 							</li>
 						</ul>
