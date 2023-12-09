@@ -75,7 +75,7 @@ CREATE TABLE EMPLOYEE (
   Religion VARCHAR(50),
   Ethnicity VARCHAR(50),
   Email VARCHAR(50),
-  Phone VARCHAR(10) CHECK (Phone REGEXP '^03[0-9]{8}$'),
+  Phone VARCHAR(10) CHECK (Phone REGEXP '^0[0-9]{9}$'),
   Address VARCHAR(50),
   Bname VARCHAR(50),
   PRIMARY KEY (CCCD_number)
@@ -198,7 +198,7 @@ CREATE TABLE STUDENT (
   Sex CHAR CHECK (Sex = 'M' OR Sex = 'F'),
   Religion VARCHAR(50),
   Ethnicity VARCHAR(50),
-  Phone VARCHAR(10) CHECK (Phone REGEXP '^01[0-9]{8}$'),
+  Phone VARCHAR(10) CHECK (Phone REGEXP '^0[0-9]{9}$'),
   Email VARCHAR(50),
   Avatar VARCHAR(100),
   Bank_name VARCHAR(50),
