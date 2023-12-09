@@ -40,7 +40,7 @@ if (!isset($_SESSION["user"])) {
 							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
 								<div class="modal-body">
 									<div class="row">
-										<div  class="col-6"><label>Tên tòa nhà</label><select class="form-control" type="text" name="Bname" <?php if(isset($_POST['Bname'])) echo "placeholder='".$_POST['Bname']."'" ?>>
+										<div  class="col-6"><label>Tên tòa nhà</label><select class="form-control" type="text" name="Bname" <?php if(isset($_POST['Bname'])) echo "placeholder='".$_POST['Bname']."'" ?> required>
 											<?php
 												foreach ($buildings as $building) {
 													echo "<option value=\"$building->Name\">$building->Name</option>";
@@ -49,7 +49,7 @@ if (!isset($_SESSION["user"])) {
 										</select></div>
 									</div>
 									<div class="row">
-										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="month" <?php if(isset($_POST['month'])) echo "placeholder='".$_POST['month']."'" ?> /></div>
+										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="month" <?php if(isset($_POST['month'])) echo "placeholder='".$_POST['month']."'" ?> required /></div>
 									</div>
 									<div class="row">
 										<div class="col-6">
@@ -81,7 +81,7 @@ if (!isset($_SESSION["user"])) {
 							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
 								<div class="modal-body">
 									<div class="row">
-										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="monthStudent" <?php if(isset($_POST['monthStudent'])) echo "placeholder='".$_POST['monthStudent']."'" ?>/></div>
+										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="monthStudent" <?php if(isset($_POST['monthStudent'])) echo "placeholder='".$_POST['monthStudent']."'" ?> required /></div>
 									</div>
 									<div class="row">
 										<div class="col-6">
@@ -112,7 +112,7 @@ if (!isset($_SESSION["user"])) {
 							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
 								<div class="modal-body">
 									<div class="row">
-										<div  class="col-6"><label>Mã số phòng</label><select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?>>
+										<div  class="col-6"><label>Mã số phòng</label><select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
 											<?php
 												foreach ($rooms as $room) {
 													echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
@@ -191,7 +191,7 @@ if (!isset($_SESSION["user"])) {
 							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
 								<div class="modal-body">
 									<div class="row">
-										<div  class="col-6"><label>Tên tòa nhà</label><select class="form-control" type="text" name="BnameGeneral" <?php if(isset($_POST['BnameGeneral'])) echo "placeholder='".$_POST['BnameGeneral']."'" ?>>
+										<div  class="col-6"><label>Tên tòa nhà</label><select class="form-control" type="text" name="BnameGeneral" <?php if(isset($_POST['BnameGeneral'])) echo "placeholder='".$_POST['BnameGeneral']."'" ?> required>
 											<?php
 												foreach ($buildings as $building) {
 													echo "<option value=\"$building->Name\">$building->Name</option>";
