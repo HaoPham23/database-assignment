@@ -1,5 +1,4 @@
 DELIMITER //
-USE chetcom//
 CREATE FUNCTION FindStudentsInMonth(p_Month INT)
 RETURNS VARCHAR(255)
 BEGIN
@@ -41,6 +40,7 @@ BEGIN
 
     RETURN v_result;
 END//
+
 CREATE FUNCTION CalculateExpensesForBuildingMonth(p_Bname VARCHAR(50), p_Month INT)
 RETURNS DECIMAL(10, 2)
 BEGIN
