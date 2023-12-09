@@ -8,6 +8,12 @@ config = {
     'database': 'CHETCOM'
 }
 
+sql_files = ['1-drop_table.sql',
+             'create_table.sql',
+             'insert_table.sql',
+             'create_users.sql']
+
+
 def run_file(file_name: str) -> bool:
     try:
         print(f"Trying to run {file_name}")
@@ -28,10 +34,9 @@ if __name__=="__main__":
         mydb = mysql.connector.connect(**config)
         cursor = mydb.cursor()
         print("Connected!")
-        assert run_file('database/1-drop_table.sql')
-        assert run_file('database/create_table.sql')
-        assert run_file('database/insert_table.sql')
-
+        for file in sql_files:
+            if (run_file('database/' + file) == True):
+                print('Run successful!')
         # Commit changes
         mydb.commit()
 
