@@ -43,10 +43,23 @@ class StudentController extends BaseController
 
 	public function edit()
 	{
-		$id = $_POST['id'];
-		$name = $_POST['name'];
-		$address = $_POST['address'];
-		$change_pass = Student::update($id, $name, $address);
+		$CCCD_number = $_POST['id'];
+		$CCCD_date = $_POST['cccddate'];
+		$Fname = $_POST['fname'];
+		$Lname = $_POST['lname'];
+		$DOB = $_POST['dob'];
+		$Sex = $_POST['sex'];
+		$Religion = $_POST['religion'];
+		$Ethnicity = $_POST['ethnicity'];
+		$Phone = $_POST['phone'];
+		$Email = $_POST['email'];
+		$Avatar = $_POST['avatar'];
+		$Bank_name = $_POST['bankname'];
+		$Bank_number = $_POST['banknumber'];
+		$Address = $_POST['address'];
+		$Status = 'Dang o';
+		$Room_ID = $_POST['Room_ID'];
+		$edit_student = Student::update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID);
 		header('Location: index.php?page=admin&controller=student&action=index');
 	}
 

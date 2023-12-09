@@ -23,15 +23,7 @@ $("#TAB-student").DataTable({
 
 $(".btn-edit").click(function (e) {
     var id = $(this).data("id");
-
-    var description = $(this).data("description");
-    var content = $(this).data("content");
-    var title = $(this).data("title");
-    // console.log(title);
     $("#EditStudentModal input[name='id']").val(id);
-    $("#EditStudentModal textarea[name='description']").val(description);
-    $("#EditStudentModal textarea[name='content']").val(content);
-    $("#EditStudentModal input[name='title']").val(title);
     $('#EditStudentModal').modal('show');
 });
 

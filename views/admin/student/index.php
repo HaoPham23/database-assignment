@@ -207,8 +207,8 @@ require_once('views/admin/content_layouts.php'); ?>
 													".$student->Status."
 												</td>    
 										<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px' data-id=$student->CCCD_number> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
+											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-id='$student->CCCD_number' data-cccddate='$student->CCCD_date' data-avatar='$student->Avatar' data-lname='$student->Lname' data-fname='$student->Fname' data-dob='$student->DOB' data-sex='$student->Sex' data-religion='$student->Religion' data-ethnicity='$student->Ethnicity' data-email='$student->Email' data-phone='$student->Phone' data-address='$student->Address' data-bankname='$student->Bank_name' data-banknumber='$student->Bank_number' data-status='$student->Status'> <i class='fas fa-edit'></i></btn>
+											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
 										</td>
 										</tr>";
 										$index++;
@@ -227,19 +227,70 @@ require_once('views/admin/content_layouts.php'); ?>
 												<div class="modal-body">
 													<input type="hidden" name="id" />
 													<div class="form-group">
-														<input class="form-control" type="hidden" placeholder="Id" name="id" readonly />
+														<label>CCCD</label>
+														<input class="form-control" type="text" name="id" readonly />
+													</div>
+													<input type="hidden" name="cccddate" />
+													<div class="form-group">
+														<label>Ngày cấp CCCD</label>
+														<input class="form-control" type="text" name="cccddate" readonly />
 													</div>
 													<div class="form-group">
-														<label>Trường</label>
-														<input class="form-control" type="text" placeholder="Trường" name="address" />
+														<label>Ảnh</label>
+														<input class="form-control" type="text" name="avatar" />
 													</div>
 													<div class="form-group">
-														<label>Tòa</label>
-														<input class="form-control" type="text" placeholder="Tòa" name="name" />
+														<label>Họ và tên lót sinh viên</label>
+														<input class="form-control" type="text" name="lname" />
 													</div>
 													<div class="form-group">
-														<label>Phòng</label>
-														<input class="form-control" type="text" placeholder="Phòng" name="updateAt" />
+														<label>Tên sinh viên</label>
+														<input class="form-control" type="text" name="fname" />
+													</div>
+													<div class="form-group">
+														<label>Ngày sinh</label>
+														<input class="form-control" type="date" name="dob" />
+													</div>
+													<div class="form-group">
+														<label>Giới tính</label>
+														<input class="form-control" type="text" name="sex" />
+													</div>
+													<div class="form-group">
+														<label>Tôn giáo</label>
+														<input class="form-control" type="text" name="religion" />
+													</div>
+													<div class="form-group">
+														<label>Dân tộc</label>
+														<input class="form-control" type="text" name="ethnicity" />
+													</div>
+													<div class="form-group">
+														<label>Email</label>
+														<input class="form-control" type="text" name="email" />
+													</div>
+													<div class="form-group">
+														<label>Số điện thoại</label>
+														<input class="form-control" type="text" name="phone" />
+													</div>
+													<div class="form-group">
+														<label>Quê quán</label>
+														<input class="form-control" type="text" name="address" />
+													</div>
+													<div class="form-group">
+														<label>Tài khoản ngân hàng</label>
+														<input class="form-control" type="text" name="bankname" />
+													</div>
+													<div class="form-group">
+														<label>Số tài khoản</label>
+														<input class="form-control" type="text" name="banknumber" />
+													</div>
+													<div  class="col-6"><label>Chọn phòng</label>
+														<select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
+														<?php
+															foreach ($rooms as $room) {
+																echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
+															}
+														?>
+														</select>
 													</div>
 												</div>
 												<div class="modal-footer">

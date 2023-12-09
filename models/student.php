@@ -121,10 +121,10 @@ class Student
         return $result2;
     }
 
-    static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status)
+    static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
     {
         $db = DB::getInstance();
-        $req = $db->query("UPDATE student 
+        $result1 = $db->query("UPDATE student 
         SET CCCD_date = '$CCCD_date', 
             Fname = '$Fname', 
             Lname = '$Lname', 
@@ -140,6 +140,12 @@ class Student
             Address = '$Address', 
             Status = '$Status' 
         WHERE CCCD_number = '$CCCD_number';");
-        return $req;
+
+        $result2 = $db->query("
+            UPDATE lives_in
+            SET Room_ID = '$Room_ID'
+            WHERE student_id = '$CCCD_number';
+        ");
+        return $result2;
     }
 }
