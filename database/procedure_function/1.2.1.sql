@@ -23,7 +23,10 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống bất kỳ trường nào trừ avatar và status!';
     END IF;
-
+    IF EXISTS (SELECT 1 FROM STUDENT WHERE CCCD_number = p_CCCD_number) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lỗi: Đã tồn tại định danh sinh viên!';
+    END IF;
     IF TIMESTAMPDIFF(YEAR, p_DOB, CURDATE()) < 18 THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Sinh viên phải trên 18 tuổi!';
