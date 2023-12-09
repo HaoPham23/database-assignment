@@ -137,6 +137,7 @@ if (!isset($_SESSION["user"])) {
 															<th><div>Ảnh</div></th>
 															<th><div>Họ và tên lót</div></th>
 															<th><div>Tên</div></th>
+															<th><div>Ngày nhận phòng</div></th>
 														</tr>
 													</thead>
 													<tbody>
@@ -159,6 +160,9 @@ if (!isset($_SESSION["user"])) {
 																</td> 
 																<td>
 																	".$member["Fname"]."
+																</td>
+																<td>
+																	".$member["Date_in"]."
 																</td>
 														</tr>";
 														$index++;
@@ -263,23 +267,23 @@ if (!isset($_SESSION["user"])) {
 					<tbody>
 						<tr>
 							<td>1</td>
-							<td>Tổng hóa đơn của tòa nhà theo tháng</td>
-							<td><button class="ml-3 btn btn-primary" id="CalculateExpensesForBuildingMonth" type="button" data-toggle="modal" data-target="#CalculateExpensesForBuildingMonth">Xuất</button></td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Danh sách sinh viên sinh cùng tháng</td>
-							<td><button class="ml-3 btn btn-primary" id="FindStudentsInMonth" type="button" data-toggle="modal" data-target="#FindStudentsInMonth">Xuất</button></td>
-						</tr>
-						<tr>
-							<td>3</td>
 							<td>Danh sách sinh viên cùng phòng (theo thứ tự ngày nhận phòng)</td>
 							<td><button class="ml-3 btn btn-primary" id="PrintStudentListByDatein" type="button" data-toggle="modal" data-target="#PrintStudentListByDatein">Xuất</button></td>
 						</tr>
 						<tr>
-							<td>4</td>
+							<td>2</td>
 							<td>Thông tin chung về tòa nhà</td>
 							<td><button class="ml-3 btn btn-primary" id="PrintGeneralInfo" type="button" data-toggle="modal" data-target="#PrintGeneralInfo">Xuất</button></td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Tổng hóa đơn của tòa nhà theo tháng</td>
+							<td><button class="ml-3 btn btn-primary" id="CalculateExpensesForBuildingMonth" type="button" data-toggle="modal" data-target="#CalculateExpensesForBuildingMonth">Xuất</button></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>Danh sách sinh viên sinh cùng tháng</td>
+							<td><button class="ml-3 btn btn-primary" id="FindStudentsInMonth" type="button" data-toggle="modal" data-target="#FindStudentsInMonth">Xuất</button></td>
 						</tr>
 					</tbody>
 				</table>
