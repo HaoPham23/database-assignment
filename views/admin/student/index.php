@@ -117,7 +117,7 @@ require_once('views/admin/content_layouts.php'); ?>
 												<div  class="col-6"><label>Chọn phòng</label>
 													<select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
 													<?php
-														foreach ($rooms as $room) {
+														foreach ($empty_rooms as $room) {
 															echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
 														}
 													?>
@@ -260,8 +260,8 @@ require_once('views/admin/content_layouts.php'); ?>
 														".$student->Status."
 													</td>    
 											<td>
-												<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-id='$student->CCCD_number' data-cccddate='$student->CCCD_date' data-avatar='$student->Avatar' data-lname='$student->Lname' data-fname='$student->Fname' data-dob='$student->DOB' data-sex='$student->Sex' data-religion='$student->Religion' data-ethnicity='$student->Ethnicity' data-email='$student->Email' data-phone='$student->Phone' data-address='$student->Address' data-bankname='$student->Bank_name' data-banknumber='$student->Bank_number' data-status='$student->Status'> <i class='fas fa-edit'></i></btn>
-												<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
+												<btn class='btn-edit btn btn-primary btn-xs' data-toggle='modal' data-target='#EditStudentModal' style='margin-right: 5px;' data-id='$student->CCCD_number' data-cccddate='$student->CCCD_date' data-avatar='$student->Avatar' data-lname='$student->Lname' data-fname='$student->Fname' data-dob='$student->DOB' data-sex='$student->Sex' data-religion='$student->Religion' data-ethnicity='$student->Ethnicity' data-email='$student->Email' data-phone='$student->Phone' data-address='$student->Address' data-bankname='$student->Bank_name' data-banknumber='$student->Bank_number' data-status='$student->Status'> <i class='fas fa-edit'></i></btn>
+												<btn class='btn-delete btn btn-danger btn-xs' data-toggle='modal' data-target='#DeleteStudentModal' style='margin-right: 5px;' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
 											</td>
 											</tr>";
 											$index++;
@@ -342,7 +342,7 @@ require_once('views/admin/content_layouts.php'); ?>
 														<div  class="col-6"><label>Chọn phòng</label>
 															<select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
 															<?php
-																foreach ($rooms as $room) {
+																foreach ($empty_rooms as $room) {
 																	echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
 																}
 															?>

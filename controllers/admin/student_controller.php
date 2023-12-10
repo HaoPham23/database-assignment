@@ -14,7 +14,8 @@ class StudentController extends BaseController
 	{
 		$students = Student::getAll();
 		$rooms = Room::getAll();
-		$data = array('students' => $students, "rooms" => $rooms);
+		$empty_rooms = Room::getAllEmpty();
+		$data = array('students' => $students, "rooms" => $rooms, "empty_rooms" => $empty_rooms);
 		$this->render('index', $data);
 	}
 

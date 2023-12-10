@@ -49,6 +49,31 @@ class Room
         return $rooms;
     }
 
+    static function getAllEmpty()
+    {
+        $db = DB::getInstance();
+        $req = $db->query("
+            SELECT * FROM room
+            LEFT JOIN room_type ON room.Room_type_ID = room_type.Room_type_ID
+            WHERE room.student_count < room_type.Max_student;
+        ");
+        $empty_rooms = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $room)
+        {
+            $empty_rooms[] = new Room(
+                $room['Room_ID'],
+                $room['Status'],
+                $room['Bname'],
+                $room['Room_type_ID'],
+                $room['Room_type_name'],
+                $room['Leader_ID'],
+                NULL, 
+                NULL,
+            );
+        }
+        return $empty_rooms;
+    }
+
     static function get($Room_ID)
     {
         $db = DB::getInstance();
