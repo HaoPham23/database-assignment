@@ -81,4 +81,13 @@ class StudentController extends BaseController
 		$this->render('index', $data);
 		// header('Location: index.php?page=admin&controller=student&action=index');
 	}
+	public function sort()
+	{
+		$column = $_POST['column'];
+		$students = Student::sort($column);
+		$rooms = Room::getAll();
+		$data = array('students' => $students, "rooms" => $rooms);
+		$this->render('index', $data);
+		// header('Location: index.php?page=admin&controller=student&action=index');
+	}
 }

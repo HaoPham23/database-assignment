@@ -114,22 +114,12 @@ class News
 
     static function hide($id)
     {   
-        $db = DB::getInstance();
-        $statuscurrent = News::get($id)->status;
-        if ($statuscurrent == 1){
-            $req = $db->query("UPDATE news SET status = 0 WHERE id = $id;");
-        }
-        else{
-            $req = $db->query("UPDATE news SET status = 1 WHERE id = $id;");
-        }
-        return $req;
+        
     }
 
     static function show($id)
     {
-        $db = DB::getInstance();
-        $req = $db->query("UPDATE news SET status = 1 WHERE id = $id;");
-        return $req;
+        
     }
 
     static function recentNews()

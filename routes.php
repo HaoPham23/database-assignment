@@ -10,11 +10,11 @@ $controllers = array(
   'rooms' => ['index','add','edit','delete'],
   'news' => ['index','add','edit','delete','hide'],
   'admin' => ['index', 'add', 'edit', 'delete'],
-  'student' => ['index', 'add', 'edit', 'delete', 'search'],
+  'student' => ['index', 'add', 'edit', 'delete', 'search', 'sort'],
   'login' => ['index', 'check', 'logout'],
   'dashboard' => ['index'],
   'report' => ['index'], // Báo cáo - Thống kê
-  'bill' => ['index'], // Hóa đơn
+  'bill' => ['index', 'delete'], // Hóa đơn
   'rent' => ['index'], // Thuê phòng
   'employee' => ['index','add','edit','delete', 'addStaff'],
 ); // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.

@@ -168,4 +168,33 @@ class Student
         $result = $db->query($query);
         return $result;
     }
+    static function sort($column)
+    {
+        $db = DB::getInstance();
+        $req = $db->query("
+            SELECT * FROM student
+            ORDER BY $column
+        ");
+        $students = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $student) {
+            $students[] = new Student(
+                $student['CCCD_number'],
+                $student['CCCD_date'],
+                $student['Fname'],
+                $student['Lname'],
+                $student['DOB'],
+                $student['Sex'],
+                $student['Religion'],
+                $student['Ethnicity'],
+                $student['Phone'],
+                $student['Email'],
+                $student['Avatar'],
+                $student['Bank_name'],
+                $student['Bank_number'],
+                $student['Address'],
+                $student['Status']
+            );
+        }
+        return $students;
+    }
 }

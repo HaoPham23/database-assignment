@@ -16,4 +16,10 @@ class BillController extends BaseController
         $data = array('bills' => $bills);
         $this->render('index', $data);
 	}
+
+	public function delete(){
+        $id = $_POST['id'];
+        Bill::delete($id);
+        header('Location: index.php?page=admin&controller=bill&action=index');
+    }
 }

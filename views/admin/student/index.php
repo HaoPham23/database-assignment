@@ -42,7 +42,7 @@ require_once('views/admin/content_layouts.php'); ?>
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-body">
+						<div class="card-body" style="overflow-x: auto;">
 							<!-- Button trigger modal-->
 							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addStudentModal">Thêm mới</button>
 							<!-- Modal-->
@@ -161,204 +161,226 @@ require_once('views/admin/content_layouts.php'); ?>
 									</div>
 								</div>
 								</form>
+
+								<form action="index.php?page=admin&controller=student&action=sort" method="post">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="input-group">
+											<select class="form-control" name="column">
+												<option value="Fname">Sắp xếp theo ...</option>
+												<option value="Fname">Tên</option>
+												<option value="DOB">Ngày sinh</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<button class="btn btn-primary" type="submit">Sắp xếp</button>
+									</div>
+									</div>
+								</div>
+								</form>
 							</div>
 
-							<table id="tab-student" class="table table-bordered table-striped">
+                            <div style="overflow-x: auto;">
+							<table id="tab-student" class="table table-bordered table-striped" style="overflow-x: scroll;width: 100%;">
+								
 								<thead>
-									<tr class="text-center">
-										<th><div>STT</div></th>
-										<th><div>CCCD</div></th>
-										<th><div>Ngày cấp</div></th>
-										<th><div>Ảnh</div></th>
-										<th><div>Họ và tên lót</div></th>
-										<th><div>Tên</div></th>
-										<th><div>Ngày sinh</div></th>
-										<th><div>Giới tính</div></th>
-										<th><div>Tôn giáo</div></th>
-										<th><div>Dân tộc</div></th>
-										<th><div>Email</div></th>
-										<th><div>Số điện thoại</div></th>
-										<th><div>Quê quán</div></th>
-										<th><div>Tài khoản ngân hàng</div></th>
-										<th><div>Số tài khoản</div></th>
-										<th><div>Trạng thái</div></th>
-										<th><div>Thao tác</div></th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php
-									$index = 1;
-									foreach ($students as $student) {
-										echo 
-											"<tr class=\"text-center\">
-												<td>"
-													.$index. 
-												"</td>
-												<td>
-													".$student->CCCD_number."
-												</td>
-												<td>
-													".$student->CCCD_date."
-												</td> 
-												<td>
-												<img class=\"profile-picture\" src=\"".$student->Avatar."\" width=\"57\" height=\"72\">
-												</td>  
-												<td>
-													".$student->Lname."
-												</td> 
-												<td>
-													".$student->Fname."
-												</td>
-												<td>
-													".$student->DOB."
-												</td>
-												<td>
-													".(($student->Sex === 'M') ? 'Nam' : 'Nữ')."
-												</td>   
-												<td>
-													".$student->Religion."
-												</td> 
-												<td>
-													".$student->Ethnicity."
-												</td>
-												<td>
-													".$student->Email."
-												</td>   
-												<td>
-													".$student->Phone."
-												</td> 
-												<td>
-													".$student->Address."
-												</td>
-												<td>
-													".$student->Bank_name."
-												</td>    
-												<td>
-													".$student->Bank_number."
-												</td>    
-												<td>
-													".$student->Status."
-												</td>    
-										<td>
-											<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-id='$student->CCCD_number' data-cccddate='$student->CCCD_date' data-avatar='$student->Avatar' data-lname='$student->Lname' data-fname='$student->Fname' data-dob='$student->DOB' data-sex='$student->Sex' data-religion='$student->Religion' data-ethnicity='$student->Ethnicity' data-email='$student->Email' data-phone='$student->Phone' data-address='$student->Address' data-bankname='$student->Bank_name' data-banknumber='$student->Bank_number' data-status='$student->Status'> <i class='fas fa-edit'></i></btn>
-											<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
-										</td>
-										</tr>";
-										$index++;
-									}
-									?>
-								</tbody>
-
-								<div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title">Chỉnh sửa</h5>
-												<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<tr class="text-center">
+											<th><div>STT</div></th>
+											<th><div>CCCD</div></th>
+											<th><div>Ngày cấp</div></th>
+											<th><div>Ảnh</div></th>
+											<th><div>Họ và tên lót</div></th>
+											<th><div>Tên</div></th>
+											<th><div>Ngày sinh</div></th>
+											<th><div>Giới tính</div></th>
+											<th><div>Tôn giáo</div></th>
+											<th><div>Dân tộc</div></th>
+											<th><div>Email</div></th>
+											<th><div>Số điện thoại</div></th>
+											<th><div>Quê quán</div></th>
+											<th><div>Tài khoản ngân hàng</div></th>
+											<th><div>Số tài khoản</div></th>
+											<th><div>Trạng thái</div></th>
+											<th><div>Thao tác</div></th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php
+										$index = 1;
+										foreach ($students as $student) {
+											echo 
+												"<tr class=\"text-center\">
+													<td>"
+														.$index. 
+													"</td>
+													<td>
+														".$student->CCCD_number."
+													</td>
+													<td>
+														".$student->CCCD_date."
+													</td> 
+													<td>
+													<img class=\"profile-picture\" src=\"".$student->Avatar."\" width=\"57\" height=\"72\">
+													</td>  
+													<td>
+														".$student->Lname."
+													</td> 
+													<td>
+														".$student->Fname."
+													</td>
+													<td>
+														".$student->DOB."
+													</td>
+													<td>
+														".(($student->Sex === 'M') ? 'Nam' : 'Nữ')."
+													</td>   
+													<td>
+														".$student->Religion."
+													</td> 
+													<td>
+														".$student->Ethnicity."
+													</td>
+													<td>
+														".$student->Email."
+													</td>   
+													<td>
+														".$student->Phone."
+													</td> 
+													<td>
+														".$student->Address."
+													</td>
+													<td>
+														".$student->Bank_name."
+													</td>    
+													<td>
+														".$student->Bank_number."
+													</td>    
+													<td>
+														".$student->Status."
+													</td>    
+											<td>
+												<btn class='btn-edit btn btn-primary btn-xs' style='margin-right: 5px;' data-id='$student->CCCD_number' data-cccddate='$student->CCCD_date' data-avatar='$student->Avatar' data-lname='$student->Lname' data-fname='$student->Fname' data-dob='$student->DOB' data-sex='$student->Sex' data-religion='$student->Religion' data-ethnicity='$student->Ethnicity' data-email='$student->Email' data-phone='$student->Phone' data-address='$student->Address' data-bankname='$student->Bank_name' data-banknumber='$student->Bank_number' data-status='$student->Status'> <i class='fas fa-edit'></i></btn>
+												<btn class='btn-delete btn btn-danger btn-xs' style='margin-right: 5px;' data-id=$student->CCCD_number> <i class='fas fa-trash'></i></btn>
+											</td>
+											</tr>";
+											$index++;
+										}
+										?>
+									</tbody>
+	
+									<div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Chỉnh sửa</h5>
+													<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												</div>
+												<form action="index.php?page=admin&controller=student&action=edit" method="post">
+													<div class="modal-body">
+														<input type="hidden" name="id" />
+														<div class="form-group">
+															<label>CCCD</label>
+															<input class="form-control" type="text" name="id" readonly />
+														</div>
+														<input type="hidden" name="cccddate" />
+														<div class="form-group">
+															<label>Ngày cấp CCCD</label>
+															<input class="form-control" type="text" name="cccddate" readonly />
+														</div>
+														<div class="form-group">
+															<label>Ảnh</label>
+															<input class="form-control" type="text" name="avatar" />
+														</div>
+														<div class="form-group">
+															<label>Họ và tên lót sinh viên</label>
+															<input class="form-control" type="text" name="lname" />
+														</div>
+														<div class="form-group">
+															<label>Tên sinh viên</label>
+															<input class="form-control" type="text" name="fname" />
+														</div>
+														<div class="form-group">
+															<label>Ngày sinh</label>
+															<input class="form-control" type="date" name="dob" />
+														</div>
+														<div class="form-group">
+															<label>Giới tính</label>
+															<select class="form-control" name="Sex">
+																<option value="M">Nam</option>
+																<option value="F">Nữ</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label>Tôn giáo</label>
+															<input class="form-control" type="text" name="religion" />
+														</div>
+														<div class="form-group">
+															<label>Dân tộc</label>
+															<input class="form-control" type="text" name="ethnicity" />
+														</div>
+														<div class="form-group">
+															<label>Email</label>
+															<input class="form-control" type="text" name="email" />
+														</div>
+														<div class="form-group">
+															<label>Số điện thoại</label>
+															<input class="form-control" type="text" name="phone" />
+														</div>
+														<div class="form-group">
+															<label>Quê quán</label>
+															<input class="form-control" type="text" name="address" />
+														</div>
+														<div class="form-group">
+															<label>Tài khoản ngân hàng</label>
+															<input class="form-control" type="text" name="bankname" />
+														</div>
+														<div class="form-group">
+															<label>Số tài khoản</label>
+															<input class="form-control" type="text" name="banknumber" />
+														</div>
+														<div  class="col-6"><label>Chọn phòng</label>
+															<select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
+															<?php
+																foreach ($rooms as $room) {
+																	echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
+																}
+															?>
+															</select>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
+														<button class="btn btn-primary" type="submit">Cập nhật</button>
+													</div>
+												</form>
 											</div>
-											<form action="index.php?page=admin&controller=student&action=edit" method="post">
-												<div class="modal-body">
-													<input type="hidden" name="id" />
-													<div class="form-group">
-														<label>CCCD</label>
-														<input class="form-control" type="text" name="id" readonly />
-													</div>
-													<input type="hidden" name="cccddate" />
-													<div class="form-group">
-														<label>Ngày cấp CCCD</label>
-														<input class="form-control" type="text" name="cccddate" readonly />
-													</div>
-													<div class="form-group">
-														<label>Ảnh</label>
-														<input class="form-control" type="text" name="avatar" />
-													</div>
-													<div class="form-group">
-														<label>Họ và tên lót sinh viên</label>
-														<input class="form-control" type="text" name="lname" />
-													</div>
-													<div class="form-group">
-														<label>Tên sinh viên</label>
-														<input class="form-control" type="text" name="fname" />
-													</div>
-													<div class="form-group">
-														<label>Ngày sinh</label>
-														<input class="form-control" type="date" name="dob" />
-													</div>
-													<div class="form-group">
-														<label>Giới tính</label>
-														<select class="form-control" name="Sex">
-															<option value="M">Nam</option>
-															<option value="F">Nữ</option>
-														</select>
-													</div>
-													<div class="form-group">
-														<label>Tôn giáo</label>
-														<input class="form-control" type="text" name="religion" />
-													</div>
-													<div class="form-group">
-														<label>Dân tộc</label>
-														<input class="form-control" type="text" name="ethnicity" />
-													</div>
-													<div class="form-group">
-														<label>Email</label>
-														<input class="form-control" type="text" name="email" />
-													</div>
-													<div class="form-group">
-														<label>Số điện thoại</label>
-														<input class="form-control" type="text" name="phone" />
-													</div>
-													<div class="form-group">
-														<label>Quê quán</label>
-														<input class="form-control" type="text" name="address" />
-													</div>
-													<div class="form-group">
-														<label>Tài khoản ngân hàng</label>
-														<input class="form-control" type="text" name="bankname" />
-													</div>
-													<div class="form-group">
-														<label>Số tài khoản</label>
-														<input class="form-control" type="text" name="banknumber" />
-													</div>
-													<div  class="col-6"><label>Chọn phòng</label>
-														<select class="form-control" type="text" name="Room_ID" <?php if(isset($_POST['Room_ID'])) echo "placeholder='".$_POST['Room_ID']."'" ?> required>
-														<?php
-															foreach ($rooms as $room) {
-																echo "<option value=\"$room->Room_ID\">$room->Room_ID</option>";
-															}
-														?>
-														</select>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
-													<button class="btn btn-primary" type="submit">Cập nhật</button>
-												</div>
-											</form>
 										</div>
 									</div>
-								</div>
-
-								<div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content bg-danger">
-											<div class="modal-header">
-												<h5 class="modal-title">Xóa</h5>
-												<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	
+									<div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content bg-danger">
+												<div class="modal-header">
+													<h5 class="modal-title">Xóa</h5>
+													<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												</div>
+												<form action="index.php?page=admin&controller=student&action=delete" method="post">
+													<div class="modal-body">
+														<input type="hidden" name="id" />
+														<p>Bạn chắc chưa ?</p>
+													</div>
+													<div class="modal-footer">
+														<button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng lại</button>
+														<button class="btn btn-danger btn-outline-light" type="submit">Xác nhận</button>
+													</div>
+												</form>
 											</div>
-											<form action="index.php?page=admin&controller=student&action=delete" method="post">
-												<div class="modal-body">
-													<input type="hidden" name="id" />
-													<p>Bạn chắc chưa ?</p>
-												</div>
-												<div class="modal-footer">
-													<button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng lại</button>
-													<button class="btn btn-danger btn-outline-light" type="submit">Xác nhận</button>
-												</div>
-											</form>
 										</div>
 									</div>
-								</div>
-							</table>
+								</table>
+							</div>
+							
 						</div>
 					</div>
 				</div>
