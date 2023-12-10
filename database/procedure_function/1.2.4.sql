@@ -1,5 +1,8 @@
-DROP FUNCTION IF EXISTS FindStudentsInMonth
+USE chetcom;
+DROP FUNCTION IF EXISTS FindStudentsInMonth;
+DROP FUNCTION IF EXISTS CalculateExpensesForBuildingMonth;
 DELIMITER //
+USE chetcom //
 CREATE FUNCTION FindStudentsInMonth(p_Month INT)
 RETURNS VARCHAR(255)
 BEGIN
@@ -40,11 +43,8 @@ BEGIN
     CLOSE student_cursor;
 
     RETURN v_result;
-END//
-DELIMITER ;
+END //
 
-DROP FUNCTION IF EXISTS CalculateExpensesForBuildingMonth
-DELIMITER //
 CREATE FUNCTION CalculateExpensesForBuildingMonth(p_Bname VARCHAR(50), p_Month INT)
 RETURNS DECIMAL(10, 2)
 BEGIN
@@ -93,4 +93,4 @@ BEGIN
 END//
 DELIMITER ;
 
-SELECT CalculateExpensesForBuildingMonth('AG3', 6);
+SELECT CalculateExpensesForBuildingMonth('AG4', 6);
