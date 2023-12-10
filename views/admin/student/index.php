@@ -81,7 +81,10 @@ require_once('views/admin/content_layouts.php'); ?>
 												</div>
 												<div class="form-group">
 													<label>Giới tính</label>
-													<input class="form-control" type="text" placeholder="Giới tính" name="Sex" />
+													<select class="form-control" name="Sex">
+														<option value="M">Nam</option>
+														<option value="F">Nữ</option>
+													</select>
 												</div>
 												<div class="form-group">
 													<label>Tôn giáo</label>
@@ -283,7 +286,10 @@ require_once('views/admin/content_layouts.php'); ?>
 													</div>
 													<div class="form-group">
 														<label>Giới tính</label>
-														<input class="form-control" type="text" name="sex" />
+														<select class="form-control" name="Sex">
+															<option value="M">Nam</option>
+															<option value="F">Nữ</option>
+														</select>
 													</div>
 													<div class="form-group">
 														<label>Tôn giáo</label>

@@ -42,56 +42,167 @@ require_once('views/admin/content_layouts.php'); ?>
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                        <div>
                         <button class="btn btn-secondary" type="button" id="showContent1">Toàn bộ nhân viên</button>
                         <button class="btn btn-info ml-2" type="button" id="showContent2">Các nhân viên thường</button>
+                        </div>
+
+                        <div>
                         <button class="btn btn-primary mt-3" id="addManagerButton" type="button" data-toggle="modal" data-target="#addManagerModal">Thêm Quản lý tòa mới</button>
                         <div class="modal fade" id="addManagerModal"  aria-labelledby="addManagerModal" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Thêm Quản lý tòa mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=employee&action=add" enctype="multipart/form-data" method="post">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div  class="col-6"><label>Tên tòa nhà</label><input class="form-control" type="text" placeholder="Tên tòa nhà" name="name" /></div>
-                                                
+                                    <form id="form-add-manager" action="index.php?page=admin&controller=employee&action=add" enctype="multipart/form-data" method="post">
+                                    <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Số CCCD</label>
+                                                <input class="form-control" type="text" placeholder="CCCD" name="CCCD_number" />
                                             </div>
-                                            
-                                            <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
+                                            <div class="form-group">
+                                                <label>Ngày cấp CCCD</label>
+                                                <input class="form-control" type="date" placeholder="Họ và tên lót" name="CCCD_date" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Họ và tên lót quản lý tòa</label>
+                                                <input class="form-control" type="text" placeholder="Họ và tên lót" name="Lname" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tên quản lý tòa</label>
+                                                <input class="form-control" type="text" placeholder="Tên" name="Fname" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ngày sinh</label>
+                                                <input class="form-control" type="date" placeholder="Ngày sinh" name="DOB" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giới tính</label>
+                                                <select class="form-control" name="Sex">
+                                                    <option value="M">Nam</option>
+                                                    <option value="F">Nữ</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Tôn giáo</label>
+                                                <input class="form-control" type="text" placeholder="Tôn giáo" name="Religion" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Dân tộc</label>
+                                                <input class="form-control" type="text" placeholder="Dân tộc" name="Ethnicity" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input class="form-control" type="text" placeholder="Email" name="Email" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Số điện thoại</label>
+                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="Phone" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Quê quán</label>
+                                                <input class="form-control" type="text" placeholder="Quê quán" name="Address" />
+                                            </div>
+                                            <div class="col-6"><label>Chọn tòa</label>
+                                                <select class="form-control" type="text" name="Name" <?php if(isset($_POST['Name'])) echo "placeholder='".$_POST['Name']."'" ?> required>
+                                                <?php
+                                                    foreach ($buildings as $building) {
+                                                        echo "<option value=\"$building->Name\">$building->Name</option>";
+                                                    }
+                                                ?>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
-                                        <button class="btn btn-primary" type="submit">Thêm mới</button>
-                                    </div>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
+                                            <button class="btn btn-primary" type="submit">Thêm mới</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary mt-3" id="addStaffButton" type="button" data-toggle="modal" data-target="#addStaffModal">Thêm nhân viên mới</button>
+                        <button class="btn btn-primary mt-3 ml-2" id="addStaffButton" type="button" data-toggle="modal" data-target="#addStaffModal">Thêm nhân viên mới</button>
                         <div class="modal fade" id="addStaffModal"  aria-labelledby="addStaffModal" aria-hidden="true">
-                            <div class="modal-dialog modal-xl">
+                            <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Thêm nhân viên mới</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
-                                    <form id="form-add-student" action="index.php?page=admin&controller=employee&action=add" enctype="multipart/form-data" method="post">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div  class="col-6"><label>Tên phòng</label><input class="form-control" type="text" placeholder="Tên phòng" name="name" /></div>
-                                                
+                                    <form id="form-add-staff" action="index.php?page=admin&controller=employee&action=addStaff" enctype="multipart/form-data" method="post">
+                                    <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Số CCCD</label>
+                                                <input class="form-control" type="text" placeholder="CCCD" name="CCCD_number" />
                                             </div>
-                                            
-                                            <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
+                                            <div class="form-group">
+                                                <label>Ngày cấp CCCD</label>
+                                                <input class="form-control" type="date" placeholder="Họ và tên lót" name="CCCD_date" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Họ và tên lót nhân viên</label>
+                                                <input class="form-control" type="text" placeholder="Họ và tên lót" name="Lname" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Tên nhân viên</label>
+                                                <input class="form-control" type="text" placeholder="Tên" name="Fname" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Ngày sinh</label>
+                                                <input class="form-control" type="date" placeholder="Ngày sinh" name="DOB" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giới tính</label>
+                                                <select class="form-control" name="Sex">
+                                                    <option value="M">Nam</option>
+                                                    <option value="F">Nữ</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Tôn giáo</label>
+                                                <input class="form-control" type="text" placeholder="Tôn giáo" name="Religion" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Dân tộc</label>
+                                                <input class="form-control" type="text" placeholder="Dân tộc" name="Ethnicity" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input class="form-control" type="text" placeholder="Email" name="Email" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Số điện thoại</label>
+                                                <input class="form-control" type="text" placeholder="Số điện thoại" name="Phone" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Quê quán</label>
+                                                <input class="form-control" type="text" placeholder="Quê quán" name="Address" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Công việc</label>
+                                                <input class="form-control" type="text" placeholder="Công việc" name="Job" />
+                                            </div>
+                                            <div class="col-6"><label>Chọn tòa</label>
+                                                <select class="form-control" type="text" name="Name" <?php if(isset($_POST['Name'])) echo "placeholder='".$_POST['Name']."'" ?> required>
+                                                <?php
+                                                    foreach ($buildings as $building) {
+                                                        echo "<option value=\"$building->Name\">$building->Name</option>";
+                                                    }
+                                                ?>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
-                                        <button class="btn btn-primary" type="submit">Thêm mới</button>
-                                    </div>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
+                                            <button class="btn btn-primary" type="submit">Thêm mới</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
+                        </div>
                         </div>
 
                         <div id="content1" class="mt-3">
@@ -213,7 +324,7 @@ require_once('views/admin/content_layouts.php'); ?>
                         </div>
                         </div>
 
-                        <div id="content2" class="mt-3" style="display: none;">
+                        <div id="content2" class="mt-3">
                         <div class="row">
                             <table id="TAB-staff" class="table table-bordered table-striped"> 
                                 <thead>
@@ -309,20 +420,14 @@ require_once('views/admin/footer.php'); ?>
     document.getElementById('showContent1').addEventListener('click', function () {
         document.getElementById('content1').style.display = 'block';
         document.getElementById('content2').style.display = 'none';
-        document.getElementById('addManagerButton').style.display = 'block';
-        document.getElementById('addStaffButton').style.display = 'none';
     });
 
     document.getElementById('showContent2').addEventListener('click', function () {
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'block';
-        document.getElementById('addManagerButton').style.display = 'none';
-        document.getElementById('addStaffButton').style.display = 'block';
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('addManagerButton').style.display = 'none';
-        document.getElementById('addStaffButton').style.display = 'none';
         document.getElementById('content1').style.display = 'none';
         document.getElementById('content2').style.display = 'none';
     });
