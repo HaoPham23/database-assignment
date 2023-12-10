@@ -14,7 +14,7 @@ class DB
         if (!isset(self::$instance)) 
         {
             try {
-                self::$instance = mysqli_connect("localhost", $user, $password, "CHETCOM");
+                self::$instance = mysqli_connect("127.0.0.1", $user, $password, "CHETCOM");
             } catch (mysqli_sql_exception $e) {
                 $instance = NULL;
                 return 0;
