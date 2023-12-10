@@ -43,9 +43,7 @@ require_once('views/admin/content_layouts.php'); ?>
 				<div class="col-12">
 					<div class="card">
 						<div class="card-body" style="overflow-x: auto;">
-							<!-- Button trigger modal-->
 							<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addStudentModal">Thêm mới</button>
-							<!-- Modal-->
 							<div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModal" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -123,6 +121,23 @@ require_once('views/admin/content_layouts.php'); ?>
 													?>
 													</select>
 												</div>
+												<div  class="col-6"><label>Chọn trường</label>
+													<select class="form-control" type="text" name="Uni_ID" <?php if(isset($_POST['Uni_ID'])) echo "placeholder='".$_POST['Uni_ID']."'" ?> required>
+													<?php
+														foreach ($universities as $university) {
+															echo "<option value=\"$university->Uni_ID\">$university->Name</option>";
+														}
+													?>
+													</select>
+												</div>
+												<div class="form-group">
+													<label>MSSV</label>
+													<input class="form-control" type="text" placeholder="MSSV" name="Student_ID" />
+												</div>
+												<div class="form-group">
+													<label>Khoa</label>
+													<input class="form-control" type="text" placeholder="Khoa" name="Department" />
+												</div>
 											</div>
 											<div class="modal-footer">
 												<button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng lại</button>
@@ -183,7 +198,6 @@ require_once('views/admin/content_layouts.php'); ?>
 
                             <div style="overflow-x: auto;">
 							<table id="tab-student" class="table table-bordered table-striped" style="overflow-x: scroll;width: 100%;">
-								
 								<thead>
 										<tr class="text-center">
 											<th><div>STT</div></th>
@@ -281,12 +295,12 @@ require_once('views/admin/content_layouts.php'); ?>
 														<input type="hidden" name="id" />
 														<div class="form-group">
 															<label>CCCD</label>
-															<input class="form-control" type="text" name="id" readonly />
+															<input class="form-control" type="text" name="id" />
 														</div>
 														<input type="hidden" name="cccddate" />
 														<div class="form-group">
 															<label>Ngày cấp CCCD</label>
-															<input class="form-control" type="text" name="cccddate" readonly />
+															<input class="form-control" type="date" name="cccddate" />
 														</div>
 														<div class="form-group">
 															<label>Ảnh</label>
@@ -306,7 +320,7 @@ require_once('views/admin/content_layouts.php'); ?>
 														</div>
 														<div class="form-group">
 															<label>Giới tính</label>
-															<select class="form-control" name="Sex">
+															<select class="form-control" name="sex">
 																<option value="M">Nam</option>
 																<option value="F">Nữ</option>
 															</select>
@@ -347,6 +361,23 @@ require_once('views/admin/content_layouts.php'); ?>
 																}
 															?>
 															</select>
+														</div>
+														<div  class="col-6"><label>Chọn trường</label>
+															<select class="form-control" type="text" name="Uni_ID" <?php if(isset($_POST['Uni_ID'])) echo "placeholder='".$_POST['Uni_ID']."'" ?> required>
+															<?php
+																foreach ($universities as $university) {
+																	echo "<option value=\"$university->Uni_ID\">$university->Name</option>";
+																}
+															?>
+															</select>
+														</div>
+														<div class="form-group">
+															<label>MSSV</label>
+															<input class="form-control" type="text" placeholder="MSSV" name="Student_ID" />
+														</div>
+														<div class="form-group">
+															<label>Khoa</label>
+															<input class="form-control" type="text" placeholder="Khoa" name="Department" />
 														</div>
 													</div>
 													<div class="modal-footer">

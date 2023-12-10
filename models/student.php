@@ -97,23 +97,11 @@ class Student
     }
 
     static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, 
-    $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
+    $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID, $Uni_ID, $Student_ID, $Department)
     {
         $db = DB::getInstance();
-        // $query1 = "
-        //     INSERT INTO student (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
-        //     VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status')
-        // ";
-    
-        // $query2 = "
-        //     INSERT INTO lives_in (Student_ID, Date_in, Date_out, Room_ID)
-        //     VALUES ('$CCCD_number', '2023-12-09', '2023-12-10', '$Room_ID')
-        // ";
-        // $result1 = $db->query($query1);
-        // $result2 = $db->query($query2);
-        // return $result2;
         $query = "
-            CALL InsertStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID');
+            CALL InsertStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID', '$Uni_ID', '$Student_ID', '$Department');
         ";
         $result = $db->query($query);
         return $result;
@@ -136,34 +124,11 @@ class Student
         return $result;
     }
 
-    static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
+    static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID, $Uni_ID, $Student_ID, $Department)
     {
         $db = DB::getInstance();
-        // $result1 = $db->query("UPDATE student 
-        // SET CCCD_date = '$CCCD_date', 
-        //     Fname = '$Fname', 
-        //     Lname = '$Lname', 
-        //     DOB = '$DOB', 
-        //     Sex = '$Sex', 
-        //     Religion = '$Religion', 
-        //     Ethnicity = '$Ethnicity', 
-        //     Phone = '$Phone', 
-        //     Email = '$Email', 
-        //     Avatar = '$Avatar', 
-        //     Bank_name = '$Bank_name', 
-        //     Bank_number = '$Bank_number', 
-        //     Address = '$Address', 
-        //     Status = '$Status' 
-        // WHERE CCCD_number = '$CCCD_number';");
-
-        // $result2 = $db->query("
-        //     UPDATE lives_in
-        //     SET Room_ID = '$Room_ID'
-        //     WHERE student_id = '$CCCD_number';
-        // ");
-        // return $result2;
         $query = "
-            CALL UpdateStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID');
+            CALL UpdateStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID', '$Uni_ID', '$Student_ID', '$Department');
         ";
         $result = $db->query($query);
         return $result;

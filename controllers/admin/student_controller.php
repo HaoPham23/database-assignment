@@ -2,6 +2,7 @@
 require_once('controllers/admin/base_controller.php');
 require_once('models/student.php');
 require_once('models/room.php');
+require_once('models/university.php');
 
 class StudentController extends BaseController
 {
@@ -15,7 +16,9 @@ class StudentController extends BaseController
 		$students = Student::getAll();
 		$rooms = Room::getAll();
 		$empty_rooms = Room::getAllEmpty();
-		$data = array('students' => $students, "rooms" => $rooms, "empty_rooms" => $empty_rooms);
+		$universities = University::getAll();
+		$data = array('students' => $students, "rooms" => $rooms, 
+			"empty_rooms" => $empty_rooms, "universities" => $universities);
 		$this->render('index', $data);
 	}
 
@@ -37,8 +40,11 @@ class StudentController extends BaseController
 		$Address = $_POST['Address'];
 		$Status = 'Đang ở';
 		$Room_ID = $_POST['Room_ID'];
+		$Uni_ID = $_POST['Uni_ID'];
+		$Student_ID = $_POST['Student_ID'];
+		$Department = $_POST['Department'];
 		$add_new = Student::insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, 
-			$Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID);
+			$Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID, $Uni_ID, $Student_ID, $Department);
 		header('Location: index.php?page=admin&controller=student&action=index');
 	}
 
@@ -58,9 +64,12 @@ class StudentController extends BaseController
 		$Bank_name = $_POST['bankname'];
 		$Bank_number = $_POST['banknumber'];
 		$Address = $_POST['address'];
-		$Status = 'Dang o';
+		$Status = 'Đang ở';
 		$Room_ID = $_POST['Room_ID'];
-		$edit_student = Student::update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID);
+		$Uni_ID = $_POST['Uni_ID'];
+		$Student_ID = $_POST['Student_ID'];
+		$Department = $_POST['Department'];
+		$edit_student = Student::update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID, $Uni_ID, $Student_ID, $Department);
 		header('Location: index.php?page=admin&controller=student&action=index');
 	}
 
