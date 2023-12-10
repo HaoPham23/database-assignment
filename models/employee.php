@@ -72,6 +72,34 @@ class Employee
         return $employees;
     }
 
+    static function getAllManagers()
+    {
+        $db = DB::getInstance();
+        $req = $db->query("
+            SELECT * FROM employee JOIN manager ON employee.CCCD_number = manager.CCCD_number
+        ");
+        $managers = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $manager) {
+            $m = new Employee(
+                $manager['CCCD_number'],
+                $manager['CCCD_date'],
+                $manager['Fname'],
+                $manager['Lname'],
+                $manager['DOB'],
+                $manager['Sex'],
+                $manager['Religion'],
+                $manager['Ethnicity'],
+                $manager['Email'],
+                $manager['Phone'],
+                $manager['Address'],
+                $manager['Bname']
+            );
+            $m->set_manager_info($manager['Mgr_start_date'], $manager['High_Mgr']);
+            $managers[] = $m;
+        }
+        return $managers;
+    }
+
     static function getAllStaff()
     {
         $db = DB::getInstance();
