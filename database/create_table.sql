@@ -23,7 +23,7 @@ USE CHETCOM;
 
 CREATE TABLE BE_WARNED (
   Warn_ID INT(10) NOT NULL AUTO_INCREMENT,
-  Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
+  Student_ID VARCHAR(12) ,
   PRIMARY KEY (Warn_ID, Student_ID)
 );
 
@@ -40,8 +40,8 @@ CREATE TABLE BILL (
   Date_paid DATE,
   Date_issue DATE,
   Date_expire DATE,
-  Mgr_ID VARCHAR(12) CHECK (Mgr_ID REGEXP '^[0-9]{12}$'),
-  Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'), 
+  Mgr_ID VARCHAR(12),
+  Student_ID VARCHAR(12) , 
   PRIMARY KEY (Bill_ID),
   CHECK (Date_issue < Date_expire)
 );
@@ -55,7 +55,7 @@ CREATE TABLE BILL (
 CREATE TABLE BUILDING (
   Name VARCHAR(100),
   Status CHAR CHECK (Status = 'A' OR Status = 'F' OR Status = 'R'), -- Available, Full, Repairing
-  Mgr_ID VARCHAR(12) CHECK (Mgr_ID REGEXP '^[0-9]{12}$'),
+  Mgr_ID VARCHAR(12) ,
   PRIMARY KEY (Name)
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE BUILDING (
 --
 
 CREATE TABLE EMPLOYEE (
-  CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
+  CCCD_number VARCHAR(12),
   CCCD_date DATE,
   Fname VARCHAR(100),
   Lname VARCHAR(100),
@@ -88,10 +88,10 @@ CREATE TABLE EMPLOYEE (
 --
 
 CREATE TABLE LIVES_IN (
-  Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
+  Student_ID VARCHAR(12) ,
   Date_in DATE,
   Date_out DATE,
-  Room_ID VARCHAR(4) CHECK (Room_ID REGEXP '^[1-4][0-9]{3}$'),
+  Room_ID VARCHAR(4) ,
   PRIMARY KEY (Student_ID, Date_in),
   CHECK (Date_out IS NULL OR Date_in < Date_out)
 );
@@ -103,9 +103,9 @@ CREATE TABLE LIVES_IN (
 --
 
 CREATE TABLE MANAGER (
-  CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
+  CCCD_number VARCHAR(12) ,
   Mgr_start_date DATE,
-  High_Mgr VARCHAR(12) CHECK (High_Mgr REGEXP '^[0-9]{12}$'), -- CCCD Of High Mgr
+  High_Mgr VARCHAR(12) , -- CCCD Of High Mgr
   PRIMARY KEY (CCCD_number)
 );
 
@@ -120,7 +120,7 @@ CREATE TABLE NOTIFICATION (
   Title VARCHAR(100),
   Content VARCHAR(100),
   Date DATE,
-  Mgr_ID VARCHAR(12) CHECK (Mgr_ID REGEXP '^[0-9]{12}$'),
+  Mgr_ID VARCHAR(12),
   PRIMARY KEY (ID)
 );
 
@@ -131,7 +131,7 @@ CREATE TABLE NOTIFICATION (
 --
 
 CREATE TABLE RELATIVE (
-  Student_ID VARCHAR(12) CHECK (Student_ID REGEXP '^[0-9]{12}$'),
+  Student_ID VARCHAR(12) ,
   Fname VARCHAR(10),
   Lname VARCHAR(100),
   DOB DATE,
@@ -148,11 +148,11 @@ CREATE TABLE RELATIVE (
 --
 
 CREATE TABLE ROOM (
-  Room_ID VARCHAR(4) CHECK (Room_ID REGEXP '^[1-4][0-9]{3}$'),
+  Room_ID VARCHAR(4)  ,
   Status CHAR CHECK (Status = 'A' OR Status = 'F' OR Status = 'R'),
   Bname VARCHAR(100),
-  Room_type_ID VARCHAR(2) CHECK (Room_type_ID REGEXP '^[2-8][0-1]$'),
-  Leader_ID VARCHAR(12) CHECK (Leader_ID REGEXP '^[0-9]{12}$'),
+  Room_type_ID VARCHAR(2) ,
+  Leader_ID VARCHAR(12)  ,
   PRIMARY KEY (Room_ID)
 );
 
@@ -163,7 +163,7 @@ CREATE TABLE ROOM (
 --
 
 CREATE TABLE ROOM_TYPE (
-  Room_type_ID VARCHAR(2) CHECK (Room_type_ID REGEXP '^[2-8][0-1]$'),
+  Room_type_ID VARCHAR(2),
   Room_type_name VARCHAR(100),
   Max_student INT,
   Cost INT,
@@ -177,9 +177,9 @@ CREATE TABLE ROOM_TYPE (
 --
 
 CREATE TABLE STAFF (
-  CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
+  CCCD_number VARCHAR(12) ,
   Job VARCHAR(100),
-  Super_CCCD_number VARCHAR(12) CHECK (Super_CCCD_number REGEXP '^[0-9]{12}$'),
+  Super_CCCD_number VARCHAR(12),
   PRIMARY KEY (CCCD_number)
 );
 
@@ -190,7 +190,7 @@ CREATE TABLE STAFF (
 --
 
 CREATE TABLE STUDENT (
-  CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
+  CCCD_number VARCHAR(12) ,
   CCCD_date DATE,
   Fname VARCHAR(10),
   Lname VARCHAR(100),
@@ -215,9 +215,9 @@ CREATE TABLE STUDENT (
 --
 
 CREATE TABLE STUDIES_IN (
-  CCCD_number VARCHAR(12) CHECK (CCCD_number REGEXP '^[0-9]{12}$'),
-  Student_ID VARCHAR(8) CHECK (Student_ID REGEXP '^[1-5][0-9]{7}$'),
-  Uni_ID VARCHAR(1) CHECK (Uni_ID REGEXP '^[1-5]$'),
+  CCCD_number VARCHAR(12),
+  Student_ID VARCHAR(8),
+  Uni_ID VARCHAR(1),
   Department VARCHAR(100),
   PRIMARY KEY (CCCD_number)
 );
@@ -229,7 +229,7 @@ CREATE TABLE STUDIES_IN (
 --
 
 CREATE TABLE UNIVERSITY (
-  Uni_ID VARCHAR(1) CHECK (Uni_ID REGEXP '^[1-5]$'),
+  Uni_ID VARCHAR(1),
   Name VARCHAR(100),
   Uni_Email VARCHAR(100),
   Uni_phone VARCHAR(10),
@@ -243,7 +243,7 @@ CREATE TABLE UNIVERSITY (
 --
 
 CREATE TABLE UNI_ADDRESS (
-  Uni_ID VARCHAR(1) CHECK (Uni_ID REGEXP '^[1-5]$'),
+  Uni_ID VARCHAR(1),
   Uni_address VARCHAR(100),
   PRIMARY KEY (Uni_ID, Uni_address)
 );
@@ -259,7 +259,7 @@ CREATE TABLE WARNING (
   Date DATE,
   Detail VARCHAR(100),
   Note VARCHAR(100),
-  Mgr_ID VARCHAR(12) CHECK (Mgr_ID REGEXP '^[0-9]{12}$'),
+  Mgr_ID VARCHAR(12),
   Type VARCHAR(100),
   PRIMARY KEY (ID)
 );
@@ -270,7 +270,7 @@ CREATE TABLE WARNING (
 --
 
 CREATE TABLE WORK_IN (
-  Employee_ID VARCHAR(12) CHECK (Employee_ID REGEXP '^[0-9]{12}$'),
+  Employee_ID VARCHAR(12),
   Date_in DATE,
   Date_out DATE,
   Bname VARCHAR(100),
@@ -323,9 +323,10 @@ ALTER TABLE LIVES_IN
     ON DELETE RESTRICT;
 
 ALTER TABLE MANAGER
-  ADD CONSTRAINT fk_manager_Mgr_CCCD FOREIGN KEY (High_Mgr) REFERENCES MANAGER(CCCD_number)
+  ADD CONSTRAINT fk_manager_Mgr_CCCD FOREIGN KEY (High_Mgr) REFERENCES EMPLOYEE(CCCD_number)
     ON UPDATE RESTRICT
     ON DELETE RESTRICT;
+    
 
 ALTER TABLE MANAGER
   ADD CONSTRAINT fk_manager_employee_CCCD FOREIGN KEY (CCCD_number) REFERENCES EMPLOYEE(CCCD_number)
