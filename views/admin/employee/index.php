@@ -272,39 +272,13 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     ".$employee->Bname."
                                                 </td>    
                                                 <td>
-                                                <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px;\" data-id='$employee->CCCD_number'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                                <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$employee->CCCD_number' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
-                                            </td>                                                                                                                                                                    
+                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$employee->CCCD_number' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                </td>                                                                                                                                                                    
                                             </tr>";
                                             $index++;
                                         }
                                     ?>
                                 </tbody>
-                                <div class="modal fade" id="EditStudentModal" tabindex="-1" role="dialog" aria-labelledby="EditStudentModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Chỉnh sửa</h5><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            </div>
-                                            <form id="form-edit-student" action="index.php?page=admin&controller=employee&action=edit" enctype="multipart/form-data" method="post">
-                                                <div class="modal-body">
-                                                    <div  class="col-12"><input class="form-control" type="hidden" placeholder="Name" name="id"  readonly/></div>
-                                                    <div class="row">
-                                                        <div  class="col-6"><label>Tên sản phẩm</label><input class="form-control" type="text" placeholder="Tên sản phẩm" name="name" /></div>
-                                                        
-                                                    </div>
-                                                    
-                                                    <div class="form-group"> <label>Mô tả</label> <textarea class="form-control" name="description" rows="5"></textarea></div>
-                                                    <div class="form-group"> <label>Nội dung</label> <textarea class="form-control" name="content" rows="10"></textarea></div>
-                                                    
-                                                    <div class="form-group"> <label> Hình ảnh </label>&nbsp <input type="file" name="fileToUpload" id="fileToUpload" /></div>
-
-                                                </div>
-                                                <div class="modal-footer"><button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-primary formedit" type="submit">Cập nhật</button></div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content bg-danger">
@@ -313,7 +287,7 @@ require_once('views/admin/content_layouts.php'); ?>
                                             </div>
                                             <form action="index.php?page=admin&controller=employee&action=delete" method="post">
                                                 <div class="modal-body"><input type="hidden" name="id" />
-                                                    <p>Bạn có chắc chắn muốn xóa sản phẩm này?</p>
+                                                    <p>Bạn có chắc chắn muốn xóa nhân viên này?</p>
                                                 </div>
                                                 <div class="modal-footer"><button class="btn btn-danger btn-outline-light" type="button" data-dismiss="modal">Đóng</button><button class="btn btn-danger btn-outline-light" type="submit">Xóa</button></div>
                                             </form>

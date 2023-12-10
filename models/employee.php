@@ -159,6 +159,12 @@ class Employee
     static function delete($CCCD_number)
     {
         $db = DB::getInstance();
+        $req1 = $db->query("
+            DELETE FROM staff WHERE CCCD_number = '$CCCD_number'
+        ");
+        $req2 = $db->query("
+            DELETE FROM manager WHERE CCCD_number = '$CCCD_number'
+        ");
         $req = $db->query("
             DELETE FROM employee WHERE CCCD_number = $CCCD_number
         ");
