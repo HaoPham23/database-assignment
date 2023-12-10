@@ -108,7 +108,7 @@ BEGIN
     IF v_warn_count = 3 THEN
         UPDATE STUDENT
         SET Status = 'Bị đuổi'
-        WHERE Student_ID = v_student_ID;
+        WHERE CCCD_number = v_student_ID;
     END IF;
 END //
 
@@ -131,7 +131,7 @@ BEGIN
     IF v_warn_count < 3 THEN
         UPDATE STUDENT
         SET Status = 'Đang ở'
-        WHERE Student_ID = v_student_ID;
+        WHERE CCCD_number = v_student_ID;
     END IF;
 END //
 DELIMITER ;
