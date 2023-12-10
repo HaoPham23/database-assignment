@@ -1,4 +1,7 @@
-
+USE chetcom;
+DROP PROCEDURE IF EXISTS InsertStudent;
+DROP PROCEDURE IF EXISTS DeleteStudent;
+DROP PROCEDURE IF EXISTS UpdateStudent;
 DELIMITER //
 USE chetcom //
 CREATE PROCEDURE InsertStudent(
