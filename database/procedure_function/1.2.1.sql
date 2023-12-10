@@ -1,4 +1,7 @@
-
+USE chetcom;
+DROP PROCEDURE IF EXISTS InsertStudent;
+DROP PROCEDURE IF EXISTS DeleteStudent;
+DROP PROCEDURE IF EXISTS UpdateStudent;
 DELIMITER //
 USE chetcom //
 CREATE PROCEDURE InsertStudent(
@@ -16,10 +19,11 @@ CREATE PROCEDURE InsertStudent(
     IN p_Bank_name VARCHAR(50),
     IN p_Bank_number VARCHAR(10),
     IN p_Address VARCHAR(100),
-    IN p_Status VARCHAR (100)
+    IN p_Status VARCHAR (100),
+    IN p_Room_ID VARCHAR (5)
 )
 BEGIN
-    IF p_CCCD_number IS NULL OR p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL THEN
+    IF p_CCCD_number IS NULL OR p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL OR p_Room_ID IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống bất kỳ trường nào trừ avatar và status!';
     END IF;
@@ -57,9 +61,17 @@ BEGIN
         SET MESSAGE_TEXT = 'Lỗi: Định dạng số tài khoản ngân hàng không hợp lệ!';
     END IF;
 
+    IF NOT (p_Room_ID REGEXP '^4[1-4][0-9]{3}$') THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Lỗi: Định dạng mã số phòng không hợp lệ!';
+    END IF;
+
     -- Thêm dữ liệu vào bảng nếu không có lỗi
     INSERT INTO STUDENT(CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
     VALUES (p_CCCD_number, p_CCCD_date, p_Fname, p_Lname, p_DOB, p_Sex, p_Religion, p_Ethnicity, p_Phone, p_Email, p_Avatar, p_Bank_name, p_Bank_number, p_Address, p_Status);
+
+    INSERT INTO LIVES_IN(Student_ID, Date_in, Date_out, Room_ID)
+    VALUES (p_CCCD_number, CURDATE(), NULL, p_Room_ID);
 END //
 
 CREATE PROCEDURE DeleteStudent(IN p_CCCD_number VARCHAR(12))
@@ -69,9 +81,34 @@ BEGIN
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống vùng cccd!';
     END IF;
 
-    IF NOT EXISTS (SELECT 1 FROM student WHERE CCCD_number = p_CCCD_number) THEN
+    IF NOT EXISTS (SELECT 1 FROM STUDENT WHERE CCCD_number = p_CCCD_number) THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không tìm thấy sinh viên!';
+    END IF;
+
+    -- Delete foreign key
+    IF EXISTS (SELECT 1 FROM RELATIVE WHERE Student_ID = p_CCCD_number) THEN
+        DELETE FROM RELATIVE WHERE Student_ID = p_CCCD_number;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM STUDIES_IN WHERE CCCD_number = p_CCCD_number) THEN
+        DELETE FROM STUDIES_IN WHERE CCCD_number = p_CCCD_number;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM BILL WHERE Student_ID = p_CCCD_number) THEN
+        DELETE FROM BILL WHERE Student_ID = p_CCCD_number;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM ROOM WHERE Leader_ID = p_CCCD_number) THEN
+        DELETE FROM ROOM WHERE Leader_ID = p_CCCD_number;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM BE_WARNED WHERE Student_ID = p_CCCD_number) THEN
+        DELETE FROM BE_WARNED WHERE Student_ID = p_CCCD_number;
+    END IF;
+
+    IF EXISTS (SELECT 1 FROM LIVES_IN WHERE Student_ID = p_CCCD_number) THEN
+        DELETE FROM LIVES_IN WHERE Student_ID = p_CCCD_number;
     END IF;
 
     DELETE FROM STUDENT WHERE CCCD_number = p_CCCD_number;
@@ -93,7 +130,8 @@ CREATE PROCEDURE UpdateStudent(
     IN p_Bank_name VARCHAR(50),
     IN p_Bank_number VARCHAR(10),
     IN p_Address VARCHAR(100),
-    IN p_Status VARCHAR (100)
+    IN p_Status VARCHAR (100),
+    IN p_Room_ID VARCHAR (5)
 )
 BEGIN
     IF p_CCCD_number IS NULL THEN
@@ -101,7 +139,7 @@ BEGIN
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống vùng cccd!';
     END IF;
 
-    IF p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL THEN
+    IF p_CCCD_date IS NULL OR p_Fname IS NULL OR p_Lname IS NULL OR p_DOB IS NULL OR p_Sex IS NULL OR p_Religion IS NULL OR p_Ethnicity IS NULL OR p_Phone IS NULL OR p_Email IS NULL OR p_Bank_name IS NULL OR p_Bank_number IS NULL OR p_Address IS NULL OR p_Room_ID IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Lỗi: Không được để trống bất kỳ trường nào trừ avatar và status!';
     END IF;
@@ -158,6 +196,11 @@ BEGIN
         Address = p_Address,
         Status = p_Status
     WHERE CCCD_number = p_CCCD_number;
+
+    UPDATE LIVES_IN
+    SET
+        Room_ID = p_Room_ID
+    WHERE Student_ID = p_CCCD_number;
 
     SELECT 'Cập nhật sinh viên thành công!' AS Result;
 END //

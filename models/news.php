@@ -83,15 +83,13 @@ class News
         return $news;
     }
 
-    static function insert($title, $description, $content)
+    static function insert($Title, $Content, $Mgr_ID)
     {
-        $status = true;
-        $date = date("Y-m-d-h-i-s");
         $db = DB::getInstance();
         $req = $db->query(
             "
-            INSERT INTO news (status, date, title, description, content)
-            VALUES ($status, '$date', '$title', '$description', '$content')
+            INSERT INTO notification (ID, Title, Content, Date, Mgr_ID)
+            VALUES ('6300000005', '$Title', '$Content', CURDATE(), '$Mgr_ID')
             ;");
         return $req;
     }
@@ -99,14 +97,18 @@ class News
     static function delete($id)
     {
         $db = DB::getInstance();
-        $req = $db->query("DELETE FROM news WHERE id = $id;");
+        $req = $db->query("DELETE FROM notification WHERE id = $id;");
         return $req;
     }
 
-    static function update($id, $title, $description, $content)
+    static function update($id, $title, $content)
     {
         $db = DB::getInstance();
-        $req = $db->query("UPDATE news SET content = '$content', title = '$title', description = '$description' WHERE id = $id;");
+        $req = $db->query("
+            UPDATE notification 
+            SET Content = '$content', Title = '$title', Date = CURDATE()
+            WHERE id = $id;
+        ");
         return $req;
     }
 

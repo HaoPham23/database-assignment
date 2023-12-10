@@ -100,57 +100,72 @@ class Student
     $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
     {
         $db = DB::getInstance();
-        $query1 = "
-            INSERT INTO student (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
-            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status')
-        ";
+        // $query1 = "
+        //     INSERT INTO student (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Phone, Email, Avatar, Bank_name, Bank_number, Address, Status)
+        //     VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status')
+        // ";
     
-        $query2 = "
-            INSERT INTO lives_in (Student_ID, Date_in, Date_out, Room_ID)
-            VALUES ('$CCCD_number', '2023-12-09', '2023-12-10', '$Room_ID')
+        // $query2 = "
+        //     INSERT INTO lives_in (Student_ID, Date_in, Date_out, Room_ID)
+        //     VALUES ('$CCCD_number', '2023-12-09', '2023-12-10', '$Room_ID')
+        // ";
+        // $result1 = $db->query($query1);
+        // $result2 = $db->query($query2);
+        // return $result2;
+        $query = "
+            CALL InsertStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID');
         ";
-        $result1 = $db->query($query1);
-        $result2 = $db->query($query2);
-        return $result2;
+        $result = $db->query($query);
+        return $result;
     }
 
     static function delete($id)
     {
         $db = DB::getInstance();
-        $result1 = $db->query("
-            DELETE FROM lives_in WHERE Student_ID = '$id';
-        ");
-        $result2 = $db->query("
-            DELETE FROM student WHERE CCCD_number = '$id';
-        ");
-        return $result2;
+        // $result1 = $db->query("
+        //     DELETE FROM lives_in WHERE Student_ID = '$id';
+        // ");
+        // $result2 = $db->query("
+        //     DELETE FROM student WHERE CCCD_number = '$id';
+        // ");
+        // return $result2;
+        $query = "
+            CALL DeleteStudent('$id');
+        ";
+        $result = $db->query($query);
+        return $result;
     }
 
     static function update($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Phone, $Email, $Avatar, $Bank_name, $Bank_number, $Address, $Status, $Room_ID)
     {
         $db = DB::getInstance();
-        $result1 = $db->query("UPDATE student 
-        SET CCCD_date = '$CCCD_date', 
-            Fname = '$Fname', 
-            Lname = '$Lname', 
-            DOB = '$DOB', 
-            Sex = '$Sex', 
-            Religion = '$Religion', 
-            Ethnicity = '$Ethnicity', 
-            Phone = '$Phone', 
-            Email = '$Email', 
-            Avatar = '$Avatar', 
-            Bank_name = '$Bank_name', 
-            Bank_number = '$Bank_number', 
-            Address = '$Address', 
-            Status = '$Status' 
-        WHERE CCCD_number = '$CCCD_number';");
+        // $result1 = $db->query("UPDATE student 
+        // SET CCCD_date = '$CCCD_date', 
+        //     Fname = '$Fname', 
+        //     Lname = '$Lname', 
+        //     DOB = '$DOB', 
+        //     Sex = '$Sex', 
+        //     Religion = '$Religion', 
+        //     Ethnicity = '$Ethnicity', 
+        //     Phone = '$Phone', 
+        //     Email = '$Email', 
+        //     Avatar = '$Avatar', 
+        //     Bank_name = '$Bank_name', 
+        //     Bank_number = '$Bank_number', 
+        //     Address = '$Address', 
+        //     Status = '$Status' 
+        // WHERE CCCD_number = '$CCCD_number';");
 
-        $result2 = $db->query("
-            UPDATE lives_in
-            SET Room_ID = '$Room_ID'
-            WHERE student_id = '$CCCD_number';
-        ");
-        return $result2;
+        // $result2 = $db->query("
+        //     UPDATE lives_in
+        //     SET Room_ID = '$Room_ID'
+        //     WHERE student_id = '$CCCD_number';
+        // ");
+        // return $result2;
+        $query = "
+            CALL UpdateStudent('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Phone', '$Email', '$Avatar', '$Bank_name', '$Bank_number', '$Address', '$Status', '$Room_ID');
+        ";
+        $result = $db->query($query);
+        return $result;
     }
 }

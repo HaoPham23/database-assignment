@@ -72,6 +72,34 @@ class Employee
         return $employees;
     }
 
+    static function getAllManagers()
+    {
+        $db = DB::getInstance();
+        $req = $db->query("
+            SELECT * FROM employee JOIN manager ON employee.CCCD_number = manager.CCCD_number
+        ");
+        $managers = [];
+        foreach ($req->fetch_all(MYSQLI_ASSOC) as $manager) {
+            $m = new Employee(
+                $manager['CCCD_number'],
+                $manager['CCCD_date'],
+                $manager['Fname'],
+                $manager['Lname'],
+                $manager['DOB'],
+                $manager['Sex'],
+                $manager['Religion'],
+                $manager['Ethnicity'],
+                $manager['Email'],
+                $manager['Phone'],
+                $manager['Address'],
+                $manager['Bname']
+            );
+            $m->set_manager_info($manager['Mgr_start_date'], $manager['High_Mgr']);
+            $managers[] = $m;
+        }
+        return $managers;
+    }
+
     static function getAllStaff()
     {
         $db = DB::getInstance();
@@ -125,16 +153,49 @@ class Employee
     static function insert($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Bname)
     {
         $db = DB::getInstance();
-        $req = $db->query(
-            "INSERT INTO employee (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Email, Phone, Address, Bname)
-            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Email', '$Phone', '$Address', '$Bname');");
-        return $req;
+        $req = $db->query("
+            INSERT INTO employee (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Email, Phone, Address, Bname)
+            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Email', '$Phone', '$Address', '$Bname');
+        ");
+        $req1 = $db->query("
+            INSERT INTO manager (CCCD_number, Mgr_start_date, High_Mgr)
+            VALUES ('$CCCD_number', CURDATE(), NULL);
+        ");
+        return $req1;
+    }
+
+    static function insertStaff($CCCD_number, $CCCD_date, $Fname, $Lname, $DOB, $Sex, $Religion, $Ethnicity, $Email, $Phone, $Address, $Job, $Bname)
+    {
+        $db = DB::getInstance();
+        $req = $db->query("
+            INSERT INTO employee (CCCD_number, CCCD_date, Fname, Lname, DOB, Sex, Religion, Ethnicity, Email, Phone, Address, Bname)
+            VALUES ('$CCCD_number', '$CCCD_date', '$Fname', '$Lname', '$DOB', '$Sex', '$Religion', '$Ethnicity', '$Email', '$Phone', '$Address', '$Bname');
+        ");
+        $buildingQuery = $db->query("
+            SELECT Mgr_ID FROM building WHERE Name = '$Bname';
+        ");
+        $buildingResult = $buildingQuery->fetch_assoc();
+
+        $Mgr_ID = $buildingResult['Mgr_ID'];
+        $req1 = $db->query("
+            INSERT INTO staff (CCCD_number, Job, Super_CCCD_number)
+            VALUES ('$CCCD_number', '$Job', '$Mgr_ID');
+        ");
+        return $req1;
     }
 
     static function delete($CCCD_number)
     {
         $db = DB::getInstance();
-        $req = $db->query("DELETE FROM employee WHERE CCCD_number = $CCCD_number");
+        $req1 = $db->query("
+            DELETE FROM staff WHERE CCCD_number = '$CCCD_number'
+        ");
+        $req2 = $db->query("
+            DELETE FROM manager WHERE CCCD_number = '$CCCD_number'
+        ");
+        $req = $db->query("
+            DELETE FROM employee WHERE CCCD_number = $CCCD_number
+        ");
         return $req;
     }
 

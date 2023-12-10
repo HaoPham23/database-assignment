@@ -9,7 +9,20 @@ class Report
             SELECT `FindStudentsInMonth`('$month') AS `FindStudentsInMonth`;
         ");
         $result = ($req->fetch_row())[0];
-        return $result;
+        $lines = explode("\n", $result);
+        $students = [];
+        foreach ($lines as $line) {
+            $info = explode(',', $line);
+            if (count($info) >= 3) {
+                $studentInfo = [
+                    'Student_ID' => trim(str_replace('Student ID:', '', $info[0])),
+                    'Name' => trim(str_replace('Name:', '', $info[1])),
+                    'DOB' => trim(str_replace('DOB:', '', $info[2])),
+                ];
+                $students[] = $studentInfo;
+            }
+        }
+        return $students;
     }
 
     static function CalculateExpensesForBuildingMonth($Bname, $month) {

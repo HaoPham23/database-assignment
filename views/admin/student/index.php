@@ -81,7 +81,10 @@ require_once('views/admin/content_layouts.php'); ?>
 												</div>
 												<div class="form-group">
 													<label>Giới tính</label>
-													<input class="form-control" type="text" placeholder="Giới tính" name="Sex" />
+													<select class="form-control" name="Sex">
+														<option value="M">Nam</option>
+														<option value="F">Nữ</option>
+													</select>
 												</div>
 												<div class="form-group">
 													<label>Tôn giáo</label>
@@ -130,16 +133,20 @@ require_once('views/admin/content_layouts.php'); ?>
 								</div>
 							</div>
 
-							<div class="container mt-3 mb-3">
+							<div class="mt-3 mb-3">
 								<form action="index.php?page=admin&controller=student&action=search" method="post">
 								<div class="row">
 									<div class="col-md-3">
 										<div class="input-group">
 											<input type="text" class="form-control" placeholder="Tìm kiếm theo họ và tên lót" name="lname">
 										</div>
+									</div>
+									<div class="col-md-3">
 										<div class="input-group">
 											<input type="text" class="form-control" placeholder="Tìm kiếm theo tên" name="fname">
 										</div>
+									</div>
+									<div class="col-md-3">
 										<div class="input-group">
 											<select class="form-control" name="sex">
 												<option value="">Tìm kiếm theo giới tính</option>
@@ -148,10 +155,9 @@ require_once('views/admin/content_layouts.php'); ?>
 											</select>
 										</div>
 									</div>
-								</div>
-								<div class="row mt-3">
-									<div class="col-md-6">
+									<div class="col-md-3">
 										<button class="btn btn-primary" type="submit">Tìm</button>
+									</div>
 									</div>
 								</div>
 								</form>
@@ -280,7 +286,10 @@ require_once('views/admin/content_layouts.php'); ?>
 													</div>
 													<div class="form-group">
 														<label>Giới tính</label>
-														<input class="form-control" type="text" name="sex" />
+														<select class="form-control" name="Sex">
+															<option value="M">Nam</option>
+															<option value="F">Nữ</option>
+														</select>
 													</div>
 													<div class="form-group">
 														<label>Tôn giáo</label>

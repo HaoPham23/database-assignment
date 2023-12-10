@@ -49,7 +49,7 @@ if (!isset($_SESSION["user"])) {
 										</select></div>
 									</div>
 									<div class="row">
-										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="month" <?php if(isset($_POST['month'])) echo "placeholder='".$_POST['month']."'" ?> required /></div>
+										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="month" id="monthInput" <?php if(isset($_POST['month'])) echo "placeholder='".$_POST['month']."'" ?> required /></div>
 									</div>
 									<div class="row">
 										<div class="col-6">
@@ -81,15 +81,49 @@ if (!isset($_SESSION["user"])) {
 							<form id="form-add-student" action="#" enctype="multipart/form-data" method="post">
 								<div class="modal-body">
 									<div class="row">
-										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="monthStudent" <?php if(isset($_POST['monthStudent'])) echo "placeholder='".$_POST['monthStudent']."'" ?> required /></div>
+										<div  class="col-6"><label>Tháng</label><input class="form-control" type="number" min="1" max="12" name="monthStudent" id="monthStudentInput" <?php if(isset($_POST['monthStudent'])) echo "placeholder='".$_POST['monthStudent']."'" ?> required /></div>
 									</div>
 									<div class="row">
-										<div class="col-6">
-											<label>Các sinh viên sinh cùng tháng</label>
+										<div class="col-12">
+											<label>Kết quả</label>
 											<?php
-												if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["monthStudent"])) {
-													$month = $_POST['monthStudent'];
-													echo "<p>".ReportController::FindStudentsInMonth($month)."</p>";
+												if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['monthStudent'])) {
+													$monthStudent = $_POST['monthStudent'];
+													$result = ReportController::FindStudentsInMonth($monthStudent);
+													echo '
+													<h5>Tháng '.$monthStudent.'</h5>
+													<table class="table table-bordered table-striped" id="tab-student">
+													<thead>
+														<tr class="text-center">
+															<th><div>STT</div></th>
+															<th><div>CCCD</div></th>
+															<th><div>Họ và tên</div></th>
+															<th><div>Ngày sinh</div></th>
+														</tr>
+													</thead>
+													<tbody>
+													';
+													$index = 1;
+													foreach ($result as $member) {
+														echo 
+															"<tr class=\"text-center\">
+																<td>"
+																	.$index. 
+																"</td>
+																<td>
+																	".$member["Student_ID"]."
+																</td>
+																<td>
+																	".$member["Name"]."
+																</td>
+																<td>
+																	".$member["DOB"]."
+																</td>
+														</tr>";
+														$index++;
+													}
+													echo '    </tbody>
+													</table>';
 												}
 												?>
 										</div>
@@ -302,24 +336,37 @@ require_once('views/admin/footer.php'); ?>
 <!-- Add Javascripts -->
 <script src="public/js/report/index.js"></script>
 <script>
-        // Check if the form was submitted and show the modal
-        $(document).ready(function(){
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Bname']) && isset($_POST["month"])) {
-                echo '$("#CalculateExpensesForBuildingMonth").modal("show");';
-            }
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['monthStudent'])) {
-                echo '$("#FindStudentsInMonth").modal("show");';
-            }
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Room_ID'])) {
-                echo '$("#PrintStudentListByDatein").modal("show");';
-            }
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['BnameGeneral'])) {
-                echo '$("#PrintGeneralInfo").modal("show");';
-            }
-            ?>
-        });
-    </script>
+	$(document).ready(function(){
+		<?php
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Bname']) && isset($_POST["month"])) {
+			echo '$("#CalculateExpensesForBuildingMonth").modal("show");';
+		}
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['monthStudent'])) {
+			echo '$("#FindStudentsInMonth").modal("show");';
+		}
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Room_ID'])) {
+			echo '$("#PrintStudentListByDatein").modal("show");';
+		}
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['BnameGeneral'])) {
+			echo '$("#PrintGeneralInfo").modal("show");';
+		}
+		?>
+	});
+</script>
+<script>
+    document.getElementById('monthInput').addEventListener('input', function() {
+        validateInput(this);
+    });
+    document.getElementById('monthStudentInput').addEventListener('input', function() {
+        validateInput(this);
+    });
+    function validateInput(inputElement) {
+        var inputValue = inputElement.value;
+        if (inputValue > 12) {
+            inputElement.value = 12;
+        }
+    }
+</script>
 </body>
 
 </html>
