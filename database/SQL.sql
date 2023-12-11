@@ -657,7 +657,7 @@ CREATE TRIGGER UpdateStudentCountAfterInsert
     FOR EACH ROW
 BEGIN
     DECLARE v_student_count INT;
-    DECLARE v_room_id VARCHAR(5);
+    DECLARE v_room_id VARCHAR(4);
 
     SET v_room_id = NEW.Room_ID;
 
@@ -682,7 +682,7 @@ CREATE TRIGGER UpdateStudentCountAfterDelete
     FOR EACH ROW
 BEGIN
     DECLARE v_student_count INT;
-    DECLARE v_room_id VARCHAR(5);
+    DECLARE v_room_id VARCHAR(4);
 
     SET v_room_id = OLD.Room_ID;
 
@@ -706,8 +706,8 @@ CREATE TRIGGER UpdateStudentCountAfterUpdate
     ON LIVES_IN
     FOR EACH ROW
 BEGIN
-    DECLARE v_old_room_id VARCHAR(5);
-    DECLARE v_new_room_id VARCHAR(5);
+    DECLARE v_old_room_id VARCHAR(4);
+    DECLARE v_new_room_id VARCHAR(4);
 
     SET v_old_room_id = OLD.Room_ID;
     SET v_new_room_id = NEW.Room_ID;
@@ -787,7 +787,7 @@ DROP PROCEDURE IF EXISTS PrintStudentListByDatein;
 DROP PROCEDURE IF EXISTS PrintGeneralInfo;
 DELIMITER //
 USE chetcom //
-CREATE PROCEDURE PrintStudentListByDatein(IN p_Room_ID VARCHAR(5))
+CREATE PROCEDURE PrintStudentListByDatein(IN p_Room_ID VARCHAR(4))
 BEGIN
     IF p_Room_ID IS NULL THEN
         SIGNAL SQLSTATE '45000'
@@ -907,7 +907,7 @@ CREATE FUNCTION CalculateExpensesForBuildingMonth(p_Bname VARCHAR(50), p_Month I
 RETURNS DECIMAL(10, 2)
 BEGIN
     DECLARE v_total_expenses DECIMAL(10, 2) DEFAULT 0;
-    DECLARE v_room_id VARCHAR(5);
+    DECLARE v_room_id VARCHAR(4);
     DECLARE v_expense DECIMAL(10, 2);
 
     DECLARE v_done BOOLEAN DEFAULT FALSE;
