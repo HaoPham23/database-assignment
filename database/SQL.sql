@@ -104,7 +104,7 @@ CREATE TABLE MANAGER (
 --
 
 CREATE TABLE NOTIFICATION (
-  ID INT(10) NOT NULL AUTO_INCREMENT,
+  ID INT(10) AUTO_INCREMENT,
   Title VARCHAR(100),
   Content VARCHAR(100),
   Date DATE,
@@ -969,8 +969,8 @@ VALUES
 ('095201002519', '2021-08-14', 'Đức', 'Nguyễn Thành', '2001-07-12', 'M', 'Không', 'Kinh', '0912998815', 'DucNguyen@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/064205000507.jpg', 'Techcombank', '8001234565', 'Quảng Nam', 'Đang ở'),
 ('025303001622', '2021-04-10', 'Nam', 'Lê Văn', '2003-06-25', 'M', 'Không', 'Kinh', '0120030616', 'NamLV@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/077204003301.jpg', 'Vietinbank', '8020030626', 'Tiền Giang', 'Đang ở'),
 
-('025303001515', '2021-04-10', 'Yến', 'Lìu Ngọc', '2003-01-01', 'F', 'Không', 'Hoa', '0120030117', 'YenBK@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/644698.jpg', 'OCB', '8020030102', 'Đồng Nai', 'Đang ở'),
-('025303001516', '2021-04-10', 'My', 'Lê Phạm Hoàng', '2003-12-14', 'F', 'Không', 'Kinh', '0120031218', 'MyNV@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/659111.jpg', 'OCB', '8020031213', 'Đồng Nai', 'Đang ở'),
+('025303001515', '2021-04-10', 'Yến', 'Lìu Ngọc', '2003-01-01', 'F', 'Không', 'Hoa', '0120030117', 'YenBK@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/644700.jpg', 'OCB', '8020030102', 'Đồng Nai', 'Đang ở'),
+('025303001516', '2021-04-10', 'My', 'Lê Phạm Hoàng', '2003-12-14', 'F', 'Không', 'Kinh', '0120031218', 'MyNV@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/659113.jpg', 'OCB', '8020031213', 'Đồng Nai', 'Đang ở'),
 ('083203001517', '2021-04-10', 'Hương', 'Lê Thị', '2003-09-15', 'F', 'Không', 'Kinh', '0120030919', 'HuongLe@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/038305025344.jpg', 'Vietcombank', '8020030913', 'TP. Hồ Chí Minh', 'Đang ở'),
 ('052201010618', '2022-09-22', 'Thảo', 'Trần Thị', '2002-04-08', 'F', 'Không', 'Kinh', '0912003020', 'ThaoTran@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/630069.jpg', 'BIDV', '8062003041', 'Hải Phòng', 'Đang ở'),
 ('083201008719', '2021-05-04', 'Điệp', 'Nguyễn Phương', '2002-11-18', 'F', 'Không', 'Kinh', '0868888821', 'DiepNP@gmail.com', 'http://svktx.vnuhcm.edu.vn:8010/Data/HinhSV/074305001855.jpg', 'Sacombank', '8029999999', 'Hà Nội', 'Đang ở'),

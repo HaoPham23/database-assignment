@@ -88,8 +88,8 @@ class News
         $db = DB::getInstance();
         $req = $db->query(
             "
-            INSERT INTO notification (ID, Title, Content, Date, Mgr_ID)
-            VALUES ('6300000005', '$Title', '$Content', CURDATE(), '$Mgr_ID')
+            INSERT INTO notification (Title, Content, Date, Mgr_ID)
+            VALUES ('$Title', '$Content', CURDATE(), '$Mgr_ID')
             ;");
         return $req;
     }

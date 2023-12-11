@@ -207,7 +207,7 @@ require_once('views/admin/content_layouts.php'); ?>
 
                         <div id="content1" class="mt-3">
                         <div class="row">
-                            <table id="tab-employee" class="table table-bordered table-striped"> 
+                            <table id="tab-employee-t" class="table table-bordered table-striped"> 
                                 <thead>
                                     <tr  class="text-center">
                                         <th scope="col">STT</th>
@@ -272,14 +272,14 @@ require_once('views/admin/content_layouts.php'); ?>
                                                     ".$employee->Bname."
                                                 </td>    
                                                 <td>
-                                                    <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$employee->CCCD_number' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
+                                                    <button class=\"btn-delete btn btn-danger btn-xs\" data-toggle='modal' data-target='#DeleteEmployeeModal' style=\"margin-right: 5px\" data-id='$employee->CCCD_number' ><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button> 
                                                 </td>                                                                                                                                                                    
                                             </tr>";
                                             $index++;
                                         }
                                     ?>
                                 </tbody>
-                                <div class="modal fade" id="DeleteStudentModal" tabindex="-1" role="dialog" aria-labelledby="DeleteStudentModal" aria-hidden="true">
+                                <div class="modal fade" id="DeleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="DeleteEmployeeModal" aria-hidden="true" name="id">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content bg-danger">
                                             <div class="modal-header">

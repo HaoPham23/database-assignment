@@ -119,8 +119,8 @@ if (!isset($_SESSION["user"])) {
                                                 ".$notification->Mgr_Fname."
                                             </td>
                                             <td>
-                                            <button class=\"btn-edit btn btn-primary btn-xs\" style=\"margin-right: 5px\" data-id='$notification->ID'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
-                                            <button class=\"btn-delete btn btn-danger btn-xs\" style=\"margin-right: 5px\" data-id='$notification->ID'><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
+                                            <button class=\"btn-edit btn btn-primary btn-xs\" data-toggle='modal' data-target='#EditStudentModal' style=\"margin-right: 5px\" data-id='$notification->ID'> <i style=\"font-size:17px;\" class=\"fas fa-edit\" ></i></button>
+                                            <button class=\"btn-delete btn btn-danger btn-xs\" data-toggle='modal' data-target='#DeleteStudentModal' style=\"margin-right: 5px\" data-id='$notification->ID'><i style=\"font-size:17px;\" class=\"fas fa-trash\"></i></button>
                                             </td>                                                                                                                                                                                       
                                         </tr>";
                                         $index++;
